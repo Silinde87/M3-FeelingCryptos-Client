@@ -116,18 +116,27 @@ User model
   google_id: { type: String },
   favorites_cryptos: [ String ],
   notifications: [ ],
-  pinned_feed: [ {type: ObjectId, ref: 'Feed'}, default: [] ],
+  pinned_feed: [
+    {
+      element: { type: Object, required: true },
+      type: { type: String, enum: ['tweet', 'news'], required: true },
+      sentiment: { type: String, required: true },  
+    }
+  ],
+  investments: [ { type: ObjectId, ref: 'Investment' }, default: [] ],
 }
 ```
 
 
-Feed model
+Investment model
 
 ```javascript
  {
-   element: { type: Object, required: true },
-   type: { type: String, enum: ['tweet', 'news'], required: true },
-   sentiment: { type: String, required: true },
+   crypto: { type: String, required: true },
+   crypto_value: {type: Number, required: true},
+   date: { type: Date, default: Date.now, required: true },  
+   sentiment_ratio: { type: Number, required: true },
+   type: { type: String, enum: ['sell', 'buy'], required: true },
  }
 ```
 

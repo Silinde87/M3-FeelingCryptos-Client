@@ -30,51 +30,47 @@ This is an app to manage unofficial tournaments within communities. The app help
 ## React Router Routes (React App)
 | Path                      | Component            | Permissions                 | Behavior         |
 | ------------------------- | -------------------- | --------------------------- | ---------------- |
-| `/`                       | SplashPage           | public `<Route>`            | Home page |
+| `/:market`            | MarketDetailPage (home) | public `<Route>`  | Shows markets list, details and feeds related to one market|
 | `/signup`| SignupPage           | anon only  `<AnonRoute>`    | Signup form, link to login, navigate to homepage after signup |
 | `/login` | LoginPage            | anon only `<AnonRoute>`     | Login form, link to signup, navigate to homepage after login |
-| `/markets`                | TournamentListPage   | user only `<PrivateRoute>`  | Shows all tournaments in a list|
-| `/markets/:id`            | TournamentDetailPage | user only `<PrivateRoute>`  | Details of a tournament to edit|
-| `/tournament/:id`         | n/a                  | user only `<PrivateRoute>`  | Delete tournament|
-| `/tournament/players`     | PlayersListPage      | user only  `<PrivateRoute>` | List of players of a tournament|
-| `/tournament/players/add` | PlayersListPage      | user only `<PrivateRoute>`  | Add a player to the tournament|
-| `/tournament/players/:id` | PlayersDetailPage    | user only `<PrivateRoute>`  | Edit player for tournament|
-| `/tournament/players/:id` | PlayersListPage      | user only  `<PrivateRoute>` | Delete player from tournament|
-| `/tournament/tableview`   | TableView            | user only  `<PrivateRoute>` | Games view and brackets|
-| `/tournament/ranks`       | RanksPage            | user only `<PrivateRoute>`  | Ranks list|
-| `/tournament/game`        | GameDetailPage       | user only `<PrivateRoute>`  | Game details|
-
+| `/recover`| RecoverPassPage| anon only  `<AnonRoute>`  | Recover Password form, link to login, navigate to homepage after recover |
+| `/auth/:id/:market/feed` | ProfileFeedPage      | user only `<PrivateRoute>`  | Shows feed related to users favorites markets|
+| `/auth/:id/:market`| ProfileMarketPage | user only  `<PrivateRoute>`| Shows favorites markets list, details related to selected market |
+| `/auth/:id/edit` | EditProfilePage    | user only `<PrivateRoute>`  | Edit users profile|
 
 
 
 ## Components
 
-- LoginPage
-
-- SplashPage
-
-- TournamentListPage
-
-- Tournament Cell
-
-- TournamentDetailPage
-
-- TableViewPage
-
-- PlayersListPage
-
-- PlayerDetailPage
-
-- RanksPage
-
-- TournamentDetailPageOutput
-
 - Navbar
 
+- MarketDetailPage
+  - MarketList
+  - MarketChart
+  - MarketFeed
 
+- SignupPage
+  - Form
+
+- LoginPage
+  - Form
+
+- RecoverPassPage
+  - Form
+
+- ProfileFeedPage
+  - Sidebar
+  - Feed
   
+- ProfileMarketPage
+  - Sidebar
+  - MarketList
+  - MarketChart
 
- 
+- EditProfilePage
+  - Form
+  - FavMarketList
+
 
 ## Services
 
@@ -143,26 +139,20 @@ Investment model
 
 ## API Endpoints (backend routes)
 
-| HTTP Method | URL                         | Request Body                 | Success status | Error Status | Description                                                  |
-| ----------- | --------------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------ |
-| GET         | `/auth/profile    `           | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
-| POST        | `/auth/signup`                | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
-| POST        | `/auth/login`                 | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
-| POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                            |
-| GET         | `/api/tournaments`                |                              |                | 400          | Show all tournaments                                         |
-| GET         | `/api/tournaments/:id`            | {id}                         |                |              | Show specific tournament                                     |
-| POST        | `/api/tournaments` | {}                           | 201            | 400          | Create and save a new tournament                             |
-| PUT         | `/api/tournaments/:id`       | {name,img,players}           | 200            | 400          | edit tournament                                              |
-| DELETE      | `/api/tournaments/:id`     | {id}                         | 201            | 400          | delete tournament                                            |
-| GET         | `/api/players`                    |                              |                | 400          | show players                                                 |
-| GET         | `/api/players/:id`                | {id}                         |                |              | show specific player                                         |
-| POST        | `/api/players`         | {name,img,tournamentId}      | 200            | 404          | add player                                                   |
-| PUT         | `/api/players/:id`           | {name,img}                   | 201            | 400          | edit player                                                  |
-| DELETE      | `/api/players/:id`         | {id}                         | 200            | 400          | delete player                                                |
-| GET         | `/api/games`                      | {}                           | 201            | 400          | show games                                                   |
-| GET         | `/api/games/:id`                  | {id,tournamentId}            |                |              | show specific game                                           |
-| POST        | `/api/games`             | {player1,player2,winner,img} |                |              | add game                                                     |
-| PUT         | `/api/games/:id`             | {winner,score}               |                |              | edit game                                                    |
+| HTTP Method |       URL      | Request Body           | Success status | Error Status | Description                               |
+| ----------- | -------------------- | ---------------------------- | -------------- | ------------ | ---------------- |
+| GET         | `/api/auth/profile`| Saved session   | 200    | 404   | Check if user is logged in and return ProfileMarketPage     |
+| POST        | `/api/auth/signup` | {username, email, password}|                 |     500      | Checks if fields not empty (400) and user not exists (400), then create user with encrypted password, and store user in session |
+| POST        | `/api/auth/login`  | {username, password}       |       200       |     500      | Checks if fields not empty (400), if user exists (401), and if password matches (401), then stores user in session              |
+| POST        | `/api/auth/logout`         | (empty)           | 200            |              | Logs out the user         |
+| POST        | `/api/auth/recover`        | {email, password} | 200            |              | Recovers users password   |
+| GET         | `/api/profile/edit`        | {email}           | 200            | 500          | Edits an user   |
+| PUT         | `/api/profile/edit`        | {email}           | 200            | 500          | Edits an user   |
+| POST        | `/api/profile/delete`      | {email}           | 200            | 500          | Deletes an user   |
+| GET         | `/api/investments`     |                   |                | 400          | Show all investments      |
+| GET         | `/api/investments/:id` | {id}              |                |              | Show specific investment  |
+| POST        | `/api/investments`     | {}                | 201            | 400          | Create and save a new investment |
+| DELETE      | `/api/investments/:id` | {id}              | 201            | 400          | delete investment               |
 
 
 ## Links

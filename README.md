@@ -18,6 +18,8 @@ This is a web application that shows crypto currency market in real time and rel
 
 
 ## Backlog
+- Add news as a feed
+- Add dark theme
 
 
 
@@ -80,6 +82,12 @@ This is a web application that shows crypto currency market in real time and rel
 - Profile Service
   - profie.edit(user_email)
   - profile.delete(user_email)
+
+- Binance Service
+  - binance.getMarketDetails(market)
+
+- Twitter Service
+  - twitter.getTweets(params)
   
 
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a web application that shows crypto currency market in real time and relates each of them with analized, based on sentiment, social opinion extracted from Twitter and news feeds. Suggesting the best moments to sell and buy.
+This is a web application that shows crypto currency market in real time and relates each of them with the analized sentiments, through the social opinion extracted from Twitter and news feeds. Suggesting the best moments to sell and buy.
 
 ## User Stories
 

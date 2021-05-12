@@ -3,7 +3,8 @@
   box-sizing: border-box;
 }
 html,body,
-#root,#app-container{
+#root,#app-container,
+section{
   height: 100%;
 }
 

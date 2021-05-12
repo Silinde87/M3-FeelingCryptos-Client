@@ -7,6 +7,7 @@ const theme = {
       letterColor1: "#0D1B2A",
       letterColor2: "#5E6472",
       letterColor3Sel: "#53B9EA",
+      lettersColorRed: "#e63946",
       buttonColor: "#005691",
        
     },

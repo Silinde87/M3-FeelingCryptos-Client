@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Form from "../../components/Form/Form";
 import { withAuth } from '../../context/auth.context';
 
 class Login extends Component {
@@ -18,10 +19,12 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state;
+    const fields = ["email", "password"];
 
     return (
       <div>
         <h1>Login</h1>
+        <Form onSubmit={this.handleFormSubmit} onChange={this.handleChange} fields={fields} state={this.state}/>
 
         <form onSubmit={this.handleFormSubmit}>
           

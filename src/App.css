@@ -1,26 +1,30 @@
-html, body {
-  margin: 0;
-  padding: 0;
+/* RESETS */
+* {
+  box-sizing: border-box;
 }
 
-.App {
-  padding: 20px;;
+/* FONTS */
+@font-face {
+  font-family: 'Mulish-Light';
+  src: url('./resources/fonts/Mulish-Light.ttf');
+  font-weight: normal;
+  font-style: normal;
 }
-
-nav.navbar { 
-  display: flex;
-  padding: 0px 20px;
-  background: #686de0; 
+@font-face {
+  font-family: 'Mulish-Medium';
+  src: url('./resources/fonts/Mulish-Medium.ttf');
+  font-weight: normal;
+  font-style: normal;
 }
-
-button.navbar-button {
-  padding: 5px 20px;
-  width: 100px;
-  margin: 15px 10px;
-  border-radius: 3px;
+@font-face {
+  font-family: 'Mulish-Regular';
+  src: url('./resources/fonts/Mulish-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
 }
-
-#home-btn {
-  color: white;
-  text-decoration: none;
+@font-face {
+  font-family: 'Mulish-SemiBold';
+  src: url('./resources/fonts/Mulish-SemiBold.ttf');
+  font-weight: normal;
+  font-style: normal;
 }

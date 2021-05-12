@@ -17,7 +17,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 class App extends Component {
   render() {
     return (
-      <div className="container">
+      <div id="app-container">
         <Navbar />
 
         <Switch>

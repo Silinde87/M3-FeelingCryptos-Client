@@ -20,8 +20,8 @@ const theme = {
     },
     typography: {
       mulishLight: "Mulish-Light",
-      mulishMedium: "Mulish-Medium",
       mulishRegular: "Mulish-Regular",
+      mulishMedium: "Mulish-Medium",
       mulishSemiBold: "Mulish-SemiBold"
     },
     typographySizes: {

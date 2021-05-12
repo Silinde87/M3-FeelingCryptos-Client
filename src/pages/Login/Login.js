@@ -63,8 +63,8 @@ class Login extends Component {
 	render() {
 		return (
 			<section id="form-container">
-				<Text as="h2" size="l" weight="mulishMedium">
-					Login
+				<Text id="form-title" as="h2" size="l" weight="mulishRegular" style={{"text-align":"center"}}>
+					Log in to FeelingCrypto
 				</Text>
 				<Form
 					handleFormSubmit={(e) => this.handleFormSubmit(e)}

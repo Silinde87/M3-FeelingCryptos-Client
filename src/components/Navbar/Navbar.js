@@ -10,8 +10,8 @@ class Navbar extends Component {
 		return (
 			<SCNavbar className="navbar">
 				<Link to={"/"} id="home-btn">
-					<Text as="h4" size="l" color="letterColor1" weight="mulishMedium">
-						FeelingScrypt
+					<Text as="h4" size="l" color="letterColor1" weight="mulishSemiBold">
+						FeelingCrypto
 					</Text>
 				</Link>
 				{isLoggedIn ? (

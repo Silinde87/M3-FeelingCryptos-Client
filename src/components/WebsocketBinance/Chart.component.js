@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import ApexChart from "react-apexcharts";
 
 export default class Chart extends Component {
-    state = {
+  constructor(props) {
+    super(props);
+    this.state = {
       series: [
         {
           name: "candle",
@@ -60,14 +62,31 @@ export default class Chart extends Component {
         },
       },
     };
-
+  }
+  
   render() {
+    //console.log(this.props.data)
     return (
       <div id="chart">
-        <ApexChart options={this.state.options} series={this.state.series} type="candlestick" height={350} />
+        <ApexChart
+          options={this.state.options}
+          series={
+            [
+        {
+          name: "candle",
+          data: this.props.data.map((el) => {
+      return {
+        x: new Date(parseInt(el[0])),
+        y: [ el[1].open, el[1].high, el[1].low, el[1].close ]
+      }
+    }),
+        },
+      ]
+          }
+          type="candlestick"
+          height={350}
+        />
       </div>
     );
   }
 }
-
-

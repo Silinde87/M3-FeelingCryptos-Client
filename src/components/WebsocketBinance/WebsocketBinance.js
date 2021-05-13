@@ -11,17 +11,10 @@ export default class WebsocketBinance extends Component {
 
   componentDidMount() {
     //This onopen function waits for you websocket connection to establish before sending the message.
-    if(client.readyState){
-        client.send("Message");
-    }else{
-        client.onopen = () => client.send("Message");
-    }
-    console.log(client)
+    client.readyState ? client.send("Message") : client.onopen = () => client.send("Message");
 
     client.onmessage = ({ data }) => {
-      console.log({ message: data });
       const dataFromServer = JSON.parse(data);
-      console.log("got reply! ", dataFromServer);
       this.setState({ charts: dataFromServer });
     };
   }
@@ -29,7 +22,6 @@ export default class WebsocketBinance extends Component {
     return (
       <div className="main" id="wrapper">
         <div className="main" id="wrapper">
-          {/* { JSON.stringify(this.state.charts) } */}
           <Chart data={this.state.charts} />
         </div>
       </div>

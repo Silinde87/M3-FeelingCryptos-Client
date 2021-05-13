@@ -11,7 +11,7 @@ const SCForm = styled.form`
         width: 500px;
         padding: 3px 5px;
         outline: none;
-        border:1px solid #BEBEBE;
+        border:1px solid ${({ theme }) => theme.color.secondary};
         margin-top: 8px;
         margin-bottom: 8px;
         -webkit-transition: all 0.30s ease-in-out;
@@ -20,14 +20,18 @@ const SCForm = styled.form`
         -o-transition: all 0.30s ease-in-out;
     }
     .form-input:focus{
-        border: 1px solid  ${({ theme }) => theme.color.tertiary};
-        box-shadow: 0 0 8px ${({ theme }) => theme.color.tertiary};
+        border: 1px solid  ${({ theme }) => theme.color.primary};
+        box-shadow: 0 0 4px ${({ theme }) => theme.color.tertiary};
     }
     .form-group{
         margin-top: 15px;
     }
     .form-error{
         padding-left: 5px;
+        margin-bottom: 5px;
+    }
+    .form-already-label{
+        width: 100%;
     }
 `;
 

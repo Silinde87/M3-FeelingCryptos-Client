@@ -9,7 +9,7 @@ const theme = {
       letterColor3Sel: "#53B9EA",
       lettersColorRed: "#e63946",
       buttonColor: "#005691",
-       
+      white: "white",
     },
     breakpoints: {
       mobileMax: '420px',

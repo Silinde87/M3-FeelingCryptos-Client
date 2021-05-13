@@ -2,6 +2,15 @@
 * {
   box-sizing: border-box;
 }
+html,body,
+#root,#app-container,
+section{
+  height: 100%;
+}
+section{
+  padding-top: 50px;
+  margin: auto;
+}
 
 /* FONTS */
 @font-face {

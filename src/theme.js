@@ -7,8 +7,9 @@ const theme = {
       letterColor1: "#0D1B2A",
       letterColor2: "#5E6472",
       letterColor3Sel: "#53B9EA",
+      lettersColorRed: "#e63946",
       buttonColor: "#005691",
-       
+      white: "white",
     },
     breakpoints: {
       mobileMax: '420px',
@@ -19,8 +20,8 @@ const theme = {
     },
     typography: {
       mulishLight: "Mulish-Light",
-      mulishMedium: "Mulish-Medium",
       mulishRegular: "Mulish-Regular",
+      mulishMedium: "Mulish-Medium",
       mulishSemiBold: "Mulish-SemiBold"
     },
     typographySizes: {

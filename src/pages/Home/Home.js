@@ -1,4 +1,5 @@
 import React from 'react'
+import Chart from '../../components/WebsocketBinance/Chart.component'
 import WebsocketBinance from '../../components/WebsocketBinance/WebsocketBinance'
 
 

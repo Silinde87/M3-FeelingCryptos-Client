@@ -2,7 +2,6 @@ import React from "react";
 import FormButton from "../FormButton/FormButton";
 import Text from "../text";
 import SCForm from "./Form.styled";
-import { Link } from "react-router-dom";
 
 export default function Form(props) {
 	const { fields, errors } = props.state;
@@ -33,10 +32,7 @@ export default function Form(props) {
 					</div>
 				);
 			})}
-			<Text className="form-already-label" size="s">
-				Not a member? <Link to="/signup" style={{color:`#53B9EA`}}>Sign up</Link>
-			</Text>
-			<FormButton disabled={!props.isValid()}>Login</FormButton>
+			<FormButton disabled={!props.isValid()}>{props.textButton}</FormButton>
 		</SCForm>
 	);
 }

@@ -1,0 +1,39 @@
+/* RESETS */
+* {
+  box-sizing: border-box;
+}
+html,body,
+#root,#app-container,
+section{
+  height: 100%;
+}
+section{
+  padding-top: 50px;
+  margin: auto;
+}
+
+/* FONTS */
+@font-face {
+  font-family: 'Mulish-Light';
+  src: url('./resources/fonts/Mulish-Light.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Mulish-Medium';
+  src: url('./resources/fonts/Mulish-Medium.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Mulish-Regular';
+  src: url('./resources/fonts/Mulish-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Mulish-SemiBold';
+  src: url('./resources/fonts/Mulish-SemiBold.ttf');
+  font-weight: normal;
+  font-style: normal;
+}

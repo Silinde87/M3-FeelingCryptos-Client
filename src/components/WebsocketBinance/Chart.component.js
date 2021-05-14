@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ApexChart from "react-apexcharts";
+import './Chart.css'
 
 export default class Chart extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export default class Chart extends Component {
           type: "candlestick",
         },
         title: {
-          text: "CandleStick Chart - Category X-axis",
+          text: "CandleStick Chart - SPOT Market",
           align: "left",
         },
         annotations: {
@@ -65,7 +66,6 @@ export default class Chart extends Component {
   }
   
   render() {
-    //console.log(this.props.data)
     return (
       <div id="chart">
         <ApexChart

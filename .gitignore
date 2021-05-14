@@ -4,3 +4,5 @@ node_modules
 npm-debug.log
 # Environment variables
 .env
+tweets_seeds.json
+tweets_seeds_bitcoin.json

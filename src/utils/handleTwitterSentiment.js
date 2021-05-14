@@ -21,6 +21,10 @@ const getFilteredTweets = (tweetList) => {
 		);
 };
 
+const filterTweetByLang = (tweetList, language) => {
+	return tweetList.filter(({ lang }) => lang === language);
+}
+
 const getSentimentFromTweets = (tweetList) => {
 	let posSentiments = [],
 		negSentiments = [],
@@ -41,4 +45,4 @@ const getSentimentFromTweets = (tweetList) => {
 	return tweetsSentiment;
 };
 
-export { analyzeTweet, getSentimentFromTweets, getFilteredTweets };
+export { analyzeTweet, getSentimentFromTweets, getFilteredTweets, filterTweetByLang };

@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import twitterService from "../../services/twitter.service";
 import SCTweetFeed from "./TweetFeed.styled";
 import { Tweet } from "react-twitter-widgets";
-import { getFilteredTweets, getSentimentFromTweets } from "../../utils/handleTwitterSentiment";
+import Text from "../text";
+import { getFilteredTweets, getSentimentFromTweets,filterTweetByLang } from "../../utils/handleTwitterSentiment";
+import SentimentRatio from "../SentimentRatio/SentimentRatio";
 
 let intervalId;
 
@@ -14,7 +16,7 @@ export default class TweetFeed extends Component {
 			tweetsSentiment: {},
 		};
 		this.params = {
-			max_results: 10,
+			max_results: 50,
 			"tweet.fields": "public_metrics,lang",
 			query: `(#${this.props.crypto} OR ${this.props.crypto}) is:verified -is:retweet`,
 		};
@@ -26,7 +28,7 @@ export default class TweetFeed extends Component {
 			.getRecentTweets(this.params)
 			.then((response) => {
 				// Showing onlye the 10 first tweets
-				this.setState({ feed: response.data.slice(0, 10) });
+				this.setState({ feed: filterTweetByLang(response.data, 'en').slice(0, 10) });
 				// Analyzing all retrieved tweets.
 				let newSentiment = getSentimentFromTweets(getFilteredTweets(response.data));
 				this.setState({ tweetsSentiment: newSentiment });
@@ -45,20 +47,29 @@ export default class TweetFeed extends Component {
 	}
 
 	render() {
+		const { positives, neutrals, negatives } = this.state.tweetsSentiment;
 		return (
 			<SCTweetFeed id="twitter-container">
-				<h1>Positives: {this.state.tweetsSentiment.positives} ------ </h1>
-				<h1>Neutrals: {this.state.tweetsSentiment.neutrals} ------ </h1>
-				<h1>Negatives: {this.state.tweetsSentiment.negatives}</h1>
-				{this.state.feed.map((tweet) => {
-					return (
-						<Tweet
-							key={tweet.id}
-							tweetId={tweet.id}
-							options={{ cards: "hidden", width: "250", conversation: "none", height: "200" }}
-						/>
-					);
-				})}
+				<div id="twitter-container-header">
+					<Text as="h3" size="l" weight="mulishLight">Tweet feed</Text>
+					<div id="sentiment-container">
+						<Text id="sentiment-label" as="h3" size="m" weight="mulishMedium">Sentiment Anaylsis:</Text>
+						<SentimentRatio type={"positive"} ratio={positives} opacity={positives / 100} />
+						<SentimentRatio type={"neutral"} ratio={neutrals} opacity={neutrals / 100} />
+						<SentimentRatio type={"negative"} ratio={negatives} opacity={negatives / 100} />
+					</div>
+				</div>
+				<div id="tweets-container">
+					{this.state.feed.map((tweet) => {
+						return (
+							<Tweet
+								key={tweet.id}
+								tweetId={tweet.id}
+								options={{ cards: "hidden", width: "250", conversation: "none", height: "200" }}
+							/>
+						);
+					})}
+				</div>
 			</SCTweetFeed>
 		);
 	}

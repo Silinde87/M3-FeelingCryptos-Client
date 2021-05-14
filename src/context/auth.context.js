@@ -11,10 +11,15 @@ class AuthProvider extends React.Component {
     user: null
   }
 
-  componentDidMount () {
-    authService.loggedin()
-     .then((response) => this.setState({ isLoggedIn: true, user: response.data, isLoading: false }))
-     .catch((err) => this.setState({ isLoggedIn: false, user: null, isLoading: false }));
+  async componentDidMount(){
+    try {
+      const result = await this.authService.isLoggedIn();
+      if(result){
+        this.setState({ isLoggedIn: true, isLoading: false, user: result.data });
+      }
+    } catch(err){
+      this.setState({ isLoggedIn: false, isLoading: false, user: null });
+    }
   }
 
   signup = (data) => {

@@ -1,9 +1,12 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
 import MarketsList from '../../components/MarketsList/MarketsList'
+import TweetFeed from '../../components/TweetFeed/TweetFeed'
 import WebsocketBinance from '../../components/WebsocketBinance/WebsocketBinance'
 import markets from '../../markets.json'
 import SCHome from './Home.styled'
+
+const crypto = 'bitcoin';
 
 
 function Home() {
@@ -18,6 +21,8 @@ function Home() {
       </Switch> */}
       <div className="chart-div"><WebsocketBinance /></div>
       </div>
+      <div> <WebsocketBinance /> </div>
+      <TweetFeed crypto={crypto}/>
     </div>
     </SCHome>
   )

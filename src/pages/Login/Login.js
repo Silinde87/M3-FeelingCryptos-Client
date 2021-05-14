@@ -49,7 +49,7 @@ class Login extends Component {
 		if (this.isValid()) {
 			// Call function coming from AuthProvider ( via withAuth )
 			this.props.login({ email, password });
-			if (!this.props.isLoggedIn) {
+			if (!this.props.isLoggedIn) { //TODO: Wait until this.props.login ends. This is sowing errorOnSubmit before login validates
 				this.setState({ errorOnSubmit: true });
 			}
 		}

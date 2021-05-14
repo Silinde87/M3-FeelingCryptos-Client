@@ -4,7 +4,6 @@ import SCSentimentRatio from "./SentimentRatio.styled";
 
 export default function SentimentRatio(props) {
 	let { ratio, type, opacity } = props;
-	console.log(ratio);
 	if (ratio) {
 		let bgcolor;
 		switch (type) {
@@ -21,7 +20,7 @@ export default function SentimentRatio(props) {
 		return (
 			<SCSentimentRatio style={{ backgroundColor: bgcolor }}>
 				<Text size="m" color="letterColor1" weight="mulishRegular" style={{ opacity: 1 }}>
-					{ratio}
+					{ratio}%
 				</Text>
 			</SCSentimentRatio>
 		);

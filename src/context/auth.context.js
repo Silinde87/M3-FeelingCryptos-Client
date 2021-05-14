@@ -15,7 +15,6 @@ class AuthProvider extends React.Component {
     try {
       const result = await this.authService.isLoggedIn();
       if(result){
-        console.log(result);
         this.setState({ isLoggedIn: true, isLoading: false, user: result.data });
       }
     } catch(err){

@@ -37,9 +37,9 @@ const getSentimentFromTweets = (tweetList) => {
 	});
 	// Result output. Percentage of positives, neutrals and negatives tweets.
 	let tweetsSentiment = {
-		positives: ((posSentiments.length / tweetList.length) * 100).toFixed(2),
-		neutrals: ((neutralSentiments.length / tweetList.length) * 100).toFixed(2),
-		negatives: ((negSentiments.length / tweetList.length) * 100).toFixed(2),
+		positives: ((posSentiments.length / tweetList.length) * 100).toFixed(1),
+		neutrals: ((neutralSentiments.length / tweetList.length) * 100).toFixed(1),
+		negatives: ((negSentiments.length / tweetList.length) * 100).toFixed(1),
 		totalTweets: tweetList.length,
 	};
 	return tweetsSentiment;

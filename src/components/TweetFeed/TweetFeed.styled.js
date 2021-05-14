@@ -17,8 +17,11 @@ const SCTweetFeed = styled.section`
         display: flex;
         align-items: center;
     }
-    #sentiment-label {
+    .fas {
         margin-right: 10px;
+        margin-left: 2px;
+        font-size: 13px;
+        margin-top: -10px;
     }
   
     .twitter-tweet{

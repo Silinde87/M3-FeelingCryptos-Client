@@ -5,8 +5,22 @@ import { Tweet } from "react-twitter-widgets";
 import Text from "../text";
 import { getFilteredTweets, getSentimentFromTweets,filterTweetByLang } from "../../utils/handleTwitterSentiment";
 import SentimentRatio from "../SentimentRatio/SentimentRatio";
+import Tooltip from '@material-ui/core/Tooltip';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Icon from '@material-ui/core/Icon';
+
+
 
 let intervalId;
+
+const LightTooltip = withStyles((theme) => ({
+	tooltip: {
+	  backgroundColor: theme.palette.common.white,
+	  color: 'rgba(0, 0, 0, 0.87)',
+	  boxShadow: theme.shadows[1],
+	  fontSize: 11,
+	},
+}))(Tooltip);
 
 export default class TweetFeed extends Component {
 	constructor(props) {
@@ -54,6 +68,9 @@ export default class TweetFeed extends Component {
 					<Text as="h3" size="l" weight="mulishLight">Tweet feed</Text>
 					<div id="sentiment-container">
 						<Text id="sentiment-label" as="h3" size="m" weight="mulishMedium">Sentiment Anaylsis:</Text>
+						<LightTooltip title="Analysis based on last 100 twits using FINN-165" placement="top-start">
+							<Icon className="fas fa-info-circle" />
+						</LightTooltip>
 						<SentimentRatio type={"positive"} ratio={positives} opacity={positives / 100} />
 						<SentimentRatio type={"neutral"} ratio={neutrals} opacity={neutrals / 100} />
 						<SentimentRatio type={"negative"} ratio={negatives} opacity={negatives / 100} />

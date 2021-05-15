@@ -23,6 +23,7 @@ export default function Form(props) {
 							name={el}
 							value={values[i]}
 							onChange={props.handleChange}
+							autoComplete="current-password"
 						></input>
 						{errors[el] && (
 							<Text className="form-error" color="lettersColorRed">

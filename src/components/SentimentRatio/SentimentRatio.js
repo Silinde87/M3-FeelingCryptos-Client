@@ -16,6 +16,7 @@ export default function SentimentRatio(props) {
 			case "negative":
 				bgcolor = `rgb(224, 30, 55,${opacity})`;
 				break;
+			default:
 		}
 		return (
 			<SCSentimentRatio style={{ backgroundColor: bgcolor }}>

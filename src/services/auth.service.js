@@ -20,7 +20,7 @@ class AuthService {
     return this.auth.post("/auth/logout");
   }
 
-  loggedin() {
+  loggedIn() {
     return this.auth.get("/auth/profile")
   }
 }

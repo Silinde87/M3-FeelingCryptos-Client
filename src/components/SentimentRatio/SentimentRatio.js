@@ -8,13 +8,13 @@ export default function SentimentRatio(props) {
 		let bgcolor;
 		switch (type) {
 			case "positive":
-				bgcolor = `rgb(0, 128, 0,${opacity})`;
+				bgcolor = `rgba(0, 128, 0,${opacity})`;
 				break;
 			case "neutral":
-				bgcolor = `rgb(247, 184, 1,${opacity})`;
+				bgcolor = `rgba(247, 184, 1,${opacity})`;
 				break;
 			case "negative":
-				bgcolor = `rgb(224, 30, 55,${opacity})`;
+				bgcolor = `rgba(224, 30, 55,${opacity})`;
 				break;
 			default:
 		}

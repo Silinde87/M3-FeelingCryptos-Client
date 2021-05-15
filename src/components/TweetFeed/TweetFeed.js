@@ -30,7 +30,7 @@ export default class TweetFeed extends Component {
 			tweetsSentiment: {},
 		};
 		this.params = {
-			max_results: 50,
+			max_results: 10,
 			"tweet.fields": "public_metrics,lang",
 			query: `(#${this.props.crypto} OR ${this.props.crypto}) is:verified -is:retweet`,
 		};
@@ -51,9 +51,9 @@ export default class TweetFeed extends Component {
 	}
 
 	componentDidMount() {
-		this.handleTweets();
+		//this.handleTweets();
 		//Calling twitter API and manage the data every 5 minutes
-		intervalId = setInterval(this.handleTweets, 5 * 60 * 1000);
+		//intervalId = setInterval(this.handleTweets, 5 * 60 * 1000);
 	}
 
 	componentWillUnmount() {

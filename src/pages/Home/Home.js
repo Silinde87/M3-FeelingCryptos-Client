@@ -22,7 +22,7 @@ function Home() {
       <div className="chart-div"><WebsocketBinance /></div>
       </div>
       <div> <WebsocketBinance /> </div>
-      <TweetFeed crypto={crypto}/>
+      {/* <TweetFeed crypto={crypto}/> */}
     </div>
     </SCHome>
   )

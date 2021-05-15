@@ -6,7 +6,7 @@ import SCForm from "./Form.styled";
 export default function Form(props) {
 	const { fields, errors } = props.state;
 	const keys = Object.keys(fields);
-	const values = Object.values(fields);
+	const values = Object.values(fields);	
 	return (
 		<SCForm id="form" onSubmit={props.handleFormSubmit} noValidate>
 			{keys.map((el, i) => {

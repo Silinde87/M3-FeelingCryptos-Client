@@ -51,9 +51,9 @@ export default class TweetFeed extends Component {
 	}
 
 	componentDidMount() {
-		//this.handleTweets();
+		this.handleTweets();
 		//Calling twitter API and manage the data every 5 minutes
-		//intervalId = setInterval(this.handleTweets, 5 * 60 * 1000);
+		intervalId = setInterval(this.handleTweets, 5 * 60 * 1000);
 	}
 
 	componentWillUnmount() {

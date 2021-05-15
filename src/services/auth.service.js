@@ -23,6 +23,10 @@ class AuthService {
   loggedIn() {
     return this.auth.get("/auth/profile")
   }
+
+  edit(data){
+    return this.auth.put("/auth/edit", data);
+  }
 }
 
 

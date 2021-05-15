@@ -14,7 +14,6 @@ function PrivateRoute (routeProps) {
 
   // If AuthProvider is still making request to check the user
   if (isLoading) return 'Loading';
-  console.log(isLoggedIn);
 
   return (
     <Route

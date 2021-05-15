@@ -32,9 +32,9 @@ This is a web application that shows crypto currency market in real time and rel
 | `/signup` | SignupPage              | anon only  `<AnonRoute>`    | Signup form, link to login, navigate to homepage after signup |
 | `/login`  | LoginPage               | anon only `<AnonRoute>`     | Login form, link to signup, navigate to homepage after login |
 | `/recover`| RecoverPassPage| anon only  `<AnonRoute>`  | Recover Password form, link to login, navigate to homepage after recover |
-| `/auth/:id/:market/feed` | ProfileFeedPage      | user only `<PrivateRoute>`  | Shows feed related to users favorites markets|
-| `/auth/:id/:market`| ProfileMarketPage | user only  `<PrivateRoute>`| Shows favorites markets list, details related to selected market |
-| `/auth/:id/edit` | EditProfilePage    | user only `<PrivateRoute>`  | Edit users profile|
+| `/private/:market/feed` | ProfileFeedPage      | user only `<PrivateRoute>`  | Shows feed related to users favorites markets|
+| `/private/:market`| ProfileMarketPage | user only  `<PrivateRoute>`| Shows favorites markets list, details related to selected market |
+| `/private/edit` | EditProfilePage    | user only `<PrivateRoute>`  | Edit users profile|
 
 
 

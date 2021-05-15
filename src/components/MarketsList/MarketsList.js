@@ -1,19 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { List } from "@material-ui/core";
+import { Link, NavLink } from "react-router-dom";
+import Text from "../text";
+import SCMarketList from "./MarketList.styled";
 
 export default function MarketsList(props) {
-    let id = 0;
+  let id = 0;
+
+  
   return (
-    <div>
-      {props.marketList.map((market) => {
-        return (
-          <ul key={id++}>
-            <Link to={`/${market}`}>
-              <li>{market}</li>
-            </Link>
-          </ul>
-        );
-      })}
-    </div>
+    <SCMarketList>
+      <List className="component-list">
+        <div className="list-div">
+          {props.marketList.map((market) => {
+            return (
+              <NavLink activeStyle={{ color: 'red', fontStyle: 'bold' }} key={id++} exact to={`/${market}`}>
+                <Text id="market-id" weight="mulishRegular">{market}</Text>
+              </NavLink>
+            );
+          })}
+        </div>
+      </List>
+    </SCMarketList>
   );
 }

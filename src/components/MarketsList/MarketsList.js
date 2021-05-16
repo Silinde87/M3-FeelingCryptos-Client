@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Websocket from "../../utils/websocketInstance";
 import { List } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 import Text from "../text";
 import SCMarketList from "./MarketList.styled";
+import SearchBar from "../SearchBar/SearchBar";
 
-export default function MarketsList(props) {
+export default function MarketsList({ marketList }) {
+  const [ search, setSearch ] = useState('')
+
   const client = Websocket.getInstance();
   let id = 0;
 
@@ -14,7 +17,9 @@ export default function MarketsList(props) {
     <SCMarketList>
       <List className="component-list">
         <div className="list-div">
-          {props.marketList.map((market) => {
+        <SearchBar setSearch={setSearch}/>
+          { (marketList.filter((markets) => markets.toLowerCase().includes(search)))
+            .map((market) => {
             return (
               <NavLink onClick={() => client.send(`${market}`)}
                 activeStyle={{ color: "red", fontStyle: "bold" }}

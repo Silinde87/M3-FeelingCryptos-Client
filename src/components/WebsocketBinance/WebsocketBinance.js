@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import Websocket from '../../utils/websocketInstance'
 import Chart from "./Chart.component";
 

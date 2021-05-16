@@ -1,5 +1,7 @@
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
+//using singleton architecture to instantiate only once the websocket
+
 class WebsocketInstance {
   static instance;
 

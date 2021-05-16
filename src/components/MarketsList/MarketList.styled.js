@@ -5,7 +5,7 @@ const SCMarketList = styled.section`
     background-color: ${({ theme }) => theme.color.secondary};
 
     .component-list{
-        max-height: 100vh;
+        height: 100vh;
         overflow: auto;
         padding: 35px;
         width: 100%;

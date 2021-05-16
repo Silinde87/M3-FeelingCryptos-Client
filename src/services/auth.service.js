@@ -29,7 +29,13 @@ class AuthService {
   }
 
   twitter() {
-    return this.auth.get("/auth/twitter");
+    return this.auth.get("/auth/twitter", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      }
+    });
   }
 }
 

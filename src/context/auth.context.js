@@ -52,7 +52,10 @@ class AuthProvider extends React.Component {
 
   twitter = () => {
     authService.twitter()
-      .then((response) => this.setState({isLoggedIn: true, user: response.data}))
+      .then((response) =>{ 
+        console.log(response);
+        this.setState({isLoggedIn: true, user: response.data})
+      })
       .catch(error => console.error(error));
   }
 

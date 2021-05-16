@@ -50,14 +50,20 @@ class AuthProvider extends React.Component {
       .catch(error => console.error(error));
   }
 
+  twitter = () => {
+    authService.twitter()
+      .then((response) => this.setState({isLoggedIn: true, user: response.data}))
+      .catch(error => console.error(error));
+  }
+
   render() {
     const { isLoggedIn, isLoading, user } = this.state;
-    const { signup, login, logout, edit } = this;
+    const { signup, login, logout, edit, twitter } = this;
 
     if (isLoading) return <p>Loading</p>;
 
     return(
-      <Provider value={{ isLoggedIn, isLoading, user, signup, login, logout, edit }}  >
+      <Provider value={{ isLoggedIn, isLoading, user, signup, login, logout, edit, twitter }}  >
         {this.props.children}
       </Provider>
     )
@@ -72,7 +78,7 @@ const withAuth = (WrappedComponent) => {
       return(
         <Consumer>
           { (value) => {
-            const { isLoggedIn, isLoading, user, signup, login, logout, edit } = value;
+            const { isLoggedIn, isLoading, user, signup, login, logout, edit, twitter } = value;
 
             return (
               <WrappedComponent 
@@ -83,6 +89,7 @@ const withAuth = (WrappedComponent) => {
                 login={login} 
                 logout={logout}
                 edit={edit}
+                twitter={twitter}
                 {...props}
               />
             )

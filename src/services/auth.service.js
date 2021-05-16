@@ -21,11 +21,15 @@ class AuthService {
   }
 
   loggedIn() {
-    return this.auth.get("/auth/profile")
+    return this.auth.get("/auth/profile");
   }
 
   edit(data){
     return this.auth.put("/auth/edit", data);
+  }
+
+  twitter() {
+    return this.auth.get("/auth/twitter");
   }
 }
 

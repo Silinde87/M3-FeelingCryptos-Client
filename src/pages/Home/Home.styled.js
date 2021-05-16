@@ -7,13 +7,12 @@ const SCHome = styled.section`
         flex-direction: row;
         width: 100%;
 
-        
     }
     .chart-tweet-div{
         border: 2px solid blue;
         display: flex;
         flex-direction: column;
-        width: 1200px;
+        width: 1300px;
     }
 
 `;

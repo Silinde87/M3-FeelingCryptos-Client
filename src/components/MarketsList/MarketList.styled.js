@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 const SCMarketList = styled.section`
+
+    background-color: ${({ theme }) => theme.color.secondary};
+
     .component-list{
         max-height: 100vh;
         overflow: auto;
@@ -15,7 +18,10 @@ const SCMarketList = styled.section`
         align-items: center;
     }
     #market-id{
-        padding: 6px;
+        padding: 10px;
+        color: ${({theme}) => theme.color.lettersColorRed}
+        font-weight: ${({theme}) => theme.typographySizes.l}
+
     }
     
 

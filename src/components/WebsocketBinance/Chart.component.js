@@ -322,13 +322,26 @@ export default class Chart extends Component {
           ],
         },
       ],
-      options: {
-        chart: {
+      options: {},
+    };
+  }
+
+  componentDidUpdate(){
+   document.querySelector('.apexcharts-toolbar').style.display = "none";
+  }
+  
+  render() {
+    return (
+      <SCChart>
+      <div id="chart">
+        <ApexChart
+          options={
+        {chart: {
           height: 350,
           type: "candlestick",
         },
         title: {
-          text: "SPOT Market",
+          text: `${this.props.market.substring(0,3)} / ${this.props.market.substring(3, this.props.market.length)} - SPOT Market`,
           align: "left",
         },
         annotations: {
@@ -340,7 +353,7 @@ export default class Chart extends Component {
                 borderColor: "#00E396",
                 style: {
                   fontSize: "12px",
-                  color: "#fff",
+                  color: "#e63946",
                   background: "#00E396",
                 },
                 orientation: "horizontal",
@@ -365,21 +378,8 @@ export default class Chart extends Component {
           tooltip: {
             enabled: true,
           },
-        },
-      },
-    };
-  }
-
-  componentDidMount(){
-   document.querySelector('.apexcharts-toolbar').style.display = "none";
-  }
-  
-  render() {
-    return (
-      <SCChart>
-      <div id="chart">
-        <ApexChart
-          options={this.state.options}
+        }}
+      }
           series={
             [
         {

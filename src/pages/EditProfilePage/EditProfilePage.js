@@ -24,6 +24,13 @@ const validators = {
 			message = "Invalid email";
 		}
 		return message;
+	},
+	photo: (value) => {
+		let message;
+		if(!value) {
+			message = 'Photo is required';
+		}
+		return message;
 	}
 };
 
@@ -32,10 +39,12 @@ class EditProfilePage extends Component {
 		fields: {
 			username: this.props.user.username,
 			email: this.props.user.email,
+			photo: null,
 		},
 		errors: {
 			username: null,
 			email: null,
+			photo: null,
 		},
 		submitSuccessful: false,
 	};
@@ -43,10 +52,13 @@ class EditProfilePage extends Component {
 	//This method handles the form submit. Changes the state if there is an error validation.
 	handleFormSubmit = (event) => {
 		event.preventDefault();
-		const { username, email } = this.state.fields;
+		const uploadData = new FormData();
+		Object.keys(this.state.fields).forEach(key => {
+			uploadData.append(key, this.state.fields[key]);
+		})
 		if (this.isValid()) {
 			// Call function coming from AuthProvider ( via withAuth )
-            this.props.edit({ username, email });            
+            this.props.edit(uploadData);
 			//Render update succesful
 			this.setState({ submitSuccessful: true });
 			setTimeout(() => {
@@ -57,15 +69,15 @@ class EditProfilePage extends Component {
 
 	//This method handles the input changes
 	handleChange = (event) => {
-		const { name, value } = event.target;
+		const { name, value, type, files } = event.target;
 		this.setState({
 			fields: {
 				...this.state.fields,
-				[name]: value
+				[name]: type === 'file' ? files[0] : value
 			},
 			errors: {
 				...this.state.errors,
-				[name]: validators[name](value)
+				[name]: type === 'file' ? validators[name](files[0]) : validators[name](value)
 			},
 		});
 	};
@@ -90,6 +102,7 @@ class EditProfilePage extends Component {
 							state={this.state}
 							isValid={this.isValid}
 							textButton={"Submit"}
+							editForm
 						/>
 						{this.state.submitSuccessful && (
 							<Text color="lettersColor1" style={{ textAlign: "center", marginTop: "10px" }}>

@@ -89,7 +89,6 @@ class EditProfilePage extends Component {
 	}
 
 	render() {
-		console.log(this.props);
 		return (
 			<SCEditProfilePage id="profile-container">
 				<div id="info-container">

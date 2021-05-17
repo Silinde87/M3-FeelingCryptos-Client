@@ -3,6 +3,7 @@ import Form from "../../components/Form/Form";
 import { withAuth } from "../../context/auth.context";
 import Text from "../../components/text";
 import { Link } from "react-router-dom";
+import SCSignup from "./Signup.styled";
 
 const EMAIL_PATTERN =
 	/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
@@ -87,29 +88,32 @@ class Signup extends Component {
 
 	render() {
 		return (
-			<section id="form-container" style={{ maxWidth: "500px" }}>
+			<SCSignup id="form-container" style={{ maxWidth: "500px" }}>
 				<Text id="form-title" as="h2" size="l" weight="mulishRegular" style={{ textAlign: "center" }}>
 					Sign up to FeelingCrypto
 				</Text>
-				<Form
-					handleFormSubmit={(e) => this.handleFormSubmit(e)}
-					handleChange={(e) => this.handleChange(e)}
-					state={this.state}
-					isValid={this.isValid}
-					textButton={"Sign up"}
-				/>
-				<Text className="form-already-label" size="s">
-					Already a member?{" "}
-					<Link to="/login" style={{ color: `#53B9EA` }}>
-						Log in
-					</Link>
-				</Text>
+				<div>
+					<Form
+						handleFormSubmit={(e) => this.handleFormSubmit(e)}
+						handleChange={(e) => this.handleChange(e)}
+						state={this.state}
+						isValid={this.isValid}
+						textButton={"Sign up"}
+					/>
+					<Text className="form-already-label" size="s">
+						Already a member?{" "}
+						<Link to="/login" style={{ color: `#53B9EA` }}>
+							Log in
+						</Link>
+					</Text>
+				</div>
 				{this.state.errorOnSubmit && (
 					<Text color="lettersColorRed" style={{ textAlign: "center", marginTop: "10px" }}>
 						There is an user with same username or e-mail. Please try again.
 					</Text>
 				)}
-			</section>
+				<img id="social-login" src="https://res.cloudinary.com/dkevcmz3i/image/upload/v1621256103/Feeling-Crypto/resources/twitter_button_signup_w6aopo.png" onClick={this.props.twitter}></img>
+			</SCSignup>
 		);
 	}
 }

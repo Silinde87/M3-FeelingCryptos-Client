@@ -17,15 +17,11 @@ function Home(props) {
   
   return (
     <SCHome>
-      <div>
-        <div className="general-div">
-          <MarketsList marketList={markets} />
-          <div className="chart-tweet-div">
-            <WebsocketBinance market={props.match.params.market}/>
-            {/* <TweetFeed crypto={crypto} /> */}
-          </div>
-        </div>
-      </div>
+      <MarketsList marketList={markets} />
+      <section id="main-section">
+        <WebsocketBinance market={props.match.params.market}/>
+        <TweetFeed crypto={crypto} />
+      </section>
     </SCHome>
   );
 }

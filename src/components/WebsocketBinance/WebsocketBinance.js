@@ -20,7 +20,6 @@ export default class WebsocketBinance extends Component {
 
     this.client.onmessage = ({ data }) => {
       const dataFromServer = JSON.parse(data);
-      console.log(dataFromServer)
       if(this.props.market===dataFromServer.symbol){
         this.setState({ charts: dataFromServer.chartArr, market: dataFromServer.symbol });
       }else if(!this.props.market){

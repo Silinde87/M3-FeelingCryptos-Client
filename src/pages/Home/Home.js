@@ -22,7 +22,7 @@ function Home(props) {
           <MarketsList marketList={markets} />
           <div className="chart-tweet-div">
             <WebsocketBinance market={props.match.params.market}/>
-            <TweetFeed crypto={crypto} />
+            {/* <TweetFeed crypto={crypto} /> */}
           </div>
         </div>
       </div>

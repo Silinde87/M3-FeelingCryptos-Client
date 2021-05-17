@@ -21,7 +21,12 @@ export default function MarketsList({ marketList }) {
           { (marketList.filter((markets) => markets.toLowerCase().includes(search)))
             .map((market) => {
             return (
-              <NavLink onClick={() => client.send(`${market}`)}
+              <NavLink onClick={async () => { 
+                // await client.close()
+                // console.log('client closed')
+                await client.send(`${market}`)
+                console.log('send new connection')
+              }}
                 activeStyle={{ color: "red", fontStyle: "bold" }}
                 key={id++}
                 exact

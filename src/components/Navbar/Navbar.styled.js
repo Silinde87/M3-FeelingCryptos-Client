@@ -27,6 +27,7 @@ const SCNavbar = styled.nav`
 	#avatar {
 		height: 40px;
         margin-right: 15px;
+		border-radius: 10px;
 	}
 `;
 

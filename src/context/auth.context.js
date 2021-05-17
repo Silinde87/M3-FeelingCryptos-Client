@@ -51,12 +51,7 @@ class AuthProvider extends React.Component {
   }
 
   twitter = () => {
-    authService.twitter()
-      .then((response) =>{ 
-        console.log(response);
-        this.setState({isLoggedIn: true, user: response.data})
-      })
-      .catch(error => console.error(error));
+    window.open(`${process.env.REACT_APP_API_URL}/auth/twitter`, '_self');
   }
 
   render() {

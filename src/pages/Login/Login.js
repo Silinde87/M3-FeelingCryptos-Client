@@ -3,6 +3,7 @@ import Form from "../../components/Form/Form";
 import { withAuth } from "../../context/auth.context";
 import Text from "../../components/text";
 import { Link } from "react-router-dom";
+import SCLogin from "./Login.styled";
 
 const EMAIL_PATTERN =
 	/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
@@ -78,30 +79,32 @@ class Login extends Component {
 
 	render() {
 		return (
-			<section id="form-container" style={{ maxWidth: "500px" }}>
+			<SCLogin id="form-container" style={{ maxWidth: "500px" }}>
 				<Text id="form-title" as="h2" size="l" weight="mulishRegular" style={{ textAlign: "center" }}>
 					Log in to FeelingCrypto
 				</Text>
-				<Form
-					handleFormSubmit={(e) => this.handleFormSubmit(e)}
-					handleChange={(e) => this.handleChange(e)}
-					state={this.state}
-					isValid={this.isValid}
-					textButton={"Login"}
-				/>
-				<Text className="form-already-label" size="s">
-					Not a member?{" "}
-					<Link to="/signup" style={{ color: `#53B9EA` }}>
-						Sign up
-					</Link>
-				</Text>
+				<div>
+					<Form
+						handleFormSubmit={(e) => this.handleFormSubmit(e)}
+						handleChange={(e) => this.handleChange(e)}
+						state={this.state}
+						isValid={this.isValid}
+						textButton={"Login"}
+					/>
+					<Text className="form-already-label" size="s">
+						Not a member?{" "}
+						<Link to="/signup" style={{ color: `#53B9EA` }}>
+							Sign up
+						</Link>
+					</Text>
+				</div>
 				{this.state.errorOnSubmit && (
 					<Text color="lettersColorRed" style={{ textAlign: "center", marginTop: "10px" }}>
 						Wrong e-mail or password, please try again.
 					</Text>
 				)}
-				<button onClick={this.props.twitter}>Twitter button TEST</button>
-			</section>
+				<img id="social-login" src="https://res.cloudinary.com/dkevcmz3i/image/upload/v1621256103/Feeling-Crypto/resources/twitter_button_signup_w6aopo.png" onClick={this.props.twitter}></img>
+			</SCLogin>
 		);
 	}
 }

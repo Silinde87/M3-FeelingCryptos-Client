@@ -37,7 +37,7 @@ const SCMarketList = styled.nav`
         color: ${({theme}) => theme.color.letterColor1};
         font-size: ${({theme}) => theme.typographySizes.m.size};
         line-height: ${({theme}) => theme.typographySizes.l.line};
-
+        letter-spacing: 1px;
     }
     
 

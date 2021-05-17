@@ -28,15 +28,17 @@ export default class TweetFeed extends Component {
 		this.state = {
 			feed: [],
 			tweetsSentiment: {},
+			crypto: this.props.crypto
 		};
 		this.params = {
 			max_results: 20,
 			"tweet.fields": "public_metrics,lang",
-			query: `(#${this.props.crypto} OR ${this.props.crypto}) is:verified -is:retweet`,
+			query: `(#${this.state.crypto} OR ${this.state.crypto}) is:verified -is:retweet`,
 		};
 		this.handleTweets = this.handleTweets.bind(this);
 	}
 
+	// Retrieves tweets from api and changes feed and sentiments state.
 	handleTweets() {
 		twitterService
 			.getRecentTweets(this.params)
@@ -56,7 +58,20 @@ export default class TweetFeed extends Component {
 		intervalId = setInterval(this.handleTweets, 5 * 60 * 1000);
 	}
 
+	UNSAFE_componentWillReceiveProps(nextProps){
+		this.setState({crypto: nextProps.crypto}, () => {
+			this.params = {
+				max_results: 20,
+				"tweet.fields": "public_metrics,lang",
+				query: `(#${this.state.crypto} OR ${this.state.crypto}) is:verified -is:retweet`,
+			};
+			this.handleTweets();
+			intervalId = setInterval(this.handleTweets, 5 * 60 * 1000);
+		})
+	}
+
 	componentWillUnmount() {
+		// Kill the automatic tweet retrieve when component is unmount.
 		clearInterval(intervalId);
 	}
 

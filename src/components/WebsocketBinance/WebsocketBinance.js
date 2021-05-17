@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from "react";
+import React, { Component } from "react";
 import Websocket from '../../utils/websocketInstance'
 import Chart from "./Chart.component";
 
@@ -15,12 +15,14 @@ export default class WebsocketBinance extends Component {
   }
 
   componentDidMount() {
+    //const market = this.props.market.replace(/\//i, '')
+    console.log(this.props.market)
     //This onopen function waits for you websocket connection to establish before sending the message.
     this.client.readyState ? this.client.send(`${this.props.market}`) : this.client.onopen = () => this.client.send(`${this.props.market}`);
 
     this.client.onmessage = ({ data }) => {
       const dataFromServer = JSON.parse(data);
-      if(this.props.market===dataFromServer.symbol){
+      if(this.props.market === dataFromServer.symbol){
         this.setState({ charts: dataFromServer.chartArr, market: dataFromServer.symbol });
       }else if(!this.props.market){
         this.setState({ charts: dataFromServer.chartArr, market: dataFromServer.symbol  })

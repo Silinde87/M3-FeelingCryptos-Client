@@ -20,8 +20,22 @@ class AuthService {
     return this.auth.post("/auth/logout");
   }
 
-  loggedin() {
-    return this.auth.get("/auth/profile")
+  loggedIn() {
+    return this.auth.get("/auth/profile");
+  }
+
+  edit(data){
+    return this.auth.put("/auth/edit", data);
+  }
+
+  twitter() {
+    return this.auth.get("/auth/twitter", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      }
+    });
   }
 }
 

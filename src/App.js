@@ -12,6 +12,8 @@ import Private from './pages/Private/Private';
 import Navbar from './components/Navbar/Navbar';
 import AnonRoute from './components/AnonRoute/AnonRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import EditProfilePage from './pages/EditProfilePage/EditProfilePage';
+import ProfileFeedPage from './pages/ProfileFeedPage/ProfileFeedPage';
 
 
 class App extends Component {
@@ -27,12 +29,17 @@ class App extends Component {
           <AnonRoute exact path="/login" component={Login} />
 
           <PrivateRoute exact path="/private" component={Private} />
+<<<<<<< HEAD
           <Route
                 exact
                 path="/:market"
                 component={Home}
               />
 
+=======
+          <PrivateRoute exact path="/private/edit" component={EditProfilePage} />
+          <PrivateRoute exact path="/private/feed" component={ProfileFeedPage} />
+>>>>>>> e273877755773a2a652a2b2dc9daaaae52303076
         </Switch>
       </div>
     );

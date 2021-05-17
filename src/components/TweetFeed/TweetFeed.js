@@ -6,7 +6,7 @@ import Text from "../text";
 import { getFilteredTweets, getSentimentFromTweets,filterTweetByLang } from "../../utils/handleTwitterSentiment";
 import SentimentRatio from "../SentimentRatio/SentimentRatio";
 import Tooltip from '@material-ui/core/Tooltip';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 
 
@@ -18,7 +18,7 @@ const LightTooltip = withStyles((theme) => ({
 	  backgroundColor: theme.palette.common.white,
 	  color: 'rgba(0, 0, 0, 0.87)',
 	  boxShadow: theme.shadows[1],
-	  fontSize: 11,
+	  fontSize: 13,
 	},
 }))(Tooltip);
 

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const SCTweetFeed = styled.section`
-    height: 100%;
     max-width: 1300px;
     display: flex;
     flex-direction: column;
@@ -9,7 +8,7 @@ const SCTweetFeed = styled.section`
     #twitter-container-header{
         display: flex;
         justify-content: space-between;
-        padding: 0px 4% 0px 2%;
+        padding: 0px 50px 0px 50px;
     }
 
     #sentiment-container{
@@ -28,6 +27,7 @@ const SCTweetFeed = styled.section`
         overflow-y: scroll;
         overflow-x: hidden;
         height: 200px;
+        min-width: 250px;
         margin: 5px;
         border: 1px solid rgb(196, 207, 214);
         border-radius: 12px;
@@ -52,6 +52,13 @@ const SCTweetFeed = styled.section`
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        overflow-y: scroll;
+        height: 660px;
+        position:relative;
+    }
+    #twitter-container{
+        height: 100%;
+        overflow-y: scroll;
     }
 `;
 

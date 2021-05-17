@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const SCChart = styled.section`
-    
     #chart{
-        padding: 50px;
+        padding: 0px 50px;
+        margin-bottom: 25px;
     }
 `;
 

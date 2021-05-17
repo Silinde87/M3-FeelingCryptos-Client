@@ -6,7 +6,7 @@ html,body,
 #root,#app-container,
 section{
   height: 100%;
-
+  overflow-y:hidden;
 }
 section{
   /* padding-top: 50px; */

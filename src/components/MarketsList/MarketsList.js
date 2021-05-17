@@ -27,10 +27,11 @@ export default function MarketsList({ marketList }) {
                 await client.send(`${market}`)
                 console.log('send new connection')
               }}
-                activeStyle={{ color: "red", fontStyle: "bold" }}
-                key={id++}
-                exact
                 to={`/${market}`}
+                exact
+                activeClassName="active"
+                key={id++}
+                
               >
                 <Text id="market-id" weight="mulishRegular" size="s">
                   {`${market.substring(0,3)} / ${market.substring(3, market.length)}`}

@@ -10,7 +10,6 @@ class ProfileFeedPage extends Component {
 		return (
 			<SCProfileFeedPage id="profile-feed-container">
 				{pinned_feed.map((el) => {
-                    {console.log(el.id)}
 					return <Tweet
 						key={el.id}
 						tweetId={el.id}

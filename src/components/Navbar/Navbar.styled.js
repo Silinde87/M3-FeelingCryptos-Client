@@ -4,9 +4,17 @@ const SCNavbar = styled.nav`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: ${({ theme }) => theme.color.secondary};
 	height: 60px;
-	padding: 0px 30px;
+	padding-right: 25px;
+
+	#home-btn{
+		background-color: ${({ theme }) => theme.color.secondary};
+		height: 100%;
+        min-width: 260px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
 	.login-box {
 		display: flex;

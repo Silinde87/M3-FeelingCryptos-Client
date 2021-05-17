@@ -6,6 +6,11 @@ const SCNavbar = styled.nav`
 	align-items: center;
 	height: 60px;
 	padding-right: 25px;
+	position: sticky;
+	top: 0;
+	width: 100%;
+	z-index: 99;
+	background-color: white;
 
 	#home-btn{
 		background-color: ${({ theme }) => theme.color.secondary};

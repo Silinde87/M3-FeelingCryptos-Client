@@ -20,7 +20,7 @@ export default function SentimentRatio(props) {
 		}
 		return (
 			<SCSentimentRatio style={{ backgroundColor: bgcolor }}>
-				<Text size="m" color="letterColor1" weight="mulishRegular" style={{ opacity: 1 }}>
+				<Text size="l" color="letterColor1" weight="mulishRegular" style={{ opacity: 1 }}>
 					{ratio}%
 				</Text>
 			</SCSentimentRatio>

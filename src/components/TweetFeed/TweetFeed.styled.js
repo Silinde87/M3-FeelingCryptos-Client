@@ -14,13 +14,21 @@ const SCTweetFeed = styled.section`
 	#sentiment-container {
 		width: fit-content;
 		display: flex;
+		flex-direction: column;
 		align-items: center;
+		width: 1200px;
+	}
+	#sentiment-label{
+		display:flex;
+		margin-bottom: 5px;
+	}
+	#sentiment-scores{
+		display: flex;
 	}
 	.fas {
 		margin-right: 10px;
-		margin-left: 2px;
+		margin-left: 4px;
 		font-size: 13px;
-		margin-top: -10px;
 	}
 
 	.twitter-tweet {
@@ -28,9 +36,10 @@ const SCTweetFeed = styled.section`
 		overflow-x: hidden;
 		height: 200px;
 		min-width: 250px;
-		margin: 5px;
+		margin: 10px;
 		border: 1px solid rgb(196, 207, 214);
 		border-radius: 12px;
+		box-shadow: 5px 5px 15px -3px rgba(156,156,156,1);
 	}
 	/* Tweet scrollbar styles */
 	.twitter-tweet::-webkit-scrollbar {

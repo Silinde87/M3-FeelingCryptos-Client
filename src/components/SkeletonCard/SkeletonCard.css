@@ -1,0 +1,21 @@
+#tweets-container{
+    flex-direction: row;
+    width: 1200px;
+}
+#skeleton-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+.skeleton-box{
+    height: 200px;
+    min-width: 250px;
+    margin: 5px;
+    border: 1px solid rgb(196, 207, 214);
+    border-radius: 8px;
+}
+.react-loading-skeleton{
+    height: 19%;
+    margin: 1px 0px;
+}

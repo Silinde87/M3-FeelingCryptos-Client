@@ -30,7 +30,7 @@ export default class TweetFeed extends Component {
 			tweetsSentiment: {},
 		};
 		this.params = {
-			max_results: 50,
+			max_results: 10,
 			"tweet.fields": "public_metrics,lang",
 			query: `(#${this.props.crypto} OR ${this.props.crypto}) is:verified -is:retweet`,
 		};

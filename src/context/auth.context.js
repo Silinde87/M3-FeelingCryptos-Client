@@ -13,7 +13,7 @@ class AuthProvider extends React.Component {
 
   async componentDidMount(){
     try {
-      const result = await this.authService.isLoggedIn();
+      const result = await authService.loggedIn();
       if(result){
         this.setState({ isLoggedIn: true, isLoading: false, user: result.data });
       }
@@ -44,15 +44,29 @@ class AuthProvider extends React.Component {
       .catch((err) => console.log(err));
   }
 
+  edit = (data) => {
+    authService.edit(data)
+      .then(response => this.setState({ ...this.state, user: response.data}))
+      .catch(error => console.error(error));
+  }
+
+  twitter = () => {
+    authService.twitter()
+      .then((response) =>{ 
+        console.log(response);
+        this.setState({isLoggedIn: true, user: response.data})
+      })
+      .catch(error => console.error(error));
+  }
 
   render() {
     const { isLoggedIn, isLoading, user } = this.state;
-    const { signup, login, logout } = this;
+    const { signup, login, logout, edit, twitter } = this;
 
     if (isLoading) return <p>Loading</p>;
 
     return(
-      <Provider value={{ isLoggedIn, isLoading, user, signup, login, logout }}  >
+      <Provider value={{ isLoggedIn, isLoading, user, signup, login, logout, edit, twitter }}  >
         {this.props.children}
       </Provider>
     )
@@ -67,7 +81,7 @@ const withAuth = (WrappedComponent) => {
       return(
         <Consumer>
           { (value) => {
-            const { isLoggedIn, isLoading, user, signup, login, logout } = value;
+            const { isLoggedIn, isLoading, user, signup, login, logout, edit, twitter } = value;
 
             return (
               <WrappedComponent 
@@ -77,6 +91,8 @@ const withAuth = (WrappedComponent) => {
                 signup={signup} 
                 login={login} 
                 logout={logout}
+                edit={edit}
+                twitter={twitter}
                 {...props}
               />
             )

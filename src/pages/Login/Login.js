@@ -100,6 +100,7 @@ class Login extends Component {
 						Wrong e-mail or password, please try again.
 					</Text>
 				)}
+				<button onClick={this.props.twitter}>Twitter button TEST</button>
 			</section>
 		);
 	}

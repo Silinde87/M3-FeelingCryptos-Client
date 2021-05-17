@@ -6,7 +6,7 @@ import WebsocketBinance from '../../components/WebsocketBinance/WebsocketBinance
 import markets from '../../markets.json'
 import SCHome from './Home.styled'
 
-const crypto = 'bitcoin';
+const crypto = 'doge';
 
 
 function Home() {

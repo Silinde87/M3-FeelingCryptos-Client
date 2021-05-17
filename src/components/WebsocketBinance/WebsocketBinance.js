@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import Chart from "./Chart.component";
 
-const client = new W3CWebSocket("ws://127.0.0.1:5000");
+const client = new W3CWebSocket("ws://localhost:5000");
 
 export default class WebsocketBinance extends Component {
   state = {

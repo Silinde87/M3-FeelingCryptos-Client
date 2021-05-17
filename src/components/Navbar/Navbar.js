@@ -16,7 +16,7 @@ class Navbar extends Component {
 				</Link>
 				{isLoggedIn ? (
 					<div className="logged-user-box">
-						<Link to="/private">
+						<Link to="/private/edit">
 							<img id="avatar" src={user.photo} alt="avatar"></img>
 							<Text id="username" size="m" weight="mulishMedium">
 								{user && user.username}

@@ -39,6 +39,19 @@ const SCMarketList = styled.nav`
         line-height: ${({theme}) => theme.typographySizes.l.line};
 
     }
+    .market-img-div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+
+    }
+    .market-img-div img{
+        width: 15px;
+        height: 15px;
+        margin: 5px;
+        align-self: baseline:
+    }
     
 
 `;

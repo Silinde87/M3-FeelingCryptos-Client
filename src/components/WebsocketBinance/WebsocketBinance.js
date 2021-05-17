@@ -15,8 +15,6 @@ export default class WebsocketBinance extends Component {
   }
 
   componentDidMount() {
-    //const market = this.props.market.replace(/\//i, '')
-    console.log(this.props.market)
     //This onopen function waits for you websocket connection to establish before sending the message.
     this.client.readyState ? this.client.send(`${this.props.market}`) : this.client.onopen = () => this.client.send(`${this.props.market}`);
 

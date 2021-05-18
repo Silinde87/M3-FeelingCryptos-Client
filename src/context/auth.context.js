@@ -1,5 +1,6 @@
 import React from 'react';
 import authService from '../services/auth.service';
+import privateService from '../services/private.service'
 
 const { Consumer, Provider } = React.createContext();
 
@@ -54,14 +55,20 @@ class AuthProvider extends React.Component {
     window.open(`${process.env.REACT_APP_API_URL}/auth/twitter`, '_self');
   }
 
+  addFavoritesCryptos = ( data ) => {
+    privateService.add(data)
+    .then(response => this.setState({ ...this.state, user: response.data}))
+    .catch(error => console.error(error));
+  }
+
   render() {
     const { isLoggedIn, isLoading, user } = this.state;
-    const { signup, login, logout, edit, twitter } = this;
+    const { signup, login, logout, edit, twitter, addFavoritesCryptos } = this;
 
     if (isLoading) return <p>Loading</p>;
 
     return(
-      <Provider value={{ isLoggedIn, isLoading, user, signup, login, logout, edit, twitter }}  >
+      <Provider value={{ isLoggedIn, isLoading, user, signup, login, logout, edit, twitter, addFavoritesCryptos }}  >
         {this.props.children}
       </Provider>
     )
@@ -76,7 +83,7 @@ const withAuth = (WrappedComponent) => {
       return(
         <Consumer>
           { (value) => {
-            const { isLoggedIn, isLoading, user, signup, login, logout, edit, twitter } = value;
+            const { isLoggedIn, isLoading, user, signup, login, logout, edit, twitter, addFavoritesCryptos } = value;
 
             return (
               <WrappedComponent 
@@ -88,6 +95,7 @@ const withAuth = (WrappedComponent) => {
                 logout={logout}
                 edit={edit}
                 twitter={twitter}
+                addFavoritesCryptos={addFavoritesCryptos}
                 {...props}
               />
             )

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-export default class PrivateService {
+class PrivateService {
   constructor() {
 
     this.api = axios.create({
@@ -15,3 +15,7 @@ export default class PrivateService {
   get = () => this.api.get("/private/favorites")
   //deleteOne = (id) =>s this.api.delete(`/example/${id}`);
 }
+
+const privateService = new PrivateService()
+
+export default privateService;

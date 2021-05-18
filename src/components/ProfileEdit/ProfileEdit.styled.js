@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SCEditProfilePage = styled.section`
+const SCProfileEdit = styled.section`
     
     #info-container{
         display: flex;
@@ -18,4 +18,4 @@ const SCEditProfilePage = styled.section`
     }
 `;
 
-export default SCEditProfilePage;
+export default SCProfileEdit;

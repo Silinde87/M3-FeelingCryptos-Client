@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SCProfileFeedPage = styled.section`
+const SCProfileFeed = styled.section`
     height: 100%;
 
     #profile-feed-container,
@@ -11,4 +11,4 @@ const SCProfileFeedPage = styled.section`
 }
 `;
 
-export default SCProfileFeedPage;
+export default SCProfileFeed;

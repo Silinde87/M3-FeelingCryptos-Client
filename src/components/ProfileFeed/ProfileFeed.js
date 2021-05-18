@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import { withAuth } from "../../context/auth.context";
-import SCProfileFeedPage from "./ProfileFeedPage.styled";
-import TweetFeed from "../../components/TweetFeed/TweetFeed";
+import SCProfileFeed from "./ProfileFeed.styled";
+import TweetFeed from "../TweetFeed/TweetFeed";
 
-class ProfileFeedPage extends Component {
+class ProfileFeed extends Component {
 	render() {
 		//Getting favorites cryptos tweets from user.
         const { favorites_cryptos } = this.props.user;
+		console.log(favorites_cryptos);
 		return (			
-			<SCProfileFeedPage id="profile-feed-container">
+			<SCProfileFeed id="profile-feed-container">
 				<TweetFeed favorites_cryptos={favorites_cryptos}/>
-			</SCProfileFeedPage>
+			</SCProfileFeed>
 		);
 	}
 }
 
-export default withAuth(ProfileFeedPage);
+export default withAuth(ProfileFeed);

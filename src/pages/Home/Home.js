@@ -14,7 +14,7 @@ function Home(props) {
       <MarketsList marketList={markets} setCrypto={setCrypto} />
       <section id="main-section">
         <WebsocketBinance market={props.match.params.market}/>
-        <TweetFeed crypto={crypto} />
+        {/* <TweetFeed crypto={crypto} /> */}
       </section>
     </SCHome>
   );

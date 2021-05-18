@@ -10,7 +10,7 @@ export default class PrivateService {
     });
   }
 
-  add = (data) => this.api.post("/private/favorites", data);
+  add = (data) => this.api.post("/private", data);
   //returns an array of markets
   get = () => this.api.get("/private/favorites")
   //deleteOne = (id) =>s this.api.delete(`/example/${id}`);

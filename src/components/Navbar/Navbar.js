@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "./../../context/auth.context";
-import Websocket from "../../utils/websocketInstance";
 import Text from "../text";
 import SCNavbar from "./Navbar.styled";
 
 class Navbar extends Component {
 	render() {
-		const client = Websocket.getInstance();
 		const { user, logout, isLoggedIn } = this.props;
 		return (
 			<SCNavbar className="navbar">

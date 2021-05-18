@@ -26,9 +26,6 @@ function Profile(props) {
     setFavoritesMarkets(myMarkets);
   }, [props.user.favorites_cryptos]);
 
-  console.log(props.user.favorites_cryptos);
-  console.log(favoritesMarkets);
-
   return (
     <div>
       <SCProfile>

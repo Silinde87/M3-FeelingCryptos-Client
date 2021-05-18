@@ -34,7 +34,7 @@ export default function MarketsList({ marketList, setCrypto }) {
                 key={id++}
               >
                 <div className="market-img-div">
-                <img src={market.image}/>
+                <img src={market.image} alt="market-icon"/>
 
                 <Text id="market-id" weight="mulishRegular" size="s">
                   {market.market}

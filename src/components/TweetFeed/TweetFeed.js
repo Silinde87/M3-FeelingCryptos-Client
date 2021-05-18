@@ -10,23 +10,37 @@ import {
 } from "../../utils/handleTwitterSentiment";
 import SkeletonCard from "../SkeletonCard/SkeletonCard";
 import Sentiment from "../Sentiment/Sentiment";
+import markets from "../../markets.json";
 
 let intervalId;
-const MAX_RESULTS = 10;
+const MAX_RESULTS = 50;
 
-function TweetFeed({ crypto }) {
+function TweetFeed({ crypto, favorites_cryptos }) {
 	const [feed, setFeed] = useState([]);
 	const [tweetsSentiment, setTweetsSentiment] = useState({});
 	const [loading, setLoading] = useState(false);
-
 	let params = {
 		max_results: MAX_RESULTS,
 		"tweet.fields": "public_metrics,lang",
-		query: `(#${crypto} OR ${crypto}) is:verified -is:retweet`,
+		query: `(${getQueryCrypto()} is:verified -is:retweet`,
 	};
+
+	function getQueryCrypto() {
+		if (!favorites_cryptos || favorites_cryptos.length === 0) {
+			return crypto;
+		} else {
+			let queryCrypto = "(";
+			favorites_cryptos.forEach((crypto) => {
+				let cryptoName = markets.filter((el) => el.market.replace("/", "") === crypto)[0].name;
+				queryCrypto += `#${cryptoName} OR ${cryptoName} OR `;
+			});
+			return queryCrypto.slice(0, -4) + ")";
+		}
+	}
 
 	// Retrieves tweets from api and changes feed and sentiments state.
 	function handleTweets() {
+		getQueryCrypto();
 		twitterService
 			.getRecentTweets(params)
 			.then((response) => {
@@ -45,7 +59,7 @@ function TweetFeed({ crypto }) {
 		params = {
 			max_results: MAX_RESULTS,
 			"tweet.fields": "public_metrics,lang",
-			query: `(#${crypto} OR ${crypto}) is:verified -is:retweet`,
+			query: `${getQueryCrypto()} is:verified -is:retweet`,
 		};
 		handleTweets();
 		// intervalId = setInterval(handleTweets, 5 * 60 * 1000);

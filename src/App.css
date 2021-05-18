@@ -7,7 +7,7 @@ body,
 #root,
 #app-container,
 section {
-	max-height: 100%;
+	height: 100%;
 	overflow-x: hidden;
 }
 section {

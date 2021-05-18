@@ -7,7 +7,6 @@ class ProfileFeed extends Component {
 	render() {
 		//Getting favorites cryptos tweets from user.
         const { favorites_cryptos } = this.props.user;
-		console.log(favorites_cryptos);
 		return (			
 			<SCProfileFeed id="profile-feed-container">
 				<TweetFeed favorites_cryptos={favorites_cryptos}/>

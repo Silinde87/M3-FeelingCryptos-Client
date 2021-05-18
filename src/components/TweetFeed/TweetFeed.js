@@ -34,7 +34,6 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 				let cryptoName = markets.filter((el) => el.market.replace("/", "") === crypto)[0].name;
 				queryCrypto += `#${cryptoName} OR ${cryptoName} OR `;
 			});
-			console.log(queryCrypto.slice(0, -4) + ")");
 			return queryCrypto.slice(0, -4) + ")";
 		}
 	}

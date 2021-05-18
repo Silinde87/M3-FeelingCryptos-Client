@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-
+import SCProfile from "./Profile.styled";
+import SideBar from "../../components/SideBar/SideBar";
+import ProfileFeedPage from "../ProfileFeedPage/ProfileFeedPage.js";
 
 function Profile(props) {  
-  return (
-      <div>
-        <h1>Private Page</h1>
-      </div>
+  return (    
+      <SCProfile>
+        <SideBar />
+        <ProfileFeedPage />
+      </SCProfile>
 
   );
 }

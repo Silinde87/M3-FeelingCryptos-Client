@@ -50,6 +50,7 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 				// Analyzing all retrieved tweets.
 				let newSentiment = getSentimentFromTweets(getFilteredTweets(response.data));
 				setTweetsSentiment(newSentiment);
+				setLoading(false);
 			})
 			.catch((err) => console.error(err));
 	}
@@ -64,13 +65,6 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 		handleTweets();
 		// intervalId = setInterval(handleTweets, 5 * 60 * 1000);
 	}, [crypto]);
-
-	// Executed when tweets are retrieved. Tweets are loaded.
-	useEffect(() => {
-		const timer = setTimeout(() => setLoading(false),2000);
-		//setLoading(false);
-		return () => clearTimeout(timer);
-	},[feed])
 
 	// Component will unmount.
 	useEffect(() => {

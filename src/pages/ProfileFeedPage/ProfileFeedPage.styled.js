@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const SCProfileFeedPage = styled.section`
-    height: 100%;  
+    height: 100%;
 
     #profile-feed-container,
     #twitter-container,

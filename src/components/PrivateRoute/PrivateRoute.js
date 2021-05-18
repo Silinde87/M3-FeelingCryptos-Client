@@ -29,17 +29,4 @@ function PrivateRoute (routeProps) {
     )
 }
 
-
 export default withAuth(PrivateRoute);
-
-
-/* 
-// Concise way
-function PrivateRoute({ component: Component, isLoggedIn, ...rest }) {
-  return (
-   <Route
-    {...rest}
-    render={ (props)  => isLoggedIn ? <Component {...props} /> : <Redirect to="/login" />}
-   /> 
-)} 
-*/

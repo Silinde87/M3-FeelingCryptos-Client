@@ -23,7 +23,7 @@ export default function MarketsList({ marketList, setCrypto }) {
               const route = market.market.replace('/','');
             return (
               <NavLink onClick={() => {
-                setCrypto(market.name)
+                setCrypto && setCrypto(market.name)
                 client.send(`${route}`)
                 //console.log(client)        
                 console.log('send new connection')

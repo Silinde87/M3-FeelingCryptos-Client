@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import PrivateService from "../../services/private.service";
+import { withAuth } from "../../context/auth.context";
 import Websocket from '../../utils/websocketInstance'
 import Chart from "./Chart.component";
 
 
-export default class WebsocketBinance extends Component {
+class WebsocketBinance extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -13,18 +13,12 @@ export default class WebsocketBinance extends Component {
     };
     
     this.client = Websocket.getInstance();
-    this.privateService = new PrivateService();
+    console.log(this.props)
   }
 
   handleClick(){
-
-    this.privateService.add({favorites_cryptos: this.state.market})
-    .then(() => {
-      console.log('added', this.state.market);
-    })
-    .catch(err => console.error(err))
+    this.props.addFavoritesCryptos({favorites_cryptos: this.state.market})
   }
-
 
   componentDidMount() {
     //This onopen function waits for you websocket connection to establish before sending the message.
@@ -56,3 +50,5 @@ export default class WebsocketBinance extends Component {
     );
   }
 }
+
+export default withAuth(WebsocketBinance)

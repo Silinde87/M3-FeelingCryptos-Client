@@ -11,26 +11,6 @@ const SCTweetFeed = styled.section`
 		padding: 0px 50px 0px 50px;
 	}
 
-	#sentiment-container {
-		width: fit-content;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 1200px;
-	}
-	#sentiment-label{
-		display:flex;
-		margin-bottom: 5px;
-	}
-	#sentiment-scores{
-		display: flex;
-	}
-	.fas {
-		margin-right: 10px;
-		margin-left: 4px;
-		font-size: 13px;
-	}
-
 	.twitter-tweet {
 		overflow-y: scroll;
 		overflow-x: hidden;

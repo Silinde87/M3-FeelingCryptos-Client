@@ -19,6 +19,9 @@ const SCNavbar = styled.nav`
 		justify-content: center;
 		align-items: center;
 	}
+	#brand-label{
+		margin-left: 15px;
+	}
 
 	.login-box {
 		display: flex;

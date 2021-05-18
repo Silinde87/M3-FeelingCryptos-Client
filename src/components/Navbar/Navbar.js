@@ -11,7 +11,7 @@ class Navbar extends Component {
 			<SCNavbar className="navbar">
 				<div id="home-btn">
 					<Link to={"/"}>
-						<Text as="h4" size="l" color="letterColor1" weight="mulishSemiBold">
+						<Text as="h1" size="xl" color="letterColor1" weight="mulishSemiBold" id="brand-label">
 							FeelingCrypto
 						</Text>
 					</Link>

@@ -10,10 +10,9 @@ import SearchBar from "../SearchBar/SearchBar";
 export default function MarketsList({ marketList }) {
   const [ search, setSearch ] = useState('')
 
-  let client = Websocket.getInstance();
+  const client = Websocket.getInstance();
   let id = 0;
 
-console.log(marketList)
   return (
     <SCMarketList>
       <List className="component-list">
@@ -25,7 +24,7 @@ console.log(marketList)
             return (
               <NavLink onClick={() => { 
                 client.send(`${route}`)
-                console.log('send new connection')
+                console.log('send new message')
               }}
                 to={`/${route}`}
                 exact

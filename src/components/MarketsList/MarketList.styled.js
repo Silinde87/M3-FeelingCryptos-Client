@@ -9,7 +9,7 @@ const SCMarketList = styled.nav`
         color: "red";
     }
     #search-container{
-        width: 80%;
+        width: 70%;
         margin-top: 20px;
     }
     #search-container div,
@@ -40,17 +40,19 @@ const SCMarketList = styled.nav`
 
     }
     .market-img-div{
+        width: 100px;
         display: flex;
         flex-direction: row;
         align-items: center;
-        
+        justify-content: left;
+        margin: 5px;
 
     }
     .market-img-div img{
-        width: 15px;
-        height: 15px;
-        margin: 5px;
-        align-self: baseline:
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        
     }
     
 

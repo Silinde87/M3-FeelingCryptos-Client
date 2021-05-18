@@ -109,7 +109,7 @@ class Signup extends Component {
 				</div>
 				{this.state.errorOnSubmit && (
 					<Text color="lettersColorRed" style={{ textAlign: "center", marginTop: "10px" }}>
-						There is an user with same username or e-mail. Please try again.
+						There is a user with same username or e-mail. Please try again.
 					</Text>
 				)}
 				<img id="social-login" src="https://res.cloudinary.com/dkevcmz3i/image/upload/v1621256103/Feeling-Crypto/resources/twitter_button_signup_w6aopo.png" onClick={this.props.twitter}></img>

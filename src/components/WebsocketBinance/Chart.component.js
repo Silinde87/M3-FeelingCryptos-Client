@@ -2,27 +2,27 @@ import React, { Component } from "react";
 import ApexChart from "react-apexcharts";
 import SCChart from './Chart.styled';
 import moment from 'moment'
+import Spinner from "../Spinner/Spinner";
 
 export default class Chart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      series: [
-        {
-          name: "candle",
-          data: [],
-        },
-      ],
-      options: {},
+    state = {
+     isLoading: true
     };
-  }
 
+    componentDidMount(){
+      setTimeout(() => {
+        this.setState({isLoading: false})
+
+      }, 5500)
+    }
   componentDidUpdate(){
    document.querySelector('.apexcharts-toolbar').style.display = "none";
   }
   
   render() {
     return (
+      <>
+      {/* { this.state.isLoading ? <Spinner /> : */}
       <SCChart>
       <div id="chart">
         <ApexChart
@@ -90,6 +90,8 @@ export default class Chart extends Component {
         />
       </div>
       </SCChart>
+      
+      </>
     );
-  }
+}
 }

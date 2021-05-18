@@ -1,31 +1,38 @@
 import React, { useState, useEffect } from "react";
+import SCProfile from "./Profile.styled";
+import SideBar from "../../components/SideBar/SideBar";
 import WebsocketBinance from "../../components/WebsocketBinance/WebsocketBinance";
 import PrivateService from "../../services/private.service";
+import ProfileFeed from "../../components/ProfileFeed/ProfileFeed";
+import ProfileEdit from "../../components/ProfileEdit/ProfileEdit";
 
+function Profile(props) {
+	const [favoritesMarkets, setFavoritesMarkets] = useState([]);
 
-function Profile() {  
-    const [ favoritesMarkets, setFavoritesMarkets ] = useState([])
+	const privateService = new PrivateService();
+	const { url } = props.match;
 
-    const privateService = new PrivateService();
+	useEffect(() => {
+		privateService
+			.get()
+			.then((markets) => {
+				setFavoritesMarkets(markets.data);
+			})
+			.catch((err) => console.error(err));
+	}, []);
 
-    useEffect(() => {
-        privateService.get()
-        .then((markets) => {
-            setFavoritesMarkets(markets.data)
-            
-            console.log(markets.data)
-          })
-          .catch(err => console.error(err))
-    },[])
-
-  return (
-      
-      <div>
-        <h1>Private Page</h1>
-        <WebsocketBinance />
-      </div>
-
-  );
+	return (
+		<SCProfile>
+			<SideBar />
+			{url.includes("feed") ? (
+				<ProfileFeed />
+			) : url.includes("edit") ? (
+				<ProfileEdit />
+			) : (
+				<WebsocketBinance />
+			)}
+		</SCProfile>
+	);
 }
 
 export default Profile;

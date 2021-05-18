@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
-const SCEditProfilePage = styled.section`
+const SCProfileEdit = styled.section`
+
+    margin-left: 80px;
     
     #info-container{
         display: flex;
-        justify-content: center;        
+        justify-content: center;
+        margin-top: 20px;      
     }
 
     #recover-label{
@@ -18,4 +21,4 @@ const SCEditProfilePage = styled.section`
     }
 `;
 
-export default SCEditProfilePage;
+export default SCProfileEdit;

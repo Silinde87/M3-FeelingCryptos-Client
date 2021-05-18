@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Form from "../../components/Form/Form";
+import Form from "../Form/Form";
 import { withAuth } from "../../context/auth.context";
-import Text from "../../components/text";
-import SCEditProfilePage from "./EditProfilePage.styled";
+import Text from "../text";
+import SCProfileEdit from "./ProfileEdit.styled";
 
 const EMAIL_PATTERN =
 	/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
@@ -34,7 +34,7 @@ const validators = {
 	}
 };
 
-class EditProfilePage extends Component {
+class ProfileEdit extends Component {
 	state = {
 		fields: {
 			username: this.props.user.username,
@@ -90,7 +90,7 @@ class EditProfilePage extends Component {
 
 	render() {
 		return (
-			<SCEditProfilePage id="profile-container">
+			<SCProfileEdit id="profile-container">
 				<div id="info-container">
 					<div id="form-container">
                         <Text id="form-title" as="h2" size="l" weight="mulishRegular" style={{ textAlign: "center" }}>
@@ -115,9 +115,9 @@ class EditProfilePage extends Component {
 					</div>
 					<img id="profile-pic" src={this.props.user.photo} alt=""></img>
 				</div>
-			</SCEditProfilePage>
+			</SCProfileEdit>
 		);
 	}
 }
 
-export default withAuth(EditProfilePage);
+export default withAuth(ProfileEdit);

@@ -14,8 +14,6 @@ import AnonRoute from './components/AnonRoute/AnonRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 
-
-
 class App extends Component {
   render() {
     return (
@@ -27,14 +25,14 @@ class App extends Component {
 
           <AnonRoute exact path="/signup" component={Signup} />
           <AnonRoute exact path="/login" component={Login} />
+          <PrivateRoute exact path="/private" component={Profile}  />
+          <PrivateRoute exact path="/private/edit" component={Profile} />
+          <PrivateRoute exact path="/private/feed" component={Profile} />
           <Route
                 exact
                 path="/:market"
                 component={Home}
               />
-          <PrivateRoute exact path="/private" component={Profile}  />
-          <PrivateRoute exact path="/private/edit" component={Profile} />
-          <PrivateRoute exact path="/private/feed" component={Profile} />
           <Route path='*' component={ErrorPage}/>
         </Switch>
       </div>

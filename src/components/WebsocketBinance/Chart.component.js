@@ -28,7 +28,7 @@ export default class Chart extends Component {
         <ApexChart
           options={
         {chart: {
-          height: 350,
+          height: 300,
           type: "candlestick",
         },
         title: {
@@ -86,7 +86,7 @@ export default class Chart extends Component {
           }
     // series={this.state.series} 
           type="candlestick"
-          height={350}
+          height={300}
         />
       </div>
       </SCChart>

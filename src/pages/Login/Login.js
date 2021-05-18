@@ -103,7 +103,7 @@ class Login extends Component {
 						Wrong e-mail or password, please try again.
 					</Text>
 				)}
-				<img id="social-login" src="https://res.cloudinary.com/dkevcmz3i/image/upload/v1621256103/Feeling-Crypto/resources/twitter_button_signup_w6aopo.png" onClick={this.props.twitter}></img>
+				<img id="social-login" src="https://res.cloudinary.com/dkevcmz3i/image/upload/v1621256103/Feeling-Crypto/resources/twitter_button_signup_w6aopo.png" alt="social-login" onClick={this.props.twitter}></img>
 			</SCLogin>
 		);
 	}

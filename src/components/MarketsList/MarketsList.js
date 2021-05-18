@@ -7,7 +7,7 @@ import SCMarketList from "./MarketList.styled";
 import SearchBar from "../SearchBar/SearchBar";
 
 
-export default function MarketsList({ marketList }) {
+export default function MarketsList({ marketList, setCrypto }) {
   const [ search, setSearch ] = useState('')
 
   const client = Websocket.getInstance();
@@ -20,11 +20,13 @@ export default function MarketsList({ marketList }) {
         <SearchBar setSearch={setSearch}/>
           { (marketList.filter((markets) => markets.market.toLowerCase().includes(search)))
             .map((market) => {
-              const route = market.market.replace("/", '')
+              const route = market.market.replace('/','');
             return (
-              <NavLink onClick={() => { 
+              <NavLink onClick={() => {
+                setCrypto(market.name)
                 client.send(`${route}`)
-                console.log('send new message')
+                //console.log(client)        
+                console.log('send new connection')
               }}
                 to={`/${route}`}
                 exact

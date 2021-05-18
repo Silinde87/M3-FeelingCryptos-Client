@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const SCMarketList = styled.nav`
 
-    background-color: ${({ theme }) => theme.color.secondary};
+    background: linear-gradient(0deg, ${({ theme }) => theme.color.secondary} 0%, rgba(255,255,255,1) 100%);
     min-width: 260px;
     
     .active{
@@ -37,7 +37,7 @@ const SCMarketList = styled.nav`
         color: ${({theme}) => theme.color.letterColor1};
         font-size: ${({theme}) => theme.typographySizes.m.size};
         line-height: ${({theme}) => theme.typographySizes.l.line};
-
+        letter-spacing: 1px;
     }
     .market-img-div{
         width: 100px;

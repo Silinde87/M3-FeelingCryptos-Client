@@ -1,93 +1,111 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import twitterService from "../../services/twitter.service";
 import SCTweetFeed from "./TweetFeed.styled";
 import { Tweet } from "react-twitter-widgets";
 import Text from "../text";
-import { getFilteredTweets, getSentimentFromTweets,filterTweetByLang } from "../../utils/handleTwitterSentiment";
-import SentimentRatio from "../SentimentRatio/SentimentRatio";
-import Tooltip from '@material-ui/core/Tooltip';
-import { withStyles } from '@material-ui/core/styles';
-import Icon from '@material-ui/core/Icon';
-
-
+import {
+	getFilteredTweets,
+	getSentimentFromTweets,
+	filterTweetByLang,
+} from "../../utils/handleTwitterSentiment";
+import SkeletonCard from "../SkeletonCard/SkeletonCard";
+import Sentiment from "../Sentiment/Sentiment";
+import markets from "../../markets.json";
 
 let intervalId;
+const MAX_RESULTS = 10;
 
-const LightTooltip = withStyles((theme) => ({
-	tooltip: {
-	  backgroundColor: theme.palette.common.white,
-	  color: 'rgba(0, 0, 0, 0.87)',
-	  boxShadow: theme.shadows[1],
-	  fontSize: 13,
-	},
-}))(Tooltip);
+function TweetFeed({ crypto, favorites_cryptos }) {
+	const [feed, setFeed] = useState([]);
+	const [tweetsSentiment, setTweetsSentiment] = useState({});
+	const [loading, setLoading] = useState(true);
+	let params = {
+		max_results: MAX_RESULTS,
+		"tweet.fields": "public_metrics,lang",
+		query: `(${getQueryCrypto()} is:verified -is:retweet`,
+	};
 
-export default class TweetFeed extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			feed: [],
-			tweetsSentiment: {},
-		};
-		this.params = {
-			max_results: 20,
-			"tweet.fields": "public_metrics,lang",
-			query: `(#${this.props.crypto} OR ${this.props.crypto}) is:verified -is:retweet`,
-		};
-		this.handleTweets = this.handleTweets.bind(this);
+	function getQueryCrypto() {
+		if (!favorites_cryptos || favorites_cryptos.length === 0) {
+			return crypto;
+		} else {
+			let queryCrypto = "(";
+			favorites_cryptos.forEach((crypto) => {
+				let cryptoName = markets.filter((el) => el.market.replace("/", "") === crypto)[0].name;
+				queryCrypto += `#${cryptoName} OR ${cryptoName} OR `;
+			});
+			return queryCrypto.slice(0, -4) + ")";
+		}
 	}
 
-	handleTweets() {
+	// Retrieves tweets from api and changes feed and sentiments state.
+	function handleTweets() {
+		//setLoading(true);
+		getQueryCrypto();
 		twitterService
-			.getRecentTweets(this.params)
+			.getRecentTweets(params)
 			.then((response) => {
-				// Showing onlye the 10 first tweets
-				this.setState({ feed: filterTweetByLang(response.data, 'en').slice(0, 10) });
+				// Showing the first 10 tweets
+				setFeed(filterTweetByLang(response.data, "en").slice(0, 10));
 				// Analyzing all retrieved tweets.
 				let newSentiment = getSentimentFromTweets(getFilteredTweets(response.data));
-				this.setState({ tweetsSentiment: newSentiment });
+				setTweetsSentiment(newSentiment);
 			})
 			.catch((err) => console.error(err));
 	}
 
-	componentDidMount() {
-		this.handleTweets();
-		//Calling twitter API and manage the data every 5 minutes
-		intervalId = setInterval(this.handleTweets, 5 * 60 * 1000);
-	}
+	// Component recieves a new props.crypto and updates all the info.
+	useEffect(() => {		
+		params = {
+			max_results: MAX_RESULTS,
+			"tweet.fields": "public_metrics,lang",
+			query: `${getQueryCrypto()} is:verified -is:retweet`,
+		};
+		handleTweets();
+		// intervalId = setInterval(handleTweets, 5 * 60 * 1000);
+	}, [crypto]);
 
-	componentWillUnmount() {
-		clearInterval(intervalId);
-	}
+	// Executed when tweets are retrieved. Tweets are loaded.
+	useEffect(() => {
+		const timer = setTimeout(() => setLoading(false),2000);
+		//setLoading(false);
+		return () => clearTimeout(timer);
+	},[feed])
 
-	render() {
-		const { positives, neutrals, negatives } = this.state.tweetsSentiment;
-		return (
-			<SCTweetFeed id="twitter-container">
-				<div id="twitter-container-header">
-					<Text as="h3" size="l" weight="mulishLight">Tweet feed</Text>
-					<div id="sentiment-container">
-						<Text id="sentiment-label" as="h3" size="m" weight="mulishMedium">Sentiment Anaylsis:</Text>
-						<LightTooltip title="Analysis based on last 100 twits using FINN-165" placement="top-start">
-							<Icon className="fas fa-info-circle" />
-						</LightTooltip>
-						<SentimentRatio type={"positive"} ratio={positives} opacity={positives / 100} />
-						<SentimentRatio type={"neutral"} ratio={neutrals} opacity={neutrals / 100} />
-						<SentimentRatio type={"negative"} ratio={negatives} opacity={negatives / 100} />
-					</div>
-				</div>
-				<div id="tweets-container">
-					{this.state.feed.map((tweet) => {
+	// Component will unmount.
+	useEffect(() => {
+		// Kill the automatic tweet retrieve when component is unmount.
+		return () => clearInterval(intervalId);
+	}, []);
+
+	return (
+		<SCTweetFeed id="twitter-container">
+			<Sentiment {...tweetsSentiment} />
+			<div id="twitter-container-header">
+				<Text as="h3" size="l" weight="mulishMedium">
+					Tweet feed
+				</Text>
+			</div>
+			<div id="tweets-container">
+				{loading && <SkeletonCard />}
+				{!loading &&
+					feed.map((tweet) => {
 						return (
 							<Tweet
 								key={tweet.id}
 								tweetId={tweet.id}
-								options={{ cards: "hidden", width: "250", conversation: "none", height: "200" }}
+								options={{
+									cards: "hidden",
+									width: "250",
+									conversation: "none",
+									height: "200",
+								}}
 							/>
 						);
 					})}
-				</div>
-			</SCTweetFeed>
-		);
-	}
+			</div>
+		</SCTweetFeed>
+	);
 }
+
+export default TweetFeed;

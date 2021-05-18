@@ -1,21 +1,15 @@
 import React, { Component } from "react";
-import { Tweet } from "react-twitter-widgets";
 import { withAuth } from "../../context/auth.context";
 import SCProfileFeedPage from "./ProfileFeedPage.styled";
+import TweetFeed from "../../components/TweetFeed/TweetFeed";
 
 class ProfileFeedPage extends Component {
 	render() {
-		//Getting pinned tweets from user.
-        const { pinned_feed } = this.props.user;        
-		return (
+		//Getting favorites cryptos tweets from user.
+        const { favorites_cryptos } = this.props.user;
+		return (			
 			<SCProfileFeedPage id="profile-feed-container">
-				{pinned_feed.map((el) => {
-					return <Tweet
-						key={el.id}
-						tweetId={el.id}
-						options={{ cards: "hidden", width: "250", conversation: "none", height: "200" }}
-					/>;
-				})}
+				<TweetFeed favorites_cryptos={favorites_cryptos}/>
 			</SCProfileFeedPage>
 		);
 	}

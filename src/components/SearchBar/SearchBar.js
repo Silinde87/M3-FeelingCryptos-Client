@@ -7,7 +7,7 @@ export default function SearchBar({ setSearch }) {
     <Input type="search"
         name="search"
         placeholder="Search"
-        onChange={(e) => setSearch((e.target.value).replace(/\//i, ''))}/>
+        onChange={(e) => setSearch((e.target.value))}/>
     </div>
   );
 }

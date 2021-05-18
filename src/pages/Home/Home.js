@@ -5,8 +5,6 @@ import WebsocketBinance from "../../components/WebsocketBinance/WebsocketBinance
 import markets from "../../markets.json";
 import SCHome from "./Home.styled";
 
-//const crypto = "bitcoin";
-
 function Home(props) {
   const [ crypto, setCrypto ] = useState('Bitcoin')  
   return (
@@ -14,7 +12,7 @@ function Home(props) {
       <MarketsList marketList={markets} setCrypto={setCrypto} />
       <section id="main-section">
         <WebsocketBinance market={props.match.params.market}/>
-        {/* <TweetFeed crypto={crypto} /> */}
+        <TweetFeed crypto={crypto} />
       </section>
     </SCHome>
   );

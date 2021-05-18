@@ -56,7 +56,7 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 	}
 
 	// Component recieves a new props.crypto and updates all the info.
-	useEffect(() => {		
+	useEffect(() => {
 		params = {
 			max_results: MAX_RESULTS,
 			"tweet.fields": "public_metrics,lang",
@@ -71,9 +71,10 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 		// Kill the automatic tweet retrieve when component is unmount.
 		return () => clearInterval(intervalId);
 	}, []);
+	console.log(favorites_cryptos)
 
 	return (
-		<SCTweetFeed id="twitter-container">
+		<SCTweetFeed id="twitter-container">		
 			<Sentiment {...tweetsSentiment} />
 			<div id="twitter-container-header">
 				<Text as="h3" size="l" weight="mulishMedium">
@@ -82,7 +83,7 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 			</div>
 			<div id="tweets-container">
 				{loading && <SkeletonCard />}
-				{!loading &&
+				{!loading || !favorites_cryptos ? (
 					feed.map((tweet) => {
 						return (
 							<Tweet
@@ -96,7 +97,10 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 								}}
 							/>
 						);
-					})}
+					})
+				) : (
+					!loading && <Text as="h2" size="l" weight="mulishLight">There is no tweets to show</Text>
+				)}
 			</div>
 		</SCTweetFeed>
 	);

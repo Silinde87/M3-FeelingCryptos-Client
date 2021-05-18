@@ -13,12 +13,12 @@ import Sentiment from "../Sentiment/Sentiment";
 import markets from "../../markets.json";
 
 let intervalId;
-const MAX_RESULTS = 50;
+const MAX_RESULTS = 10;
 
 function TweetFeed({ crypto, favorites_cryptos }) {
 	const [feed, setFeed] = useState([]);
 	const [tweetsSentiment, setTweetsSentiment] = useState({});
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	let params = {
 		max_results: MAX_RESULTS,
 		"tweet.fields": "public_metrics,lang",
@@ -40,6 +40,7 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 
 	// Retrieves tweets from api and changes feed and sentiments state.
 	function handleTweets() {
+		//setLoading(true);
 		getQueryCrypto();
 		twitterService
 			.getRecentTweets(params)
@@ -54,8 +55,7 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 	}
 
 	// Component recieves a new props.crypto and updates all the info.
-	useEffect(() => {
-		setLoading(true);
+	useEffect(() => {		
 		params = {
 			max_results: MAX_RESULTS,
 			"tweet.fields": "public_metrics,lang",
@@ -63,9 +63,14 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 		};
 		handleTweets();
 		// intervalId = setInterval(handleTweets, 5 * 60 * 1000);
-		const timer = setTimeout(() => setLoading(false), 4000);
-		return () => clearTimeout(timer);
 	}, [crypto]);
+
+	// Executed when tweets are retrieved. Tweets are loaded.
+	useEffect(() => {
+		const timer = setTimeout(() => setLoading(false),2000);
+		//setLoading(false);
+		return () => clearTimeout(timer);
+	},[feed])
 
 	// Component will unmount.
 	useEffect(() => {

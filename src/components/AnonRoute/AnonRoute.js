@@ -21,7 +21,7 @@ function AnonRoute (routeProps) {
       path={path}
       render={
         function(props) {
-          if (isLoggedIn) return <Redirect to="/private/feed" />
+          if (isLoggedIn) return <Redirect to="/private" />
           else if (! isLoggedIn) return <ComponentToShow {...props} />
         }
       }

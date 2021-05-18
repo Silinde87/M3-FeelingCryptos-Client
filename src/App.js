@@ -6,13 +6,14 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
-
+import ErrorPage from './pages/ErrorPage/ErrorPage'
+import Profile from './pages/Profile/Profile'
 // Components
 import Navbar from './components/Navbar/Navbar';
 import AnonRoute from './components/AnonRoute/AnonRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import EditProfilePage from './pages/EditProfilePage/EditProfilePage';
-import ProfileFeedPage from './pages/ProfileFeedPage/ProfileFeedPage';
+
+
 
 
 class App extends Component {
@@ -31,8 +32,10 @@ class App extends Component {
                 path="/:market"
                 component={Home}
               />
-          <PrivateRoute exact path="/private/edit" component={EditProfilePage} />
-          <PrivateRoute exact path="/private/feed" component={ProfileFeedPage} />
+          <PrivateRoute exact path="/private" component={Profile}  />
+          <PrivateRoute exact path="/private/edit" component={Profile} />
+          <PrivateRoute exact path="/private/feed" component={Profile} />
+          <Route path='*' component={ErrorPage}/>
         </Switch>
       </div>
     );

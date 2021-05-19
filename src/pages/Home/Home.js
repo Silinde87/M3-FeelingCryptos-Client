@@ -9,7 +9,7 @@ import SCHome from "./Home.styled";
 
 function Home(props) {
   const [crypto, setCrypto] = useState("Bitcoin");
-  const [ marketNames, setMarketNames ] = useState(markets.map((market) => market.market.replace("/", "")))
+  const marketNames = markets.map((market) => market.market.replace("/", ""))
 
   return (
     <>

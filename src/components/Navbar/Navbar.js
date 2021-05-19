@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { withAuth } from "./../../context/auth.context";
 import Text from "../text";
 import SCNavbar from "./Navbar.styled";
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 class Navbar extends Component {
 	render() {
@@ -11,9 +12,9 @@ class Navbar extends Component {
 			<SCNavbar className="navbar">
 				<div id="home-btn">
 					<Link to={"/"}>
-					<img src="https://res.cloudinary.com/dkevcmz3i/image/upload/v1621436436/Feeling-Crypto/resources/heart-logo_vzn49g.webp" alt="brand-icon" id="brand-icon"></img>
+						
 						<Text as="h1" size="ml" color="letterColor1" weight="mulishSemiBold" id="brand-label">
-							FeelingCrypto
+							Feeling<FavoriteBorderIcon id="heart-icon"/>Crypto
 						</Text>
 					</Link>
 				</div>

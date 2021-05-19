@@ -13,7 +13,6 @@ class WebsocketBinance extends Component {
     };
     this.client = Websocket.getInstance();
   }
-
   componentDidMount() {
     //This onopen function waits for you websocket connection to establish before sending the message.
     this.client.readyState ? this.client.send(`${this.props.market}`) : this.client.onopen = () => this.client.send(`${this.props.market}`);

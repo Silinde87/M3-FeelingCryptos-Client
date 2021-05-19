@@ -6,6 +6,8 @@ const SCSentiment = styled.div`
 	flex-direction: column;
 	align-items: center;
 	width: 1200px;
+	margin-top: 30px;
+	margin-bottom: 60px;
 
 	#sentiment-label {
 		display: flex;
@@ -18,6 +20,7 @@ const SCSentiment = styled.div`
 		margin-right: 10px;
 		margin-left: 4px;
 		font-size: 13px;
+		margin-top: 4px;
 	}
 `;
 

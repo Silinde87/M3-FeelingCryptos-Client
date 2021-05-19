@@ -33,6 +33,10 @@ const theme = {
         size: '16px',
         line: '19px',
       },
+      ml: {
+        size: '22px',
+        line: '35px',
+      },
       l: {
         size: '32px',
         line: '35px',

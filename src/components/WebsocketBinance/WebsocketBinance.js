@@ -12,9 +12,7 @@ class WebsocketBinance extends Component {
       market: 'BTCUSDT'
     };
     this.client = Websocket.getInstance();
-    console.log(this.props)
   }
-
   componentDidMount() {
     //This onopen function waits for you websocket connection to establish before sending the message.
     this.client.readyState ? this.client.send(`${this.props.market}`) : this.client.onopen = () => this.client.send(`${this.props.market}`);
@@ -24,17 +22,10 @@ class WebsocketBinance extends Component {
       if(this.props.market === dataFromServer.symbol){
         this.setState({ charts: dataFromServer.chartArr, market: dataFromServer.symbol });
       }else if(!this.props.market){
-        console.log('NO PROPS')
         this.setState({ charts: dataFromServer.chartArr, market: dataFromServer.symbol  })
       }
     };
   }
-
-  // componentWillUnmount(){
-  //   console.log("COMPONENT UNMOUNT")
-  //   this.client.close()
-    
-  // }
 
   render() {
     return (

@@ -49,10 +49,10 @@ class Login extends Component {
 		const { email, password } = this.state.fields;
 		if (this.isValid()) {
 			// Call function coming from AuthProvider ( via withAuth )
-			this.props.login({ email, password });
-			if (!this.props.isLoggedIn) { //TODO: Wait until this.props.login ends. This is sowing errorOnSubmit before login validates
-				this.setState({ errorOnSubmit: true });
-			}
+				this.props.login({ email, password })
+				 .catch(() => {
+					 this.setState({ errorOnSubmit: true });
+				 })		
 		}
 	};
 

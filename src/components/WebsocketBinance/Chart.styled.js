@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const SCChart = styled.div`
+    height: 86%;
     #chart{
         width: 70vw;
         margin: auto;

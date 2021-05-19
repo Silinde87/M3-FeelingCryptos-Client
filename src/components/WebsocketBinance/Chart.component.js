@@ -12,13 +12,16 @@ function Chart(props){
     
   useEffect(() => {
     console.log('Use effect')
-    const isFavorite = props.user.favorites_cryptos.filter((crypto) => {
-      console.log(crypto)
-      return crypto === props.market
-    }) 
-    console.log(isFavorite)
-    isFavorite.length ? setToggle(!toggle) : setToggle(!toggle)
-    console.log(toggle)
+    let isFavorite;
+    if(props.user){
+      isFavorite = props.user.favorites_cryptos.filter((crypto) => {
+        console.log(crypto)
+        return crypto === props.market
+      }) 
+      console.log(isFavorite)
+      isFavorite.length ? setToggle(!toggle) : setToggle(!toggle)
+      console.log(toggle)
+    }
   }, [props.market])  
  
     
@@ -32,7 +35,7 @@ function Chart(props){
     return (
       <>
       {/* { this.state.isLoading ? <Spinner /> : */}
-      <SCChart>
+      <SCChart id="chart-container">
       <div id="chart">
       <button onClick={() => handleClick()}>{toggle ? <StarRoundedIcon className="favorite-btn" /> : <StarBorderRoundedIcon className="favorite-btn" /> }</button>
         <ApexChart

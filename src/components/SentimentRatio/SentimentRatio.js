@@ -22,15 +22,15 @@ export default function SentimentRatio(props) {
 			default:
 		}
 		return (
-			<SCSentimentRatio style={{ backgroundColor: bgcolor }}>
+			<SCSentimentRatio style={{ borderColor: bgcolor,  }}>
 				{type === "positive" ? (
-					<TrendingUpIcon className="ratio-icon"/>
+					<TrendingUpIcon className="ratio-icon" style={{color: bgcolor}}/>
 				) : type === "neutral" ? (
-					<TrendingFlatIcon className="ratio-icon"/>
+					<TrendingFlatIcon className="ratio-icon" style={{color: bgcolor}}/>
 				) : (
-					<TrendingDownIcon className="ratio-icon"/>
+					<TrendingDownIcon className="ratio-icon" style={{color: bgcolor}}/>
 				)}
-				<Text size="xl" color="letterColor1" weight="mulishMedium" style={{ opacity: 1 }}>
+				<Text size="xl" color="letterColor2" weight="mulishMedium" style={{ opacity: 1 }}>
 					{ratio}%
 				</Text>
 			</SCSentimentRatio>

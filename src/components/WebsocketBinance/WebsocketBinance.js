@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withAuth } from "../../context/auth.context";
 import Websocket from '../../utils/websocketInstance'
+import Credits from "../Credits/Credits";
 import Chart from "./Chart.component";
 
 
@@ -29,9 +30,10 @@ class WebsocketBinance extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", marginLeft: "0px"}}>
+      <div id="profile-chart" style={{ width: "100%", marginLeft: "0px"}}>
           { this.state.charts.length > 0 && <Chart data={this.state.charts} market={this.state.market}/>}
-        </div>
+          <Credits />
+      </div>
     );
   }
 }

@@ -9,7 +9,7 @@ function Home(props) {
   const [ crypto, setCrypto ] = useState('Bitcoin')  
   return (
     <SCHome>
-      <MarketsList marketList={markets} setCrypto={setCrypto} />
+      <MarketsList id="market-list-bar" marketList={markets} setCrypto={setCrypto} />
       <section id="main-section">
         <WebsocketBinance market={props.match.params.market}/>
         <TweetFeed crypto={crypto} />

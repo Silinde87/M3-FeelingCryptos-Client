@@ -5,8 +5,11 @@ const SCMarketList = styled.nav`
     background: linear-gradient(0deg, ${({ theme }) => theme.color.secondary} 0%, rgba(255,255,255,1) 100%);
     min-width: 260px;
     
-    .active{
-        color: "red";
+    .active #market-id{
+        color: ${({theme}) => theme.color.letterColor3Sel};        
+    }
+    #market-id{
+        transition: color 0.3s;
     }
     #search-container{
         width: 70%;

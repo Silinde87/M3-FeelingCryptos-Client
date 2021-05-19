@@ -40,7 +40,6 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 
 	// Retrieves tweets from api and changes feed and sentiments state.
 	function handleTweets() {
-		//setLoading(true);
 		getQueryCrypto();
 		twitterService
 			.getRecentTweets(params)
@@ -57,13 +56,17 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 
 	// Component recieves a new props.crypto and updates all the info.
 	useEffect(() => {
-		params = {
-			max_results: MAX_RESULTS,
-			"tweet.fields": "public_metrics,lang",
-			query: `${getQueryCrypto()} is:verified -is:retweet`,
-		};
-		handleTweets();
-		// intervalId = setInterval(handleTweets, 5 * 60 * 1000);
+		if(getQueryCrypto()){
+			params = {
+				max_results: MAX_RESULTS,
+				"tweet.fields": "public_metrics,lang",
+				query: `${getQueryCrypto()} is:verified -is:retweet`,
+			};
+			handleTweets();
+			// intervalId = setInterval(handleTweets, 5 * 60 * 1000);
+		} else {
+			setLoading(false);
+		}
 	}, [crypto]);
 
 	// Component will unmount.
@@ -71,7 +74,6 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 		// Kill the automatic tweet retrieve when component is unmount.
 		return () => clearInterval(intervalId);
 	}, []);
-	console.log(favorites_cryptos)
 
 	return (
 		<SCTweetFeed id="twitter-container">		
@@ -83,7 +85,7 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 			</div>
 			<div id="tweets-container">
 				{loading && <SkeletonCard />}
-				{!loading || !favorites_cryptos ? (
+				{!loading ? (
 					feed.map((tweet) => {
 						return (
 							<Tweet
@@ -99,7 +101,7 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 						);
 					})
 				) : (
-					!loading && <Text as="h2" size="l" weight="mulishLight">There is no tweets to show</Text>
+					<Text as="h2" size="l" weight="mulishLight">There is no tweets to show</Text>
 				)}
 			</div>
 		</SCTweetFeed>

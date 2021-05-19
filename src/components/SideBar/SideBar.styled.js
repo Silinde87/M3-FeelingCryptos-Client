@@ -10,6 +10,7 @@ const SCSideBar = styled.section`
 	justify-content: space-around;
 	align-items: center;
 	height: calc(100% - 60px);
+	margin-right: 100px;
 
 	.sidebar-icon {
 		font-size: 60px;

@@ -12,6 +12,7 @@ import Profile from './pages/Profile/Profile'
 import Navbar from './components/Navbar/Navbar';
 import AnonRoute from './components/AnonRoute/AnonRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import WebsocketBinance from './components/WebsocketBinance/WebsocketBinance';
 
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
           <PrivateRoute exact path="/private" component={Profile}  />
           <PrivateRoute exact path="/private/edit" component={Profile} />
           <PrivateRoute exact path="/private/feed" component={Profile} />
+          <PrivateRoute exact path="/private/:market" component={Profile} />
           <Route
                 exact
                 path="/:market"

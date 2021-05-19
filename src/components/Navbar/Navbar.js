@@ -10,7 +10,7 @@ class Navbar extends Component {
 		return (
 			<SCNavbar className="navbar">
 				<div id="home-btn">
-					<Link to={"/BTCUSDT"}>
+					<Link to={"/"}>
 						<Text as="h1" size="xl" color="letterColor1" weight="mulishSemiBold" id="brand-label">
 							FeelingCrypto
 						</Text>

@@ -43,7 +43,7 @@ class WebsocketBinance extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%"}}>
+      <div style={{ width: "500px", marginLeft: "100px"}}>
           <button onClick={() => this.handleClick()} >⭐️</button>
           { this.state.charts.length > 0 && <Chart data={this.state.charts} market={this.state.market}/>}
         </div>

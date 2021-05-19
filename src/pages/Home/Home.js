@@ -11,7 +11,7 @@ function Home(props) {
     <SCHome>
       <MarketsList id="market-list-bar" marketList={markets} setCrypto={setCrypto} />
       <section id="main-section">
-        <WebsocketBinance market={props.match.params.market}/>
+        <WebsocketBinance market={props.match.params.market ? props.match.params.market : "BTCUSDT"}/>
         <TweetFeed crypto={crypto} />
       </section>
     </SCHome>

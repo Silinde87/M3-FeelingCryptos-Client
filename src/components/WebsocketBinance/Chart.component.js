@@ -12,22 +12,28 @@ function Chart(props){
     
   useEffect(() => {
     console.log('Use effect')
-    const isFavorite = props.user.favorites_cryptos.filter((crypto) => {
-      console.log(crypto)
-      return crypto === props.market
-    }) 
-    console.log(isFavorite)
-    isFavorite.length ? setToggle(!toggle) : setToggle(!toggle)
-    console.log(toggle)
+    console.log(props.user)
+    props.user.favorites_cryptos.includes(props.market) ? setToggle(true) : setToggle(false)
+
+    console.log(props.user.favorites_cryptos)
+     
   }, [props.market])  
  
-    
   const handleClick = () => {
     setToggle(!toggle)
-    props.addFavoritesCryptos({ favorites_cryptos: props.market })
-    console.log('added to favorite market')
+    console.log(toggle)
+    console.log(props)
+    if(toggle){
+
+      props.deleteFavoritesCryptos({ favorites_cryptos: props.market })
+
+    }else{
+      props.addFavoritesCryptos({ favorites_cryptos: props.market })
+    }
+    // toggle ? props.deleteFavoritesCryptos({ favorites_cryptos: props.market }) :
+    // props.addFavoritesCryptos({ favorites_cryptos: props.market })
+    console.log('added or deleted favorite market')
   }
-  
  
     return (
       <>
@@ -85,9 +91,9 @@ function Chart(props){
             [
         {
           name: "candle",
-          data: props.data.map((el) => {
+          data: props.data.map((el, i) => {
       return {
-        x: moment(new Date(parseInt(el[0]))).format("MM-dd-yyyy h:mm:ss"),
+        x: i % 6 === 0 ? moment(new Date(parseInt(el[0]))).format("MM-dd-yyyy h:mm:ss") : (''),
         y: [ el[1].open, el[1].high, el[1].low, el[1].close ]
       }
     }),

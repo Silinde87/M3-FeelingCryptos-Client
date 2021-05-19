@@ -13,7 +13,8 @@ class PrivateService {
   add = (data) => this.api.post("/private", data);
   //returns an array of markets
   get = () => this.api.get("/private/favorites")
-  //deleteOne = (id) =>s this.api.delete(`/example/${id}`);
+
+  delete = (data) => this.api.post("/private/delete", data);
 }
 
 const privateService = new PrivateService()

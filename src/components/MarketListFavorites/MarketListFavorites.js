@@ -3,17 +3,18 @@ import Websocket from "../../utils/websocketInstance";
 import { List } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 import Text from "../text";
-import SCMarketList from "../MarketsList/MarketList.styled";
 import SearchBar from "../SearchBar/SearchBar";
+import SCMarketListFavorites from "./MarketListFavorites.styled";
 
 
-export default function MarketListFavorites({ marketList }) {
+export default function MarketListFavorites({ marketList, className }) {
   const [ search, setSearch ] = useState('')
   const client = Websocket.getInstance();
   let id = 0;
+  console.log(className);
 
   return (
-    <SCMarketList>
+    <SCMarketListFavorites id="market-list-favorites" className={className}>
       <List className="component-list">
         <div className="list-div">
         <SearchBar setSearch={setSearch}/>
@@ -42,6 +43,6 @@ export default function MarketListFavorites({ marketList }) {
           })}
         </div>
       </List>
-    </SCMarketList>
+    </SCMarketListFavorites>
   );
 }

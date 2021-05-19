@@ -13,8 +13,8 @@ function Home(props) {
     <SCHome>
       <MarketsList marketList={markets} setCrypto={setCrypto} />
       <section id="main-section">
-        <WebsocketBinance market={props.match.params.market}/>
-        {/* <TweetFeed crypto={crypto} /> */}
+        <WebsocketBinance market={props.match.params.market ? props.match.params.market : "BTCUSDT"}/>
+        <TweetFeed crypto={crypto} />
       </section>
     </SCHome>
   );

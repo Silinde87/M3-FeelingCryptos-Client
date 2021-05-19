@@ -11,7 +11,6 @@ export default function MarketListFavorites({ marketList, className }) {
   const [ search, setSearch ] = useState('')
   const client = Websocket.getInstance();
   let id = 0;
-  console.log(className);
 
   return (
     <SCMarketListFavorites id="market-list-favorites" className={className}>
@@ -31,7 +30,7 @@ export default function MarketListFavorites({ marketList, className }) {
                 key={id++}
               >
                 <div className="market-img-div">
-                <img src={market.image}/>
+                <img src={market.image} alt="market-icon"/>
 
                 <Text id="market-id" weight="mulishRegular" size="s">
                   {market.market}

@@ -21,6 +21,8 @@ class WebsocketBinance extends Component {
   }
 
   componentDidMount() {
+
+    console.log('COMPONENTDIDMOUNT')
     //This onopen function waits for you websocket connection to establish before sending the message.
     this.client.readyState ? this.client.send(`${this.props.market}`) : this.client.onopen = () => this.client.send(`${this.props.market}`);
 
@@ -44,8 +46,8 @@ class WebsocketBinance extends Component {
   render() {
     return (
       <div style={{ width: "500px", marginLeft: "100px"}}>
-          <button onClick={() => this.handleClick()} >⭐️</button>
-          { this.state.charts.length > 0 && <Chart data={this.state.charts} market={this.state.market}/>}
+          
+          { this.state.charts.length > 0 && <Chart handleClick={this.handleClick} data={this.state.charts} market={this.state.market}/>}
         </div>
     );
   }

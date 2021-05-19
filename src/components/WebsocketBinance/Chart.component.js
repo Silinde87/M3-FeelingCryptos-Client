@@ -20,11 +20,13 @@ export default class Chart extends Component {
   }
   
   render() {
+    console.log(this.props)
     return (
       <>
       {/* { this.state.isLoading ? <Spinner /> : */}
       <SCChart>
       <div id="chart">
+      <button onClick={() => this.props.handleClick} >⭐️</button>
         <ApexChart
           options={
         {chart: {

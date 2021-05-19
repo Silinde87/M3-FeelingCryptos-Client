@@ -32,7 +32,7 @@ class App extends Component {
           <PrivateRoute exact path="/private/:market" component={Profile} />
           <Route
                 exact
-                path="/:market"
+                path="/markets/:market"
                 component={Home}
               />
           <Route path='*' component={ErrorPage}/>

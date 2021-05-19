@@ -27,7 +27,7 @@ export default function MarketsList({ marketList, setCrypto }) {
                 client.send(`${route}`)
                 console.log('send new connection')
               }}
-                to={`/${route}`}
+                to={`/markets/${route}`}
                 exact
                 activeClassName="active"
                 key={id++}

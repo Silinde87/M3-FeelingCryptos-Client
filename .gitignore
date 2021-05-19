@@ -6,3 +6,7 @@ npm-debug.log
 .env
 tweets_seeds.json
 tweets_seeds_bitcoin.json
+
+#Production & development
+.env.development
+.env.production

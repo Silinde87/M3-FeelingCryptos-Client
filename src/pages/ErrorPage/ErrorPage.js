@@ -11,7 +11,7 @@ export default function Error() {
                 </div>
                 <h2>We are sorry, Page not found!</h2>
                 <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
-                <Link to="/BTCUSDT">Back to Homepage</Link>                
+                <Link to="/">Back to Homepage</Link>                
             </div>
         </div>
     )

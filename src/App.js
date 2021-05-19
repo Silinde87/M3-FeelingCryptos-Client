@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
-import ErrorPage from './pages/ErrorPage/ErrorPage'
+import Error from './pages/ErrorPage/ErrorPage'
 import Profile from './pages/Profile/Profile'
 // Components
 import Navbar from './components/Navbar/Navbar';
@@ -31,10 +31,10 @@ class App extends Component {
           <PrivateRoute exact path="/private/:market" component={Profile} />
           <Route
                 exact
-                path="/:market"
+                path="/markets/:market"
                 component={Home}
               />
-          <Route path='*' component={ErrorPage}/>
+          <Route path='*' component={Error}/>
         </Switch>
       </div>
     );

@@ -10,12 +10,9 @@ class WebsocketBinance extends Component {
     this.state = {
       charts: { },
       market: 'BTCUSDT'
-    };    
-    this.client = Websocket.getInstance();
-  }
+    };
 
-  handleClick(){
-    this.props.addFavoritesCryptos({favorites_cryptos: this.state.market})
+    this.client = Websocket.getInstance();
   }
 
   componentDidMount() {
@@ -34,8 +31,7 @@ class WebsocketBinance extends Component {
 
   render() {
     return (
-      <div id="binance-container">
-          <button onClick={() => this.handleClick()} >⭐️</button>
+      <div style={{ width: "500px", marginLeft: "100px"}}>
           { this.state.charts.length > 0 && <Chart data={this.state.charts} market={this.state.market}/>}
         </div>
     );

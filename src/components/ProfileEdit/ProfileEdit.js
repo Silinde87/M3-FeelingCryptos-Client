@@ -47,6 +47,7 @@ class ProfileEdit extends Component {
 			photo: null,
 		},
 		submitSuccessful: false,
+		errorOnSubmit: false
 	};
 
 	//This method handles the form submit. Changes the state if there is an error validation.
@@ -58,12 +59,19 @@ class ProfileEdit extends Component {
 		})
 		if (this.isValid()) {
 			// Call function coming from AuthProvider ( via withAuth )
-            this.props.edit(uploadData);
+            this.props.edit(uploadData)
+				.then(() => {
+					this.setState({ submitSuccessful: true });
+				})
+				.catch(() => {
+					this.setState({ submitSuccessful: false });
+					this.setState({ errorOnSubmit: true });
+				})
 			//Render update succesful
-			this.setState({ submitSuccessful: true });
 			setTimeout(() => {
 				this.setState({ submitSuccessful: false });
-			}, 1500);
+				this.setState({ errorOnSubmit: false });
+			}, 2000);
 		}
 	};
 
@@ -107,6 +115,11 @@ class ProfileEdit extends Component {
 						{this.state.submitSuccessful && (
 							<Text color="lettersColor1" style={{ textAlign: "center", marginTop: "10px" }}>
 								Succesfully updated
+							</Text>
+						)}
+						{this.state.errorOnSubmit && (
+							<Text color="lettersColorRed" style={{ textAlign: "center", marginTop: "10px" }}>
+								User already exists. Can't update.
 							</Text>
 						)}
 						<Text id="recover-label" size="s" weight="mulishLight">

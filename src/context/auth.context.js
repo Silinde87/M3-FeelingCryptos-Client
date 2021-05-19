@@ -32,10 +32,11 @@ class AuthProvider extends React.Component {
   }
 
   login = (data) => {
-    authService.login(data)
+    return authService.login(data)
       .then((response) => this.setState({ isLoggedIn: true, user: response.data }))
       .catch((err) => {
         this.setState({ isLoggedIn: false, user: null });
+        throw new Error();
       })
   }
 
@@ -46,9 +47,12 @@ class AuthProvider extends React.Component {
   }
 
   edit = (data) => {
-    authService.edit(data)
+    return authService.edit(data)
       .then(response => this.setState({ ...this.state, user: response.data}))
-      .catch(error => console.error(error));
+      .catch(error => {
+        console.error(error);
+        throw new Error();
+      })
   }
 
   twitter = () => {

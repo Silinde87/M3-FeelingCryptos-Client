@@ -11,18 +11,11 @@ class WebsocketBinance extends Component {
       charts: { },
       market: 'BTCUSDT'
     };
-    
     this.client = Websocket.getInstance();
     console.log(this.props)
   }
 
-  handleClick(){
-    this.props.addFavoritesCryptos({favorites_cryptos: this.state.market})
-  }
-
   componentDidMount() {
-
-    console.log('COMPONENTDIDMOUNT')
     //This onopen function waits for you websocket connection to establish before sending the message.
     this.client.readyState ? this.client.send(`${this.props.market}`) : this.client.onopen = () => this.client.send(`${this.props.market}`);
 
@@ -46,8 +39,7 @@ class WebsocketBinance extends Component {
   render() {
     return (
       <div style={{ width: "500px", marginLeft: "100px"}}>
-          
-          { this.state.charts.length > 0 && <Chart handleClick={this.handleClick} data={this.state.charts} market={this.state.market}/>}
+          { this.state.charts.length > 0 && <Chart data={this.state.charts} market={this.state.market}/>}
         </div>
     );
   }

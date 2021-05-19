@@ -1,32 +1,40 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import ApexChart from "react-apexcharts";
 import SCChart from './Chart.styled';
-import moment from 'moment'
+import moment from 'moment';
+import { withAuth } from "../../context/auth.context";
+import StarBorderRoundedIcon from '@material-ui/icons/StarBorderRounded';
+import StarRoundedIcon from '@material-ui/icons/StarRounded';
 import Spinner from "../Spinner/Spinner";
 
-export default class Chart extends Component {
-    state = {
-     isLoading: true
-    };
-
-    componentDidMount(){
-      setTimeout(() => {
-        this.setState({isLoading: false})
-
-      }, 5500)
-    }
-  componentDidUpdate(){
-   document.querySelector('.apexcharts-toolbar').style.display = "none";
+function Chart(props){
+  const [ toggle, setToggle ] = useState(false)
+    
+  useEffect(() => {
+    console.log('Use effect')
+    const isFavorite = props.user.favorites_cryptos.filter((crypto) => {
+      console.log(crypto)
+      return crypto === props.market
+    }) 
+    console.log(isFavorite)
+    isFavorite.length ? setToggle(!toggle) : setToggle(!toggle)
+    console.log(toggle)
+  }, [props.market])  
+ 
+    
+  const handleClick = () => {
+    setToggle(!toggle)
+    props.addFavoritesCryptos({ favorites_cryptos: props.market })
+    console.log('added to favorite market')
   }
   
-  render() {
-    console.log(this.props)
+ 
     return (
       <>
       {/* { this.state.isLoading ? <Spinner /> : */}
       <SCChart>
       <div id="chart">
-      <button onClick={() => this.props.handleClick} >⭐️</button>
+      <button onClick={() => handleClick()}>{toggle ? <StarRoundedIcon /> : <StarBorderRoundedIcon /> }</button>
         <ApexChart
           options={
         {chart: {
@@ -34,7 +42,7 @@ export default class Chart extends Component {
           type: "candlestick",
         },
         title: {
-          text: `${this.props.market} - SPOT Market`,
+          text: `${props.market} - SPOT Market`,
           align: "left",
         },
         annotations: {
@@ -77,7 +85,7 @@ export default class Chart extends Component {
             [
         {
           name: "candle",
-          data: this.props.data.map((el) => {
+          data: props.data.map((el) => {
       return {
         x: moment(new Date(parseInt(el[0]))).format("MM-dd-yyyy h:mm:ss"),
         y: [ el[1].open, el[1].high, el[1].low, el[1].close ]
@@ -86,14 +94,13 @@ export default class Chart extends Component {
         },
       ]
           }
-    // series={this.state.series} 
           type="candlestick"
           height={300}
         />
       </div>
       </SCChart>
-      
       </>
     );
 }
-}
+
+export default withAuth(Chart);

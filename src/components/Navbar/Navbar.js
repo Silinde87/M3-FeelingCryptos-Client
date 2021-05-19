@@ -9,11 +9,13 @@ class Navbar extends Component {
 		const { user, logout, isLoggedIn } = this.props;
 		return (
 			<SCNavbar className="navbar">
-				<Link to={"/"} id="home-btn">
-					<Text as="h4" size="l" color="letterColor1" weight="mulishSemiBold">
-						FeelingCrypto
-					</Text>
-				</Link>
+				<div id="home-btn">
+					<Link to={"/"}>
+						<Text as="h1" size="xl" color="letterColor1" weight="mulishSemiBold" id="brand-label">
+							FeelingCrypto
+						</Text>
+					</Link>
+				</div>
 				{isLoggedIn ? (
 					<div className="logged-user-box">
 						<Link to="/private">

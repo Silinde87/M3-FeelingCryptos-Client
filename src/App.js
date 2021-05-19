@@ -6,12 +6,13 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
-import Private from './pages/Private/Private';
-
+import ErrorPage from './pages/ErrorPage/ErrorPage'
+import Profile from './pages/Profile/Profile'
 // Components
 import Navbar from './components/Navbar/Navbar';
 import AnonRoute from './components/AnonRoute/AnonRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import WebsocketBinance from './components/WebsocketBinance/WebsocketBinance';
 
 
 class App extends Component {
@@ -25,8 +26,16 @@ class App extends Component {
 
           <AnonRoute exact path="/signup" component={Signup} />
           <AnonRoute exact path="/login" component={Login} />
-
-          <PrivateRoute exact path="/private" component={Private} />
+          <PrivateRoute exact path="/private" component={Profile}  />
+          <PrivateRoute exact path="/private/edit" component={Profile} />
+          <PrivateRoute exact path="/private/feed" component={Profile} />
+          <PrivateRoute exact path="/private/:market" component={Profile} />
+          <Route
+                exact
+                path="/:market"
+                component={Home}
+              />
+          <Route path='*' component={ErrorPage}/>
         </Switch>
       </div>
     );

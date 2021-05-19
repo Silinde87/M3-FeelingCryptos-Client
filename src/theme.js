@@ -38,9 +38,17 @@ const theme = {
         line: '35px',
       },
       xl: {
-        size: '96px',
-        line: '106px',
+        size: '40px',
+        line: '56px',
       },
+      xxl: {
+        size: '56px',
+        line: '68px'
+      },
+      xxxl: {
+        size: '96px',
+        line: '106px'
+      }
     },
     spacing: {
       small: '16px',

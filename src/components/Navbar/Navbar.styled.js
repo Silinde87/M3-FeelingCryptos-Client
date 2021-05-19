@@ -4,9 +4,24 @@ const SCNavbar = styled.nav`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: ${({ theme }) => theme.color.secondary};
 	height: 60px;
-	padding: 0px 30px;
+	padding-right: 25px;
+	position: sticky;
+	top: 0;
+	width: 100%;
+	z-index: 99;
+	background-color: white;
+
+	#home-btn{
+		height: 100%;
+        min-width: 260px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	#brand-label{
+		margin-left: 15px;
+	}
 
 	.login-box {
 		display: flex;
@@ -27,6 +42,7 @@ const SCNavbar = styled.nav`
 	#avatar {
 		height: 40px;
         margin-right: 15px;
+		border-radius: 10px;
 	}
 `;
 

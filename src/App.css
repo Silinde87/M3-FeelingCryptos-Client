@@ -1,39 +1,52 @@
 /* RESETS */
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
-html,body,
-#root,#app-container,
-section{
-  height: 100%;
+html,
+body,
+#root,
+#app-container,
+section {
+	height: 100%;
+	overflow-x: hidden;
 }
-section{
-  padding-top: 50px;
-  margin: auto;
+section {
+	/* padding-top: 50px; */
+	margin: auto;
 }
 
 /* FONTS */
 @font-face {
-  font-family: 'Mulish-Light';
-  src: url('./resources/fonts/Mulish-Light.ttf');
-  font-weight: normal;
-  font-style: normal;
+	font-family: "Mulish-Light";
+	src: url("./resources/fonts/Mulish-Light.ttf");
+	font-weight: normal;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Mulish-Medium';
-  src: url('./resources/fonts/Mulish-Medium.ttf');
-  font-weight: normal;
-  font-style: normal;
+	font-family: "Mulish-Medium";
+	src: url("./resources/fonts/Mulish-Medium.ttf");
+	font-weight: normal;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Mulish-Regular';
-  src: url('./resources/fonts/Mulish-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
+	font-family: "Mulish-Regular";
+	src: url("./resources/fonts/Mulish-Regular.ttf");
+	font-weight: normal;
+	font-style: normal;
 }
 @font-face {
-  font-family: 'Mulish-SemiBold';
-  src: url('./resources/fonts/Mulish-SemiBold.ttf');
-  font-weight: normal;
-  font-style: normal;
+	font-family: "Mulish-SemiBold";
+	src: url("./resources/fonts/Mulish-SemiBold.ttf");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@media (max-height: 1080px) {
+	html,
+	body,
+	#root,
+	#app-container,
+	section {
+		overflow-y: hidden;
+	}
 }

@@ -8,7 +8,7 @@ const SCForm = styled.form`
     margin-top: 30px;
 
     .form-input{
-        width: 500px;
+        width: 490px;
         padding: 3px 5px;
         outline: none;
         border:1px solid ${({ theme }) => theme.color.secondary};

@@ -1,5 +1,6 @@
 import React from 'react';
 import authService from '../services/auth.service';
+import privateService from '../services/private.service'
 
 const { Consumer, Provider } = React.createContext();
 
@@ -11,10 +12,15 @@ class AuthProvider extends React.Component {
     user: null
   }
 
-  componentDidMount () {
-    authService.loggedin()
-     .then((response) => this.setState({ isLoggedIn: true, user: response.data, isLoading: false }))
-     .catch((err) => this.setState({ isLoggedIn: false, user: null, isLoading: false }));
+  async componentDidMount(){
+    try {
+      const result = await authService.loggedIn();
+      if(result){
+        this.setState({ isLoggedIn: true, isLoading: false, user: result.data });
+      }
+    } catch(err){
+      this.setState({ isLoggedIn: false, isLoading: false, user: null });
+    }
   }
 
   signup = (data) => {
@@ -39,15 +45,30 @@ class AuthProvider extends React.Component {
       .catch((err) => console.log(err));
   }
 
+  edit = (data) => {
+    authService.edit(data)
+      .then(response => this.setState({ ...this.state, user: response.data}))
+      .catch(error => console.error(error));
+  }
+
+  twitter = () => {
+    window.open(`${process.env.REACT_APP_API_URL}/auth/twitter`, '_self');
+  }
+
+  addFavoritesCryptos = ( data ) => {
+    privateService.add(data)
+    .then(response => this.setState({ ...this.state, user: response.data}))
+    .catch(error => console.error(error));
+  }
 
   render() {
     const { isLoggedIn, isLoading, user } = this.state;
-    const { signup, login, logout } = this;
+    const { signup, login, logout, edit, twitter, addFavoritesCryptos } = this;
 
     if (isLoading) return <p>Loading</p>;
 
     return(
-      <Provider value={{ isLoggedIn, isLoading, user, signup, login, logout }}  >
+      <Provider value={{ isLoggedIn, isLoading, user, signup, login, logout, edit, twitter, addFavoritesCryptos }}  >
         {this.props.children}
       </Provider>
     )
@@ -62,7 +83,7 @@ const withAuth = (WrappedComponent) => {
       return(
         <Consumer>
           { (value) => {
-            const { isLoggedIn, isLoading, user, signup, login, logout } = value;
+            const { isLoggedIn, isLoading, user, signup, login, logout, edit, twitter, addFavoritesCryptos } = value;
 
             return (
               <WrappedComponent 
@@ -72,6 +93,9 @@ const withAuth = (WrappedComponent) => {
                 signup={signup} 
                 login={login} 
                 logout={logout}
+                edit={edit}
+                twitter={twitter}
+                addFavoritesCryptos={addFavoritesCryptos}
                 {...props}
               />
             )

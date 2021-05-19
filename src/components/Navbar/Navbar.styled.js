@@ -14,13 +14,17 @@ const SCNavbar = styled.nav`
 
 	#home-btn{
 		height: 100%;
-        min-width: 260px;
+        min-width: 190px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
-	#brand-label{
-		margin-left: 15px;
+	#home-btn > a{
+		display: flex;
+	}
+	#heart-icon{
+		font-size: 20px;
+		transform: translate(0px,3px);
 	}
 
 	.login-box {

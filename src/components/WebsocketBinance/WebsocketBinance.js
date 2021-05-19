@@ -12,7 +12,6 @@ class WebsocketBinance extends Component {
       market: 'BTCUSDT'
     };
     this.client = Websocket.getInstance();
-    console.log(this.props)
   }
 
   componentDidMount() {
@@ -24,17 +23,10 @@ class WebsocketBinance extends Component {
       if(this.props.market === dataFromServer.symbol){
         this.setState({ charts: dataFromServer.chartArr, market: dataFromServer.symbol });
       }else if(!this.props.market){
-        console.log('NO PROPS')
         this.setState({ charts: dataFromServer.chartArr, market: dataFromServer.symbol  })
       }
     };
   }
-
-  // componentWillUnmount(){
-  //   console.log("COMPONENT UNMOUNT")
-  //   this.client.close()
-    
-  // }
 
   render() {
     return (

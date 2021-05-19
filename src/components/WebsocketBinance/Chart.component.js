@@ -34,7 +34,7 @@ function Chart(props){
       {/* { this.state.isLoading ? <Spinner /> : */}
       <SCChart>
       <div id="chart">
-      <button onClick={() => handleClick()}>{toggle ? <StarRoundedIcon /> : <StarBorderRoundedIcon /> }</button>
+      <button onClick={() => handleClick()}>{toggle ? <StarRoundedIcon className="favorite-btn" /> : <StarBorderRoundedIcon className="favorite-btn" /> }</button>
         <ApexChart
           options={
         {chart: {

@@ -29,7 +29,7 @@ class WebsocketBinance extends Component {
 
   render() {
     return (
-      <div style={{ width: "500px", marginLeft: "100px"}}>
+      <div style={{ width: "100%", marginLeft: "0px"}}>
           { this.state.charts.length > 0 && <Chart data={this.state.charts} market={this.state.market}/>}
         </div>
     );

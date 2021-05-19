@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router";
 import MarketsList from "../../components/MarketsList/MarketsList";
 import TweetFeed from "../../components/TweetFeed/TweetFeed";
 import WebsocketBinance from "../../components/WebsocketBinance/WebsocketBinance";
@@ -9,7 +8,7 @@ import SCHome from "./Home.styled";
 
 function Home(props) {
   const [crypto, setCrypto] = useState("Bitcoin");
-  const [ marketNames, setMarketNames ] = useState(markets.map((market) => market.market.replace("/", "")))
+  const [ marketNames ] = useState(markets.map((market) => market.market.replace("/", "")))
 
   return (
     <>
@@ -29,7 +28,7 @@ function Home(props) {
                     : "BTCUSDT"
                 }
               />
-              {/* <TweetFeed crypto={crypto} /> */}
+              <TweetFeed crypto={crypto} />
             </section>
           </SCHome>
         ) : (
@@ -50,7 +49,7 @@ function Home(props) {
                   : "BTCUSDT"
               }
             />
-            {/* <TweetFeed crypto={crypto} /> */}
+            <TweetFeed crypto={crypto} />
           </section>
         </SCHome>
       )}

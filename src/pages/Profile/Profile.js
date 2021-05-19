@@ -14,10 +14,18 @@ function Profile(props) {
 
 	const { url } = props.match;
 
+	//Turn off sidebar on feed or edit page
+	useEffect(() => {
+		if(url.includes('feed') || url.includes('edit')){
+			setToggle(false);
+		}
+		return;
+	},[url])
+
 	useEffect(() => {
 		let myMarkets = [];
 		props.user.favorites_cryptos.map((market) => {
-			markets.map((objMarket) => {
+			return markets.map((objMarket) => {
 				if (objMarket.market.replace("/", "") === market) myMarkets.push(objMarket);
 			});
 		});

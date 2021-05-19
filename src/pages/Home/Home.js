@@ -8,7 +8,7 @@ import SCHome from "./Home.styled";
 function Home(props) {
   const [ crypto, setCrypto ] = useState('Bitcoin')  
   return (
-    <SCHome>
+    <SCHome id="main-container">
       <MarketsList id="market-list-bar" marketList={markets} setCrypto={setCrypto} />
       <section id="main-section">
         <WebsocketBinance market={props.match.params.market ? props.match.params.market : "BTCUSDT"}/>

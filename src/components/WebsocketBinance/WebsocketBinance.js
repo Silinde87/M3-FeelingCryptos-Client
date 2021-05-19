@@ -10,10 +10,8 @@ class WebsocketBinance extends Component {
     this.state = {
       charts: { },
       market: 'BTCUSDT'
-    };
-    
+    };    
     this.client = Websocket.getInstance();
-    console.log(this.props)
   }
 
   handleClick(){
@@ -29,21 +27,14 @@ class WebsocketBinance extends Component {
       if(this.props.market === dataFromServer.symbol){
         this.setState({ charts: dataFromServer.chartArr, market: dataFromServer.symbol });
       }else if(!this.props.market){
-        console.log('NO PROPS')
         this.setState({ charts: dataFromServer.chartArr, market: dataFromServer.symbol  })
       }
     };
   }
 
-  // componentWillUnmount(){
-  //   console.log("COMPONENT UNMOUNT")
-  //   this.client.close()
-    
-  // }
-
   render() {
     return (
-      <div style={{ width: "500px", marginLeft: "100px"}}>
+      <div id="binance-container">
           <button onClick={() => this.handleClick()} >⭐️</button>
           { this.state.charts.length > 0 && <Chart data={this.state.charts} market={this.state.market}/>}
         </div>

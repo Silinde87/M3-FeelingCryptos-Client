@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
-const SCChart = styled.section`
-    height: 300px;
-
+const SCChart = styled.div`
     #chart{
-        padding: 0px 50px;
-        min-height: 40vh;
+        width: 70vw;
+        margin: auto;
     }
 }`;
 

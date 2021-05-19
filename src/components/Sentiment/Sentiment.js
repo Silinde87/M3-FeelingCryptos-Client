@@ -19,7 +19,7 @@ export default function Sentiment({ positives, neutrals, negatives }) {
 	return (
 		<SCSentiment id="sentiment-container">
 			<div id="sentiment-label">
-				<Text id="sentiment-label" as="h3" size="m" weight="mulishMedium">
+				<Text id="sentiment-label" as="h3" size="l" weight="mulishMedium">
 					Sentiment Anaylsis:
 				</Text>
 				<LightTooltip title="Analysis based on last 100 twits using FINN-165" placement="top-start">

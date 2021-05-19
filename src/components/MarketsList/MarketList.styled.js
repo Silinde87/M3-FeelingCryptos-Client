@@ -3,7 +3,12 @@ import styled from "styled-components";
 const SCMarketList = styled.nav`
 
     background: linear-gradient(0deg, ${({ theme }) => theme.color.secondary} 0%, rgba(255,255,255,1) 100%);
-    min-width: 260px;
+    width: 13vw;
+    min-width: 180px;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
     
     .active #market-id{
         color: ${({theme}) => theme.color.letterColor3Sel};        

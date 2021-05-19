@@ -12,10 +12,10 @@ export default function SideBar({ setToggle, toggle }) {
                 <ShowChartIcon className="sidebar-icon" />
             </NavLink>
             
-            <NavLink to="/private/feed" activeClassName="active" exact>
+            <NavLink onClick={() => setToggle(false)} to="/private/feed" activeClassName="active" exact>
                 <DashboardIcon className="sidebar-icon" />
             </NavLink>
-            <NavLink to="/private/edit" activeClassName="active" exact>
+            <NavLink onClick={() => setToggle(false)} to="/private/edit" activeClassName="active" exact>
                 <SettingsIcon className="sidebar-icon" />
             </NavLink>
         </SCSideBar>

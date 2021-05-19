@@ -9,6 +9,7 @@ const SCTweetFeed = styled.section`
 		display: flex;
 		justify-content: space-between;
 		padding: 0px 50px 0px 50px;
+		margin-bottom: 10px;
 	}
 
 	.twitter-tweet {
@@ -42,8 +43,10 @@ const SCTweetFeed = styled.section`
 		flex-wrap: wrap;
 		justify-content: center;
 		overflow-y: scroll;
-		height: 45vh;
+		height: fit-content;
 		position: relative;
+		margin-bottom: 40px;
+		max-width: 1300px;
 	}
 	#twitter-container {
 		height: 100%;

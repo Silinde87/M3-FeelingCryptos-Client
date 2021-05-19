@@ -1,6 +1,9 @@
 import React from "react";
 import Text from "../text";
 import SCSentimentRatio from "./SentimentRatio.styled";
+import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import TrendingDownIcon from "@material-ui/icons/TrendingDown";
+import TrendingFlatIcon from "@material-ui/icons/TrendingFlat";
 
 export default function SentimentRatio(props) {
 	let { ratio, type, opacity } = props;
@@ -20,13 +23,20 @@ export default function SentimentRatio(props) {
 		}
 		return (
 			<SCSentimentRatio style={{ backgroundColor: bgcolor }}>
-				<Text size="l" color="letterColor1" weight="mulishRegular" style={{ opacity: 1 }}>
+				{type === "positive" ? (
+					<TrendingUpIcon className="ratio-icon"/>
+				) : type === "neutral" ? (
+					<TrendingFlatIcon className="ratio-icon"/>
+				) : (
+					<TrendingDownIcon className="ratio-icon"/>
+				)}
+				<Text size="xl" color="letterColor1" weight="mulishMedium" style={{ opacity: 1 }}>
 					{ratio}%
 				</Text>
 			</SCSentimentRatio>
 		);
 	} else {
-        //Loading
+		//Loading
 		return <></>;
 	}
 }

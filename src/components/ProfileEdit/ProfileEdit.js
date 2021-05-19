@@ -90,7 +90,7 @@ class ProfileEdit extends Component {
 
 	render() {
 		return (
-			<SCProfileEdit id="profile-container">
+			<SCProfileEdit id="profile-edit-container">
 				<div id="info-container">
 					<div id="form-container">
                         <Text id="form-title" as="h2" size="l" weight="mulishRegular" style={{ textAlign: "center" }}>

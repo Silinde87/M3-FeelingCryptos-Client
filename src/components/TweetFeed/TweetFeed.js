@@ -13,7 +13,7 @@ import Sentiment from "../Sentiment/Sentiment";
 import markets from "../../markets.json";
 
 let intervalId;
-const MAX_RESULTS = 10;
+const MAX_RESULTS = 100;
 
 function TweetFeed({ crypto, favorites_cryptos }) {
 	const [feed, setFeed] = useState([]);
@@ -85,7 +85,7 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 			</div>
 			<div id="tweets-container">
 				{loading && <SkeletonCard />}
-				{!loading ? (
+				{!loading &&
 					feed.map((tweet) => {
 						return (
 							<Tweet
@@ -100,9 +100,7 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 							/>
 						);
 					})
-				) : (
-					<Text as="h2" size="l" weight="mulishLight">There is no tweets to show</Text>
-				)}
+				}
 			</div>
 		</SCTweetFeed>
 	);

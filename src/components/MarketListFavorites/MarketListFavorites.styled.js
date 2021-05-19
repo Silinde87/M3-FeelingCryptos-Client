@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
-const SCMarketList = styled.nav`
+const SCMarketListFavorites = styled.div`
 
     background: linear-gradient(0deg, ${({ theme }) => theme.color.secondary} 0%, rgba(255,255,255,1) 100%);
-    width: 13vw;
-    min-width: 180px;
     height: 100%;
-    position: fixed;
     display: flex;
     justify-content: center;
+    margin-left: 80px;
+    transition: width 0.3s;
     
     .active #market-id{
         color: ${({theme}) => theme.color.letterColor3Sel};        
@@ -59,9 +58,8 @@ const SCMarketList = styled.nav`
     .market-img-div img{
         width: 20px;
         height: 20px;
-        margin-right: 10px;
-        
+        margin-right: 10px;    
     }
 `;
 
-export default SCMarketList;
+export default SCMarketListFavorites;

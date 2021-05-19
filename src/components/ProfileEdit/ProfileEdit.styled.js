@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const SCProfileEdit = styled.section`
 
     margin-left: 80px;
+    margin: auto;
     
     #info-container{
         display: flex;
@@ -18,6 +19,7 @@ const SCProfileEdit = styled.section`
         height: 130px;
         margin-left: 100px;
         margin-top: 60px;
+        border-radius: 10px;
     }
 `;
 

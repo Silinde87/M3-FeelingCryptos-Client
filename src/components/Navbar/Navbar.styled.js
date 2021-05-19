@@ -16,11 +16,19 @@ const SCNavbar = styled.nav`
 		height: 100%;
         min-width: 260px;
 		display: flex;
-		justify-content: center;
+		justify-content: start;
 		align-items: center;
 	}
+	#home-btn > a{
+		display: flex;
+
+	}
 	#brand-label{
-		margin-left: 15px;
+		margin-left: 5px;
+	}
+	#brand-icon{
+		height: 25px;
+		margin-left: 8px;
 	}
 
 	.login-box {

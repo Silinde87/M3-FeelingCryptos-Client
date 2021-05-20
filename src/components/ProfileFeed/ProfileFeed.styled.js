@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const SCProfileFeed = styled.div`
     height: fit-content;
     margin-left: 80px;
-    margin-bottom: 50px;
 
     #sentiment-container{
         margin-top: 20px;
@@ -12,17 +11,17 @@ const SCProfileFeed = styled.div`
     #twitter-container{
         align-items: center;
     }
-    #twitter-container,
     #tweets-container{
         height: 100%;
-        display: flex;
-        align-content: flex-start; 
     }
     #tweets-container > div {
         height: fit-content;
     }
     #twitter-container-header{
         align-self: start;
+    }
+    @media (max-width: 1000px){
+        margin-left: 13px;  
     }
 }
 `;

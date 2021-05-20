@@ -27,6 +27,12 @@ const SCProfileEdit = styled.section`
         margin-top: 60px;
         border-radius: 10px;
     }
+    @media (max-width: 1000px){
+        margin-left: 13px;
+        #profile-pic{
+            margin-left: 20px;
+        }    
+    }
 `;
 
 export default SCProfileEdit;

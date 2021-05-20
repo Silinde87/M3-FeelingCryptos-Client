@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+
+const getRandomColor = () => "#" + ((1<<24)*Math.random() | 0).toString(16);
+
 const SCNavbar = styled.nav`
 	display: flex;
 	justify-content: space-between;
@@ -14,10 +17,14 @@ const SCNavbar = styled.nav`
 
 	#home-btn{
 		height: 100%;
-        min-width: 190px;
+        width: 15vw;
+		min-width: 170px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+	#reg{
+		margin-bottom: 5px;
 	}
 	#home-btn > a{
 		display: flex;
@@ -25,6 +32,10 @@ const SCNavbar = styled.nav`
 	#heart-icon{
 		font-size: 20px;
 		transform: translate(0px,3px);
+	}
+	#heart-icon:hover{
+		color: ${getRandomColor()}
+
 	}
 
 	.login-box {

@@ -7,6 +7,7 @@ import MarketListFavorites from "../../components/MarketListFavorites/MarketList
 import WebsocketBinance from "../../components/WebsocketBinance/WebsocketBinance";
 import { withAuth } from "../../context/auth.context";
 import markets from "../../markets.json";
+import Credits from "../../components/Credits/Credits";
 
 function Profile(props) {
 	const [favoritesMarkets, setFavoritesMarkets] = useState([]);
@@ -47,14 +48,17 @@ function Profile(props) {
 			) : url.includes("edit") ? (
 				<ProfileEdit />
 			) : (
-				<WebsocketBinance
-					id="market-favorite-container"
-					market={
-						props.match.params.market
-							? props.match.params.market
-							: props.user.favorites_cryptos[0]
-					}
-				/>
+				<section id="ws-profile-container">
+					<WebsocketBinance
+						id="market-favorite-container"
+						market={
+							props.match.params.market
+								? props.match.params.market
+								: props.user.favorites_cryptos[0]
+						}
+					/>
+					<Credits />
+				</section>
 			)}
 		</SCProfile>
 	);

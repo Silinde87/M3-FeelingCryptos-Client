@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withAuth } from "../../context/auth.context";
 import SCProfileFeed from "./ProfileFeed.styled";
 import TweetFeed from "../TweetFeed/TweetFeed";
+import Credits from "../Credits/Credits";
 
 class ProfileFeed extends Component {
 	render() {

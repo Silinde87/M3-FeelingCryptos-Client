@@ -20,7 +20,6 @@ function Chart(props){
   //   console.log('display none???')
   // }, [])
 
-  
   const handleClick = () => {
     setToggle(!toggle)
     toggle ? props.deleteFavoritesCryptos({ favorites_cryptos: props.market }) :

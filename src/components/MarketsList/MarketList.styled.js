@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const SCMarketList = styled.nav`
 
-    background: linear-gradient(0deg, ${({ theme }) => theme.color.secondary} 0%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(0deg, ${({ theme }) => theme.color.secondary} 0%, ${({ theme }) => theme.color.primary} 100%);
     width: 15vw;
     min-width: fit-content;    
     height: 100%;
@@ -34,6 +34,7 @@ const SCMarketList = styled.nav`
         height: calc( 100vh - 60px );
         overflow: auto;
         padding: 0;
+        width: 100%;
     }
     .list-div{
         display: flex;

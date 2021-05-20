@@ -9,7 +9,7 @@ const SCForm = styled.form`
 
     .form-input{
         width: 490px;
-        padding: 3px 5px;
+        padding: 5px 5px;
         outline: none;
         border:1px solid ${({ theme }) => theme.color.secondary};
         margin-top: 8px;
@@ -18,6 +18,7 @@ const SCForm = styled.form`
         -moz-transition: all 0.30s ease-in-out;
         -ms-transition: all 0.30s ease-in-out;
         -o-transition: all 0.30s ease-in-out;
+        background-color: ${({ theme }) => theme.color.formInput};
     }
     .form-input:focus{
         border: 1px solid  ${({ theme }) => theme.color.primary};

@@ -13,7 +13,7 @@ const SCNavbar = styled.nav`
 	top: 0;
 	width: 100%;
 	z-index: 99;
-	background-color: white;
+	background-color: ${({theme}) => theme.color.background};
 
 	#home-btn{
 		height: 100%;

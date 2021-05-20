@@ -1,17 +1,17 @@
-const theme = {
+const themeDark = {
     color: {
-      background: "#FFFFFF",
-      primary: "#FFFFFF",
-      secondary: "#E0E1DD",
-      tertiary: "#778DA9",
+      background: "#000",
+      primary: "#000",
+      secondary: "#37474F",
+      tertiary: "#222",
       brandColor: "#004A7C",
-      letterColor1: "#0D1B2A",
-      letterColor2: "#5E6472",
+      letterColor1: "#FFFFFF",
+      letterColor2: "#DEE4E7",
       letterColor3Sel: "#53B9EA",
       lettersColorRed: "#e63946",
       buttonColor: "#005691",
       white: "white",
-      sentimentShadow: "#d2effd",
+      sentimentShadow: "#002e47",
       formInput: "#ECEFF1",
     },
     breakpoints: {
@@ -65,4 +65,4 @@ const theme = {
   };
 
   
-  export default theme;
+  export default themeDark;

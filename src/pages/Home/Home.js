@@ -8,8 +8,10 @@ import SCHome from "./Home.styled";
 import Credits from "../../components/Credits/Credits";
 
 function Home(props) {
-  const [crypto, setCrypto] = useState("Bitcoin");
+  const [crypto, setCrypto] = useState("Bitcoin");  
   const marketNames = markets.map((market) => market.market.replace("/", ""))
+  const { theme } = props;
+
 
   return (
     <>
@@ -50,7 +52,7 @@ function Home(props) {
                   : "BTCUSDT"
               }
             />
-            <TweetFeed crypto={crypto} />
+            <TweetFeed crypto={crypto} theme={theme}/>
             <Credits />
           </section>
         </SCHome>

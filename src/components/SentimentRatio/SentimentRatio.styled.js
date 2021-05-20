@@ -11,7 +11,7 @@ const SCSentimentRatio = styled.div`
     justify-content: start;
     align-items: center;
     flex-direction: column;
-    box-shadow: 7px 7px 1px 0px rgba(0,0,0,0.6);
+    box-shadow: 7px 7px 1px 0px ${({theme}) => theme.color.sentimentShadow};
     border-radius: 12px;
 
     .ratio-icon{

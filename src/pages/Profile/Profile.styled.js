@@ -5,6 +5,7 @@ const SCProfile = styled.section`
     overflow-y: scroll;
     height: calc(100% - 60px);
     justify-content: center;
+    background-color: ${({theme}) => theme.color.background};
 
     #ws-profile-container{
         display: flex;

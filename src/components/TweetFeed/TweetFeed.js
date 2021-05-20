@@ -88,16 +88,17 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 				{!loading &&
 					feed.map((tweet) => {
 						return (
-							<Tweet
-								key={tweet.id}
-								tweetId={tweet.id}
-								options={{
-									cards: "hidden",
-									width: "250",
-									conversation: "none",
-									height: "200",
-								}}
-							/>
+							<div key={tweet.id} className="tweet-box">
+								<Tweet									
+									tweetId={tweet.id}
+									options={{
+										cards: "hidden",
+										width: "250",
+										conversation: "none",
+										height: "200",
+									}}
+								/>
+							</div>
 						);
 					})
 				}

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ApexChart from "react-apexcharts";
-import SCChart from './Chart.styled';
-import moment from 'moment';
+import SCChart from "./Chart.styled";
+import moment from "moment";
 import { withAuth } from "../../context/auth.context";
-import StarBorderRoundedIcon from '@material-ui/icons/StarBorderRounded';
-import StarRoundedIcon from '@material-ui/icons/StarRounded';
+import StarBorderRoundedIcon from "@material-ui/icons/StarBorderRounded";
+import StarRoundedIcon from "@material-ui/icons/StarRounded";
 import Spinner from "../Spinner/Spinner";
 
 function Chart(props){

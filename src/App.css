@@ -8,10 +8,9 @@ body,
 #app-container,
 section {
 	height: 100%;
-	overflow-x: scroll;
+	
 }
 section {
-	/* padding-top: 50px; */
 	margin: auto;
 }
 

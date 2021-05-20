@@ -5,11 +5,14 @@ const SCHome = styled.main`
     flex-direction: row;
 
     #main-section{
-        display: flex;
-        flex-direction: column;
         margin: 0;
-        width: 87vw;
-        margin-left: 13vw;
+        width: 85vw;
+        margin-left: 15vw;
+    }
+    @media (max-width: 1000px){
+        #main-section{
+            margin-left: 170px;
+        }
     }
 
 `;

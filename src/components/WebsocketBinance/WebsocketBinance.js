@@ -2,7 +2,6 @@ import LinearProgressWithLabel from "@material-ui/core/LinearProgress";
 import React, { useEffect, useState } from "react";
 import { withAuth } from "../../context/auth.context";
 import Websocket from "../../utils/websocketInstance";
-import Credits from "../Credits/Credits";
 import Chart from "./Chart.component";
 
 function WebsocketBinance(props) {
@@ -59,9 +58,9 @@ function WebsocketBinance(props) {
       ) : (
         <LinearProgressWithLabel style={{ width: 300, position: "fixed", top: "30%", left: "50%" }} value={progress} />
       )}
-      {/* <Credits /> */}
     </div>
   );
+
 }
 
 export default withAuth(WebsocketBinance);

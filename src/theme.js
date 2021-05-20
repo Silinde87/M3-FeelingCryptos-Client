@@ -1,6 +1,7 @@
 const theme = {
     color: {
-      primary: "#FAFAFA",
+      background: "#FFFFFF",
+      primary: "#FFFFFF",
       secondary: "#E0E1DD",
       tertiary: "#778DA9",
       brandColor: "#004A7C",
@@ -10,6 +11,8 @@ const theme = {
       lettersColorRed: "#e63946",
       buttonColor: "#005691",
       white: "white",
+      sentimentShadow: "#d2effd",
+      formInput: "#ECEFF1",
     },
     breakpoints: {
       mobileMax: '420px',

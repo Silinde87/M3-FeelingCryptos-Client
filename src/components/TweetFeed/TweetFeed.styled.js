@@ -18,21 +18,24 @@ const SCTweetFeed = styled.section`
 		min-width: 250px;
 		border: 1px solid rgb(196, 207, 214);
 		border-radius: 12px;
-		box-shadow: 5px 5px 15px -3px rgba(156,156,156,1);
+		box-shadow: 5px 5px 15px -3px ${({theme}) => theme.color.sentimentShadow};
+	}
+	.css-1dbjc4n article {
+		background-color: red;
 	}
 	/* Tweet scrollbar styles */
 	.twitter-tweet::-webkit-scrollbar {
 		width: 8px;
 	}
 	.twitter-tweet::-webkit-scrollbar-track {
-		border: 1px solid ${({ theme }) => theme.color.primary};
+		border: 1px solid ${({ theme }) => theme.color.secondary};
 		background-color: ${({ theme }) => theme.color.secondary};
 		border-radius: 12px;
 		display: none;
 	}
 	.twitter-tweet::-webkit-scrollbar-thumb {
 		border-radius: 12px;
-		background-color: ${({ theme }) => theme.color.primary};
+		background-color: ${({ theme }) => theme.color.secondary};
 		border: 1px solid ${({ theme }) => theme.color.secondary};
 	}
 	#tweets-container {

@@ -1,10 +1,11 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
-import "./SkeletonCard.css"
+import SCSkeletonCard from "./SkeletonCard.styled";
 
 const SkeletonCard = () => {
+  
     return (
-      <section id="skeleton-container">
+      <SCSkeletonCard id="skeleton-container">
           {Array(4)
             .fill()
             .map((item, index) => (
@@ -12,7 +13,7 @@ const SkeletonCard = () => {
                   <Skeleton count={5} />
                 </div>
             ))}
-      </section>
+      </SCSkeletonCard>
     );
   };
 

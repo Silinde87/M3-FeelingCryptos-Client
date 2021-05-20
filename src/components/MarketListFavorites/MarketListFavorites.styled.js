@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const SCMarketListFavorites = styled.div`
 
-    background: linear-gradient(0deg, ${({ theme }) => theme.color.secondary} 0%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(0deg, ${({ theme }) => theme.color.secondary} 0%, ${({ theme }) => theme.color.primary} 100%);
     height: 100%;
     display: flex;
     justify-content: center;

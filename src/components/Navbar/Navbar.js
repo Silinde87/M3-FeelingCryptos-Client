@@ -4,10 +4,11 @@ import { withAuth } from "./../../context/auth.context";
 import Text from "../text";
 import SCNavbar from "./Navbar.styled";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import DarkModeToggle from "react-dark-mode-toggle";
 
 class Navbar extends Component {
 	render() {
-		const { user, logout, isLoggedIn, toggleTheme } = this.props;
+		const { user, logout, isLoggedIn, toggleTheme,isDarkMode } = this.props;
 		return (
 			<SCNavbar className="navbar">
 				<div id="home-btn">
@@ -18,7 +19,11 @@ class Navbar extends Component {
 						</Text>
 					</Link>
 				</div>
-				<buttton onClick={toggleTheme}>MAGIC!</buttton>
+				<DarkModeToggle
+					onChange={toggleTheme}
+					checked={isDarkMode}
+					size={80}
+				/>				
 				{isLoggedIn ? (
 					<div className="logged-user-box">
 						<Link to="/private">

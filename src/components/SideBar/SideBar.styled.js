@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const SCSideBar = styled.section`
-	background: linear-gradient(0deg, ${({ theme }) => theme.color.tertiary} 0%, rgba(255, 255, 255, 1) 100%);
+background: linear-gradient(0deg, ${({ theme }) => theme.color.tertiary} 0%, ${({ theme }) => theme.color.primary} 100%);
 	width: 80px;
 	position: fixed;
 	left: 0;

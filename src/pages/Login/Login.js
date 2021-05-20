@@ -79,7 +79,7 @@ class Login extends Component {
 
 	render() {
 		return (
-			<SCLogin id="form-container" style={{ maxWidth: "500px" }}>
+			<SCLogin id="form-container">
 				<Text id="form-title" as="h2" size="l" weight="mulishRegular" style={{ textAlign: "center" }}>
 					Log in to FeelingCrypto
 				</Text>

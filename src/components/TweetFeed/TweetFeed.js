@@ -15,7 +15,7 @@ import markets from "../../markets.json";
 let intervalId;
 const MAX_RESULTS = 100;
 
-function TweetFeed({ crypto, favorites_cryptos }) {
+function TweetFeed({ crypto, favorites_cryptos, theme }) {
 	const [feed, setFeed] = useState([]);
 	const [tweetsSentiment, setTweetsSentiment] = useState({});
 	const [loading, setLoading] = useState(true);
@@ -24,6 +24,11 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 		"tweet.fields": "public_metrics,lang",
 		query: `(${getQueryCrypto()} is:verified -is:retweet`,
 	};
+
+	function getTheme(){
+		if(theme==='light') return ""
+		else return 'dark';
+	}
 
 	function getQueryCrypto() {
 		if (!favorites_cryptos || favorites_cryptos.length === 0) {
@@ -96,6 +101,7 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 										width: "250",
 										conversation: "none",
 										height: "200",
+										theme: getTheme()
 									}}
 								/>
 							</div>

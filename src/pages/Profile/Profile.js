@@ -16,6 +16,7 @@ function Profile(props) {
 	const [toggle, setToggle] = useState(true);
 
 	const { url } = props.match;
+	const { theme } = props;
 
 	//Turn off sidebar on feed or edit page
 	useEffect(() => {
@@ -40,7 +41,7 @@ function Profile(props) {
 			<SideBar setToggle={setToggle} toggle={toggle} />
 			{<MarketListFavorites marketList={favoritesMarkets} className={toggle ? "show" : "hide"} />}
 			{url.includes("feed") ? (
-				<ProfileFeed />
+				<ProfileFeed theme={theme}/>
 			) : url.includes("edit") ? (
 				<ProfileEdit />
 			) : props.user.favorites_cryptos.length ? (

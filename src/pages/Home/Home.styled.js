@@ -3,6 +3,7 @@ import styled from "styled-components";
 const SCHome = styled.main`
     display: flex;
     flex-direction: row;
+    background-color: ${({theme}) => theme.color.background};
 
     #main-section{
         margin: 0;

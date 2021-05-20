@@ -6,6 +6,12 @@ import { Link } from "react-router-dom";
 import Text from "../text";
 
 class ProfileFeed extends Component {
+	constructor(props){
+		super(props);
+		this.theme = this.props.theme;
+	}
+	
+	
 	render() {
 		//Getting favorites cryptos tweets from user.
 		const { favorites_cryptos } = this.props.user;
@@ -13,7 +19,7 @@ class ProfileFeed extends Component {
 			<>
 				<SCProfileFeed id="profile-feed-container">
 					{favorites_cryptos.length ? (
-						<TweetFeed favorites_cryptos={favorites_cryptos} />
+						<TweetFeed favorites_cryptos={favorites_cryptos} theme={this.theme} />
 					) : (
 						<section>
 							<Link className="link-add" to="/">

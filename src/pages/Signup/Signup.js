@@ -88,7 +88,7 @@ class Signup extends Component {
 
 	render() {
 		return (
-			<SCSignup id="form-container" style={{ maxWidth: "500px" }}>
+			<SCSignup id="form-container">
 				<Text id="form-title" as="h2" size="l" weight="mulishRegular" style={{ textAlign: "center" }}>
 					Sign up to FeelingCrypto
 				</Text>

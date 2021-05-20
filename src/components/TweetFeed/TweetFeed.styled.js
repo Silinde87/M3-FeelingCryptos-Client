@@ -25,7 +25,6 @@ const SCTweetFeed = styled.section`
 	/* Tweet scrollbar styles */
 	.twitter-tweet::-webkit-scrollbar {
 		width: 8px;
-		//display: none;
 	}
 	.twitter-tweet::-webkit-scrollbar-track {
 		border: 1px solid ${({ theme }) => theme.color.primary};

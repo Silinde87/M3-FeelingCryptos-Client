@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router";
 import MarketsList from "../../components/MarketsList/MarketsList";
 import TweetFeed from "../../components/TweetFeed/TweetFeed";
 import WebsocketBinance from "../../components/WebsocketBinance/WebsocketBinance";
 import markets from "../../markets.json";
 import Error from "../ErrorPage/ErrorPage";
 import SCHome from "./Home.styled";
+import Text from "../../components/text";
+import Credits from "../../components/Credits/Credits";
 
 function Home(props) {
   const [crypto, setCrypto] = useState("Bitcoin");
@@ -51,6 +52,7 @@ function Home(props) {
               }
             />
             <TweetFeed crypto={crypto} />
+            <Credits />
           </section>
         </SCHome>
       )}

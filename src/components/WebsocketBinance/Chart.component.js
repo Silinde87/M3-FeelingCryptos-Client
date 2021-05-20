@@ -11,12 +11,11 @@ function Chart(props){
   const [ toggle, setToggle ] = useState(false)
     
   useEffect(() => {
-    console.log('Use effect')
     console.log(props.user)
     props.user.favorites_cryptos.includes(props.market) ? setToggle(true) : setToggle(false)
 
     console.log(props.user.favorites_cryptos)
-     
+
   }, [props.market])  
  
   const handleClick = () => {
@@ -38,9 +37,9 @@ function Chart(props){
     return (
       <>
       {/* { this.state.isLoading ? <Spinner /> : */}
-      <SCChart>
+      <SCChart id="chart-container">
       <div id="chart">
-      <button onClick={() => handleClick()}>{toggle ? <StarRoundedIcon /> : <StarBorderRoundedIcon /> }</button>
+      <button onClick={() => handleClick()}>{toggle ? <StarRoundedIcon className="favorite-btn" /> : <StarBorderRoundedIcon className="favorite-btn" /> }</button>
         <ApexChart
           options={
         {chart: {

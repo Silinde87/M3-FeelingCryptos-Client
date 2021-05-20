@@ -79,7 +79,7 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 		<SCTweetFeed id="twitter-container">		
 			<Sentiment {...tweetsSentiment} />
 			<div id="twitter-container-header">
-				<Text as="h3" size="l" weight="mulishMedium">
+				<Text as="h3" color="letterColor1" size="l" weight="mulishMedium">
 					Tweet feed
 				</Text>
 			</div>

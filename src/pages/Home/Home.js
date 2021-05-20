@@ -29,7 +29,7 @@ function Home(props) {
                     : "BTCUSDT"
                 }
               />
-              {/* <TweetFeed crypto={crypto} /> */}
+              <TweetFeed crypto={crypto} />
             </section>
           </SCHome>
         ) : (
@@ -50,7 +50,7 @@ function Home(props) {
                   : "BTCUSDT"
               }
             />
-            {/* <TweetFeed crypto={crypto} /> */}
+            <TweetFeed crypto={crypto} />
           </section>
         </SCHome>
       )}

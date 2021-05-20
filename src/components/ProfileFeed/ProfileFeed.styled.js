@@ -11,17 +11,17 @@ const SCProfileFeed = styled.div`
     #twitter-container{
         align-items: center;
     }
-    #twitter-container,
     #tweets-container{
         height: 100%;
-        display: flex;
-        align-content: flex-start; 
     }
     #tweets-container > div {
         height: fit-content;
     }
     #twitter-container-header{
         align-self: start;
+    }
+    @media (max-width: 1000px){
+        margin-left: 13px;  
     }
 }
 `;

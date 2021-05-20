@@ -17,7 +17,7 @@ export default function Form(props) {
 							{editForm ? (
 								<Text size="m">Change your {el}</Text>
 							) : (
-								<Text size="m">Introduce your {el}</Text>
+								<Text size="m">Enter your {el}</Text>
 							)}
 						</label>
 						{el !== "photo" ? (

@@ -1,4 +1,4 @@
-# M3-
+# M3-FeelingCrypto - Client
 
 ## Description
 
@@ -163,4 +163,4 @@ User model
 [Deployed App Link](http://feeling-crypto.herokuapp.com/)
 
 ### Slides
-[Slides Link]()
+[Slides Link](https://prezi.com/p/xpnseyduvuz4/?present=1)

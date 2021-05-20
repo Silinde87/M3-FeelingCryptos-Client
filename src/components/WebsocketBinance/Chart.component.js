@@ -5,9 +5,21 @@ import moment from "moment";
 import { withAuth } from "../../context/auth.context";
 import StarBorderRoundedIcon from "@material-ui/icons/StarBorderRounded";
 import StarRoundedIcon from "@material-ui/icons/StarRounded";
+import Tooltip from "@material-ui/core/Tooltip";
+import { withStyles } from '@material-ui/core/styles';
+
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: 'rgba(0, 0, 0, 0.87)',
+    boxShadow: theme.shadows[1],
+    fontSize: 12,
+  },
+}))(Tooltip);
 
 function Chart(props){
-  const [ toggle, setToggle ] = useState(false)
+  const [ toggle, setToggle ] = useState(false);
+  const [open, setOpen] = React.useState(false);
     
   useEffect(() => {
     if(props.user){
@@ -21,16 +33,37 @@ function Chart(props){
   // }, [])
 
   const handleClick = () => {
-    setToggle(!toggle)
-    toggle ? props.deleteFavoritesCryptos({ favorites_cryptos: props.market }) :
-    props.addFavoritesCryptos({ favorites_cryptos: props.market })
+    if(props.user){
+      setToggle(!toggle) 
+       toggle ? props.deleteFavoritesCryptos({ favorites_cryptos: props.market }) :
+       props.addFavoritesCryptos({ favorites_cryptos: props.market })
+    }else{
+      setOpen(true);
+      setTimeout(() => {
+        setOpen(false);       
+      }, 1500);      
+    }
   }
  
     return (
       <>
       <SCChart id="chart-container">
       <div id="chart">
-      <button onClick={() => handleClick()}>{toggle ? <StarRoundedIcon className="favorite-btn" /> : <StarBorderRoundedIcon className="favorite-btn" /> }</button>
+      <div>
+        <LightTooltip
+          PopperProps={{
+            disablePortal: true,
+          }}
+          open={open}
+          disableFocusListener
+          disableHoverListener
+          disableTouchListener
+          title="Log in to add your favorite market"
+          placement="top"          
+        >
+          <button onClick={() => handleClick()}>{toggle ? <StarRoundedIcon className="favorite-btn" /> : <StarBorderRoundedIcon className="favorite-btn" /> }</button>
+        </LightTooltip>
+      </div>
         <ApexChart
           options={
         {chart: {

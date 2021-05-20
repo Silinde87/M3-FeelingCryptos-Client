@@ -3,6 +3,7 @@ import Form from "../Form/Form";
 import { withAuth } from "../../context/auth.context";
 import Text from "../text";
 import SCProfileEdit from "./ProfileEdit.styled";
+import Credits from "../Credits/Credits";
 
 const EMAIL_PATTERN =
 	/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
@@ -47,6 +48,7 @@ class ProfileEdit extends Component {
 			photo: null,
 		},
 		submitSuccessful: false,
+		errorOnSubmit: false
 	};
 
 	//This method handles the form submit. Changes the state if there is an error validation.
@@ -58,12 +60,19 @@ class ProfileEdit extends Component {
 		})
 		if (this.isValid()) {
 			// Call function coming from AuthProvider ( via withAuth )
-            this.props.edit(uploadData);
+            this.props.edit(uploadData)
+				.then(() => {
+					this.setState({ submitSuccessful: true });
+				})
+				.catch(() => {
+					this.setState({ submitSuccessful: false });
+					this.setState({ errorOnSubmit: true });
+				})
 			//Render update succesful
-			this.setState({ submitSuccessful: true });
 			setTimeout(() => {
 				this.setState({ submitSuccessful: false });
-			}, 1500);
+				this.setState({ errorOnSubmit: false });
+			}, 2000);
 		}
 	};
 
@@ -90,7 +99,7 @@ class ProfileEdit extends Component {
 
 	render() {
 		return (
-			<SCProfileEdit id="profile-container">
+			<SCProfileEdit id="profile-edit-container">
 				<div id="info-container">
 					<div id="form-container">
                         <Text id="form-title" as="h2" size="l" weight="mulishRegular" style={{ textAlign: "center" }}>
@@ -109,12 +118,18 @@ class ProfileEdit extends Component {
 								Succesfully updated
 							</Text>
 						)}
+						{this.state.errorOnSubmit && (
+							<Text color="lettersColorRed" style={{ textAlign: "center", marginTop: "10px" }}>
+								User already exists. Can't update.
+							</Text>
+						)}
 						<Text id="recover-label" size="s" weight="mulishLight">
 							Recover password
 						</Text>
 					</div>
 					<img id="profile-pic" src={this.props.user.photo} alt=""></img>
 				</div>
+				<Credits />
 			</SCProfileEdit>
 		);
 	}

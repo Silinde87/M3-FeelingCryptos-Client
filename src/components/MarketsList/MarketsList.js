@@ -14,7 +14,7 @@ export default function MarketsList({ marketList, setCrypto }) {
   let id = 0;
 
   return (
-    <SCMarketList>
+    <SCMarketList id="market-list-nav">
       <List className="component-list">
         <div className="list-div">
         <SearchBar setSearch={setSearch}/>
@@ -27,7 +27,7 @@ export default function MarketsList({ marketList, setCrypto }) {
                 client.send(`${route}`)
                 console.log('send new connection')
               }}
-                to={`/${route}`}
+                to={`/markets/${route}`}
                 exact
                 activeClassName="active"
                 key={id++}

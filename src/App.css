@@ -8,7 +8,7 @@ body,
 #app-container,
 section {
 	height: 100%;
-	overflow-x: hidden;
+	
 }
 section {
 	/* padding-top: 50px; */
@@ -39,14 +39,4 @@ section {
 	src: url("./resources/fonts/Mulish-SemiBold.ttf");
 	font-weight: normal;
 	font-style: normal;
-}
-
-@media (max-height: 1080px) {
-	html,
-	body,
-	#root,
-	#app-container,
-	section {
-		overflow-y: hidden;
-	}
 }

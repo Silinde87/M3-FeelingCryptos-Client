@@ -5,7 +5,7 @@ const SCForm = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 10px;
 
     .form-input{
         width: 490px;
@@ -24,11 +24,15 @@ const SCForm = styled.form`
         box-shadow: 0 0 4px ${({ theme }) => theme.color.tertiary};
     }
     .form-group{
-        margin-top: 15px;
+        margin-top: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .form-error{
         padding-left: 5px;
-        margin-bottom: 5px;
+        position: absolute;
+        transform: translate(0px, 35px)
     }
     .form-already-label{
         width: 100%;

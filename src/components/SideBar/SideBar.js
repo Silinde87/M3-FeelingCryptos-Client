@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import SCSideBar from './SideBar.styled'
 import ShowChartIcon from '@material-ui/icons/ShowChart';
 import DashboardIcon from '@material-ui/icons/Dashboard';

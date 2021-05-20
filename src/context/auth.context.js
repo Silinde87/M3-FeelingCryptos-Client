@@ -32,10 +32,11 @@ class AuthProvider extends React.Component {
   }
 
   login = (data) => {
-    authService.login(data)
+    return authService.login(data)
       .then((response) => this.setState({ isLoggedIn: true, user: response.data }))
       .catch((err) => {
         this.setState({ isLoggedIn: false, user: null });
+        throw new Error();
       })
   }
 
@@ -46,9 +47,12 @@ class AuthProvider extends React.Component {
   }
 
   edit = (data) => {
-    authService.edit(data)
+    return authService.edit(data)
       .then(response => this.setState({ ...this.state, user: response.data}))
-      .catch(error => console.error(error));
+      .catch(error => {
+        console.error(error);
+        throw new Error();
+      })
   }
 
   twitter = () => {
@@ -61,14 +65,23 @@ class AuthProvider extends React.Component {
     .catch(error => console.error(error));
   }
 
+  deleteFavoritesCryptos = ( data ) => {
+    privateService.delete(data)
+    .then(response => {
+      this.setState({ ...this.state, user: response.data})
+      console.log(response)
+    })
+    .catch(error => console.error(error));
+  }
+
   render() {
     const { isLoggedIn, isLoading, user } = this.state;
-    const { signup, login, logout, edit, twitter, addFavoritesCryptos } = this;
+    const { signup, login, logout, edit, twitter, addFavoritesCryptos, deleteFavoritesCryptos } = this;
 
     if (isLoading) return <p>Loading</p>;
 
     return(
-      <Provider value={{ isLoggedIn, isLoading, user, signup, login, logout, edit, twitter, addFavoritesCryptos }}  >
+      <Provider value={{ isLoggedIn, isLoading, user, signup, login, logout, edit, twitter, addFavoritesCryptos, deleteFavoritesCryptos }}  >
         {this.props.children}
       </Provider>
     )
@@ -83,7 +96,7 @@ const withAuth = (WrappedComponent) => {
       return(
         <Consumer>
           { (value) => {
-            const { isLoggedIn, isLoading, user, signup, login, logout, edit, twitter, addFavoritesCryptos } = value;
+            const { isLoggedIn, isLoading, user, signup, login, logout, edit, twitter, addFavoritesCryptos, deleteFavoritesCryptos } = value;
 
             return (
               <WrappedComponent 
@@ -96,6 +109,7 @@ const withAuth = (WrappedComponent) => {
                 edit={edit}
                 twitter={twitter}
                 addFavoritesCryptos={addFavoritesCryptos}
+                deleteFavoritesCryptos={deleteFavoritesCryptos}
                 {...props}
               />
             )

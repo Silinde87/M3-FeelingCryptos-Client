@@ -13,7 +13,7 @@ import Sentiment from "../Sentiment/Sentiment";
 import markets from "../../markets.json";
 
 let intervalId;
-const MAX_RESULTS = 10;
+const MAX_RESULTS = 100;
 
 function TweetFeed({ crypto, favorites_cryptos }) {
 	const [feed, setFeed] = useState([]);
@@ -79,30 +79,29 @@ function TweetFeed({ crypto, favorites_cryptos }) {
 		<SCTweetFeed id="twitter-container">		
 			<Sentiment {...tweetsSentiment} />
 			<div id="twitter-container-header">
-				<Text as="h3" size="l" weight="mulishMedium">
+				<Text as="h3" color="letterColor1" size="l" weight="mulishMedium">
 					Tweet feed
 				</Text>
 			</div>
 			<div id="tweets-container">
 				{loading && <SkeletonCard />}
-				{!loading ? (
+				{!loading &&
 					feed.map((tweet) => {
 						return (
-							<Tweet
-								key={tweet.id}
-								tweetId={tweet.id}
-								options={{
-									cards: "hidden",
-									width: "250",
-									conversation: "none",
-									height: "200",
-								}}
-							/>
+							<div key={tweet.id} className="tweet-box">
+								<Tweet									
+									tweetId={tweet.id}
+									options={{
+										cards: "hidden",
+										width: "250",
+										conversation: "none",
+										height: "200",
+									}}
+								/>
+							</div>
 						);
 					})
-				) : (
-					<Text as="h2" size="l" weight="mulishLight">There is no tweets to show</Text>
-				)}
+				}
 			</div>
 		</SCTweetFeed>
 	);

@@ -7,6 +7,8 @@ import MarketListFavorites from "../../components/MarketListFavorites/MarketList
 import WebsocketBinance from "../../components/WebsocketBinance/WebsocketBinance";
 import { withAuth } from "../../context/auth.context";
 import markets from "../../markets.json";
+import { Link } from "react-router-dom";
+import Text from "../../components/text";
 import Credits from "../../components/Credits/Credits";
 
 function Profile(props) {
@@ -34,6 +36,7 @@ function Profile(props) {
 	}, [props.user.favorites_cryptos]);
 
 	return (
+		
 		<SCProfile id="profile-container">
 			<SideBar setToggle={setToggle} toggle={toggle} />
       {
@@ -42,25 +45,28 @@ function Profile(props) {
         className={(toggle) ? "show" : "hide"}
       />
       }
-			
 			{url.includes("feed") ? (
 				<ProfileFeed />
 			) : url.includes("edit") ? (
 				<ProfileEdit />
 			) : (
-				<section id="ws-profile-container">
-					<WebsocketBinance
-						id="market-favorite-container"
-						market={
-							props.match.params.market
-								? props.match.params.market
-								: props.user.favorites_cryptos[0]
-						}
-					/>
-					<Credits />
+				props.user.favorites_cryptos.length ? 
+        <section id="ws-profile-container">
+          <WebsocketBinance
+            id="market-favorite-container"
+            market={
+              props.match.params.market
+                ? props.match.params.market
+                : props.user.favorites_cryptos[0]
+            }
+          />
+          <Credits />
 				</section>
+				:
+				<Link className="link-add-favorites" to="/"><h1 > <Text weight="mulishMedium" size="m" color="letterColor3Sel"> ADD A FAVORITE MARKET </Text></h1></Link> 
 			)}
 		</SCProfile>
+		
 	);
 }
 

@@ -12,7 +12,7 @@ const SCProfile = styled.section`
         margin-top: 50px;
     }
     #profile-container{
-        
+
     }
     .show{
         width: 200px;
@@ -20,6 +20,10 @@ const SCProfile = styled.section`
     .hide{
         width: 0px;
     }
+    .link-add-favorites{
+        position: fixed;
+        top: 50%;
+        left: 50%;
     #credits{
         width: 100%;
         position: fixed;

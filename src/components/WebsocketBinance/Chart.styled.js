@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 const SCChart = styled.div`
-    height: 86%;
     #chart{
-        width: 70vw;
+        width: 65vw;
         margin: auto;
     }
     .favorite-btn{

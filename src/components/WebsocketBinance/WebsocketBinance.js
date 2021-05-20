@@ -1,41 +1,67 @@
-import React, { Component } from "react";
+import LinearProgressWithLabel from "@material-ui/core/LinearProgress";
+import React, { useEffect, useState } from "react";
 import { withAuth } from "../../context/auth.context";
-import Websocket from '../../utils/websocketInstance'
+import Websocket from "../../utils/websocketInstance";
 import Credits from "../Credits/Credits";
 import Chart from "./Chart.component";
 
+function WebsocketBinance(props) {
+  const [chart, setChart] = useState({});
+  const [market, setMarket] = useState("BTCUSDT");
+  const [isLoading, setisLoading] = useState(true);
+  const [progress, setProgress] = useState(10);
 
-class WebsocketBinance extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      charts: { },
-      market: 'BTCUSDT'
-    };
-    this.client = Websocket.getInstance();
-  }
-  componentDidMount() {
+
+  const client = Websocket.getInstance();
+
+  useEffect(() => {
     //This onopen function waits for you websocket connection to establish before sending the message.
-    this.client.readyState ? this.client.send(`${this.props.market}`) : this.client.onopen = () => this.client.send(`${this.props.market}`);
-
-    this.client.onmessage = ({ data }) => {
+    client.readyState
+      ? client.send(`${props.market}`)
+      : (client.onopen = () => client.send(`${props.market}`));
+    client.onmessage = ({ data }) => {
       const dataFromServer = JSON.parse(data);
-      if(this.props.market === dataFromServer.symbol){
-        this.setState({ charts: dataFromServer.chartArr, market: dataFromServer.symbol });
-      }else if(!this.props.market){
-        this.setState({ charts: dataFromServer.chartArr, market: dataFromServer.symbol  })
+      if (props.market === dataFromServer.symbol) {
+        console.log("setting data from server", props.market)
+        setChart(dataFromServer.chartArr);
+        setMarket(dataFromServer.symbol);
+      } else if (!props.market) {
+        setChart(dataFromServer.chartArr);
+        setMarket(dataFromServer.symbol);
       }
     };
-  }
+  }, [props.market]);
 
-  render() {
-    return (
-      <div id="profile-chart" style={{ width: "100%", marginLeft: "0px"}}>
-          { this.state.charts.length > 0 && <Chart data={this.state.charts} market={this.state.market}/>}
-          <Credits />
-      </div>
-    );
-  }
+  useEffect(() => {
+    setisLoading(false);
+  }, [chart]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prevProgress) =>
+        prevProgress >= 100 ? 10 : prevProgress + 10
+      );
+    }, 1000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  return (
+    <div
+      id="profile-chart"
+      style={{ width: "100%", marginLeft: "0px", minHeight: 350 }}
+    >
+      {isLoading ? (
+        <LinearProgressWithLabel style={{ width: 350, position: "fixed", top: "30%", left: "50%" }} value={progress} />
+      ) : chart.length > 0 ? (
+        <Chart data={chart} market={market} />
+      ) : (
+        <LinearProgressWithLabel style={{ width: 300, position: "fixed", top: "30%", left: "50%" }} value={progress} />
+      )}
+      {/* <Credits /> */}
+    </div>
+  );
 }
 
-export default withAuth(WebsocketBinance)
+export default withAuth(WebsocketBinance);

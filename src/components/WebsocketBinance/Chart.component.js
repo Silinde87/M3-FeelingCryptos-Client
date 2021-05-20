@@ -11,64 +11,37 @@ function Chart(props){
   const [ toggle, setToggle ] = useState(false)
     
   useEffect(() => {
-    console.log(props.user)
     props.user.favorites_cryptos.includes(props.market) ? setToggle(true) : setToggle(false)
-
-    console.log(props.user.favorites_cryptos)
-
   }, [props.market])  
- 
+
+  // useEffect(() => {
+  //   document.querySelector('.apexcharts-toolbar').style.display = "none";
+  //   console.log('display none???')
+  // }, [])
+
+  
   const handleClick = () => {
     setToggle(!toggle)
-    console.log(toggle)
-    console.log(props)
-    if(toggle){
-
-      props.deleteFavoritesCryptos({ favorites_cryptos: props.market })
-
-    }else{
-      props.addFavoritesCryptos({ favorites_cryptos: props.market })
-    }
-    // toggle ? props.deleteFavoritesCryptos({ favorites_cryptos: props.market }) :
-    // props.addFavoritesCryptos({ favorites_cryptos: props.market })
-    console.log('added or deleted favorite market')
+    toggle ? props.deleteFavoritesCryptos({ favorites_cryptos: props.market }) :
+    props.addFavoritesCryptos({ favorites_cryptos: props.market })
   }
  
     return (
       <>
-      {/* { this.state.isLoading ? <Spinner /> : */}
       <SCChart id="chart-container">
       <div id="chart">
       <button onClick={() => handleClick()}>{toggle ? <StarRoundedIcon className="favorite-btn" /> : <StarBorderRoundedIcon className="favorite-btn" /> }</button>
         <ApexChart
           options={
         {chart: {
-          height: 300,
+          height: 350,
           type: "candlestick",
         },
         title: {
           text: `${props.market} - SPOT Market`,
           align: "left",
         },
-        annotations: {
-          xaxis: [
-            {
-              x: "Oct 06 14:00",
-              borderColor: "#00E396",
-              label: {
-                borderColor: "#00E396",
-                style: {
-                  fontSize: "12px",
-                  color: "#e63946",
-                  background: "#00E396",
-                },
-                orientation: "horizontal",
-                offsetY: 7,
-                text: "Annotation Test",
-              },
-            },
-          ],
-        },
+
         tooltip: {
           enabled: true,
         },
@@ -92,7 +65,7 @@ function Chart(props){
           name: "candle",
           data: props.data.map((el, i) => {
       return {
-        x: i % 6 === 0 ? moment(new Date(parseInt(el[0]))).format("MM-dd-yyyy h:mm:ss") : (''),
+        x: moment(new Date(parseInt(el[0]))).format("MMM gg HH:mm"),
         y: [ el[1].open, el[1].high, el[1].low, el[1].close ]
       }
     }),
@@ -100,7 +73,7 @@ function Chart(props){
       ]
           }
           type="candlestick"
-          height={300}
+          height={350}
         />
       </div>
       </SCChart>

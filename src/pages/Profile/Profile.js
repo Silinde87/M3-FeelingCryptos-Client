@@ -3,7 +3,7 @@ import SCProfile from "./Profile.styled";
 import SideBar from "../../components/SideBar/SideBar";
 import ProfileFeed from "../../components/ProfileFeed/ProfileFeed";
 import ProfileEdit from "../../components/ProfileEdit/ProfileEdit";
-import MarketListFavorites from "../../components/MarketListFavorites/MarketListFavorites";
+import MarketListFavorites from "../../components/MarketListFavorites/MarketListFavorites"
 import WebsocketBinance from "../../components/WebsocketBinance/WebsocketBinance";
 import { withAuth } from "../../context/auth.context";
 import markets from "../../markets.json";

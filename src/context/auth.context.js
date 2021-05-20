@@ -43,7 +43,7 @@ class AuthProvider extends React.Component {
   logout = () => {
     authService.logout()
       .then(() => this.setState({ isLoggedIn: false, user: null }))
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }
 
   edit = (data) => {
@@ -69,7 +69,6 @@ class AuthProvider extends React.Component {
     privateService.delete(data)
     .then(response => {
       this.setState({ ...this.state, user: response.data})
-      console.log(response)
     })
     .catch(error => console.error(error));
   }

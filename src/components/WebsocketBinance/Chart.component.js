@@ -10,7 +10,9 @@ function Chart(props){
   const [ toggle, setToggle ] = useState(false)
     
   useEffect(() => {
-    props.user.favorites_cryptos.includes(props.market) ? setToggle(true) : setToggle(false)
+    if(props.user){
+      props.user.favorites_cryptos.includes(props.market) ? setToggle(true) : setToggle(false)
+    }
   }, [props.market])  
 
   // useEffect(() => {

@@ -7,7 +7,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 class Navbar extends Component {
 	render() {
-		const { user, logout, isLoggedIn } = this.props;
+		const { user, logout, isLoggedIn, toggleTheme } = this.props;
 		return (
 			<SCNavbar className="navbar">
 				<div id="home-btn">
@@ -18,6 +18,7 @@ class Navbar extends Component {
 						</Text>
 					</Link>
 				</div>
+				<buttton onClick={toggleTheme}>MAGIC!</buttton>
 				{isLoggedIn ? (
 					<div className="logged-user-box">
 						<Link to="/private">

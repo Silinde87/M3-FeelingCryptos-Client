@@ -25,7 +25,7 @@ export default function MarketsList({ marketList, setCrypto }) {
               <NavLink onClick={() => {
                 setCrypto && setCrypto(market.name)
                 client.send(`${route}`)
-                console.log('send new connection')
+                //console.log('send new connection')
               }}
                 to={`/markets/${route}`}
                 exact

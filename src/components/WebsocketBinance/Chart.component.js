@@ -27,11 +27,6 @@ function Chart(props){
     }
   }, [props.market])  
 
-  // useEffect(() => {
-  //   document.querySelector('.apexcharts-toolbar').style.display = "none";
-  //   console.log('display none???')
-  // }, [])
-
   const handleClick = () => {
     if(props.user){
       setToggle(!toggle) 
@@ -41,7 +36,7 @@ function Chart(props){
       setOpen(true);
       setTimeout(() => {
         setOpen(false);       
-      }, 1500);      
+      }, 2500);      
     }
   }
  
@@ -59,7 +54,7 @@ function Chart(props){
           disableHoverListener
           disableTouchListener
           title="Log in to add your favorite market"
-          placement="top"          
+          placement="bottom"          
         >
           <button onClick={() => handleClick()}>{toggle ? <StarRoundedIcon className="favorite-btn" /> : <StarBorderRoundedIcon className="favorite-btn" /> }</button>
         </LightTooltip>

@@ -21,7 +21,6 @@ function WebsocketBinance(props) {
     client.onmessage = ({ data }) => {
       const dataFromServer = JSON.parse(data);
       if (props.market === dataFromServer.symbol) {
-        //console.log("setting data from server", props.market)
         setChart(dataFromServer.chartArr);
         setMarket(dataFromServer.symbol);
       } else if (!props.market) {

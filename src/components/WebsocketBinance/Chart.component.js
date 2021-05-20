@@ -93,7 +93,7 @@ function Chart(props){
           name: "candle",
           data: props.data.map((el, i) => {
       return {
-        x: moment(new Date(parseInt(el[0]))).format("MMM gg HH:mm"),
+        x: moment(new Date(parseInt(el[0]))).format("MMM Do HH:mm"),
         y: [ el[1].open, el[1].high, el[1].low, el[1].close ]
       }
     }),

@@ -20,6 +20,11 @@ const SCProfileFeed = styled.div`
     #twitter-container-header{
         align-self: start;
     }
+    .link-add{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+    }
     @media (max-width: 1000px){
         margin-left: 13px;  
     }

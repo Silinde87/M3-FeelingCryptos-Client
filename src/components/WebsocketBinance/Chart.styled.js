@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const SCChart = styled.div`
     #chart{
-        width: 70vw;
+        width: 65vw;
         margin: auto;
     }
     .favorite-btn{

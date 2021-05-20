@@ -7,6 +7,11 @@ import StarBorderRoundedIcon from "@material-ui/icons/StarBorderRounded";
 import StarRoundedIcon from "@material-ui/icons/StarRounded";
 import Tooltip from "@material-ui/core/Tooltip";
 import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -17,9 +22,24 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 75
+  },
+  inputLabel: {
+    backgroundColor: theme.palette.common.white,
+    color: 'rgba(0, 0, 0, 0.87)',
+    boxShadow: theme.shadows[1],
+    fontSize: 20,
+  }
+}));
+
 function Chart(props){
+  const classes = useStyles();
   const [ toggle, setToggle ] = useState(false);
   const [open, setOpen] = React.useState(false);
+  const [openForm, setOpenForm] = useState(false);
     
   useEffect(() => {
     if(props.user){
@@ -39,11 +59,44 @@ function Chart(props){
       }, 2500);      
     }
   }
+  const handleChange = (event) => {
+    props.setTime(event.target.value);
+  };
+
+  const handleClose = () => {
+    setOpenForm(false);
+  };
+
+  const handleOpen = () => {
+    setOpenForm(true);
+  };
  
     return (
       <>
       <SCChart id="chart-container">
       <div id="chart">
+      <FormControl className={classes.formControl} id="form-control">
+        <InputLabel className={classes.inuptLabel} id="demo-controlled-open-select-label">Interval</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={openForm}
+          onClose={handleClose}
+          onOpen={handleOpen}
+          value={props.time}
+          onChange={handleChange}
+        >
+          <MenuItem value="1h">
+            <em>1h</em>
+          </MenuItem>
+          <MenuItem value={"30m"}>30m</MenuItem>
+          <MenuItem value={"2h"}>2h</MenuItem>
+          <MenuItem value={"4h"}>4h</MenuItem>
+          <MenuItem value={"8h"}>8h</MenuItem>
+          <MenuItem value={"12h"}>12h</MenuItem>
+          <MenuItem value={"1d"}>1d</MenuItem>
+        </Select>
+      </FormControl>
       <div>
         <LightTooltip
           PopperProps={{
@@ -93,7 +146,7 @@ function Chart(props){
           name: "candle",
           data: props.data.map((el, i) => {
       return {
-        x: moment(new Date(parseInt(el[0]))).format("MMM gg HH:mm"),
+        x: moment(new Date(parseInt(el[0]))).format("MMM Do h:mm"),
         y: [ el[1].open, el[1].high, el[1].low, el[1].close ]
       }
     }),

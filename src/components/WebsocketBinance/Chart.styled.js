@@ -10,6 +10,12 @@ const SCChart = styled.div`
         font-size: 30px;
         color: #F3BA2E;
     }
+    #form-control{
+        transform: translate(500px,45px);    
+    }
+    #demo-controlled-open-select{
+        font-size: 12px;
+    }
 }`;
 
 export default SCChart;

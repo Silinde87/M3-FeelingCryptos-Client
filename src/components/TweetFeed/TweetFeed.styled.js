@@ -41,7 +41,6 @@ const SCTweetFeed = styled.section`
     	column-gap: 20px;
     	row-gap: 20px;
 		height: fit-content;
-		margin-bottom: 40px;
 		max-width: 1100px;
 		margin-top: 20px;
 	}

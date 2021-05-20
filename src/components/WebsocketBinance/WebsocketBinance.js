@@ -52,11 +52,11 @@ function WebsocketBinance(props) {
       style={{ width: "100%", marginLeft: "0px", minHeight: 350 }}
     >
       {isLoading ? (
-        <LinearProgressWithLabel style={{ width: 350, position: "fixed", top: "30%", left: "50%" }} value={progress} />
+        <LinearProgressWithLabel style={{ width: 350, position: "fixed", top: "30%", left: "46%" }} value={progress} />
       ) : chart.length > 0 ? (
         <Chart data={chart} market={market} />
       ) : (
-        <LinearProgressWithLabel style={{ width: 300, position: "fixed", top: "30%", left: "50%" }} value={progress} />
+        <LinearProgressWithLabel style={{ width: 350, position: "fixed", top: "30%", left: "46%" }} value={progress} />
       )}
     </div>
   );

@@ -6,6 +6,16 @@ const SCProfile = styled.section`
     height: calc(100% - 60px);
     justify-content: center;
 
+    #ws-profile-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    #text{
+        margin-bottom: 15px;
+     
+    }
+
     #binance-container{
         width: 100%;
         overflow-y: hidden;
@@ -31,6 +41,7 @@ const SCProfile = styled.section`
         left: 0;
         margin: 0;
     }
+
 `;
 
 export default SCProfile;

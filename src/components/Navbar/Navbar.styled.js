@@ -35,7 +35,6 @@ const SCNavbar = styled.nav`
 	}
 	#heart-icon:hover{
 		color: ${getRandomColor()}
-
 	}
 
 	.login-box {

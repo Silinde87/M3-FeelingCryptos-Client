@@ -7,7 +7,7 @@ const SCHome = styled.main`
     #main-section{
         margin: 0;
         width: 85vw;
-        margin-left: 15vw;
+        margin-left: 15vw;        
     }
     @media (max-width: 1000px){
         #main-section{

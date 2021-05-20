@@ -10,7 +10,7 @@ const SCProfileEdit = styled.section`
         display: flex;
         justify-content: center;
         margin-top: 20px;
-        height: 85%;
+        height: calc(100% - 60px);        
     }
 
     #form{

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const SCProfileFeed = styled.section`
     height: fit-content;
     margin-left: 80px;
+    margin: 0 auto;
 
     #sentiment-container{
         margin-top: 20px;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SCProfileFeed = styled.div`
+const SCProfileFeed = styled.section`
     height: fit-content;
     margin-left: 80px;
 

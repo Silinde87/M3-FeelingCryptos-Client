@@ -3,7 +3,7 @@ import SCProfile from "./Profile.styled";
 import SideBar from "../../components/SideBar/SideBar";
 import ProfileFeed from "../../components/ProfileFeed/ProfileFeed";
 import ProfileEdit from "../../components/ProfileEdit/ProfileEdit";
-import MarketListFavorites from "../../components/MarketListFavorites/MarketListFavorites"
+import MarketListFavorites from "../../components/MarketListFavorites/MarketListFavorites";
 import WebsocketBinance from "../../components/WebsocketBinance/WebsocketBinance";
 import { withAuth } from "../../context/auth.context";
 import markets from "../../markets.json";
@@ -19,11 +19,11 @@ function Profile(props) {
 
 	//Turn off sidebar on feed or edit page
 	useEffect(() => {
-		if(url.includes('feed') || url.includes('edit')){
+		if (url.includes("feed") || url.includes("edit")) {
 			setToggle(false);
 		}
 		return;
-	},[url])
+	}, [url]);
 
 	useEffect(() => {
 		let myMarkets = [];
@@ -36,37 +36,39 @@ function Profile(props) {
 	}, [props.user.favorites_cryptos]);
 
 	return (
-		
 		<SCProfile id="profile-container">
 			<SideBar setToggle={setToggle} toggle={toggle} />
-      {
-        <MarketListFavorites
-        marketList={favoritesMarkets}
-        className={(toggle) ? "show" : "hide"}
-      />
-      }
+			{<MarketListFavorites marketList={favoritesMarkets} className={toggle ? "show" : "hide"} />}
 			{url.includes("feed") ? (
 				<ProfileFeed />
 			) : url.includes("edit") ? (
 				<ProfileEdit />
-			) : (
-				props.user.favorites_cryptos.length ? 
-        <section id="ws-profile-container">
-          <WebsocketBinance
-            id="market-favorite-container"
-            market={
-              props.match.params.market
-                ? props.match.params.market
-                : props.user.favorites_cryptos[0]
-            }
-          />
-          <Credits />
+			) : props.user.favorites_cryptos.length ? (
+				<section id="ws-profile-container">
+					<WebsocketBinance
+						id="market-favorite-container"
+						market={
+							props.match.params.market
+								? props.match.params.market
+								: props.user.favorites_cryptos[0]
+						}
+					/>
+					<Credits />
 				</section>
-				:
-				<Link className="link-add-favorites" to="/"><h1 > <Text weight="mulishMedium" size="m" color="letterColor3Sel"> ADD A FAVORITE MARKET </Text></h1></Link> 
+			) : (
+				<section>
+					<Link className="link-add-favorites" to="/">
+						<h1>
+							{" "}
+							<Text weight="mulishMedium" size="m" color="letterColor3Sel">
+								{" "}
+								ADD A FAVORITE MARKET{" "}
+							</Text>
+						</h1>
+					</Link>
+				</section>
 			)}
 		</SCProfile>
-		
 	);
 }
 

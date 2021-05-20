@@ -11,26 +11,26 @@ export default function SentimentRatio(props) {
 		let bgcolor;
 		switch (type) {
 			case "positive":
-				bgcolor = `rgba(0, 128, 0,${opacity})`;
+				bgcolor = `rgba(1, 183, 70,${opacity + 0.3})`;
 				break;
 			case "neutral":
-				bgcolor = `rgba(247, 184, 1,${opacity})`;
+				bgcolor = `rgba(247, 184, 1,${opacity + 0.3})`;
 				break;
 			case "negative":
-				bgcolor = `rgba(224, 30, 55,${opacity})`;
+				bgcolor = `rgba(238, 64, 60,${opacity + 0.3})`;
 				break;
 			default:
 		}
 		return (
-			<SCSentimentRatio style={{ backgroundColor: bgcolor }}>
+			<SCSentimentRatio style={{ borderColor: bgcolor,  }}>
 				{type === "positive" ? (
-					<TrendingUpIcon className="ratio-icon"/>
+					<TrendingUpIcon className="ratio-icon" style={{color: bgcolor}}/>
 				) : type === "neutral" ? (
-					<TrendingFlatIcon className="ratio-icon"/>
+					<TrendingFlatIcon className="ratio-icon" style={{color: bgcolor}}/>
 				) : (
-					<TrendingDownIcon className="ratio-icon"/>
+					<TrendingDownIcon className="ratio-icon" style={{color: bgcolor}}/>
 				)}
-				<Text size="xl" color="letterColor1" weight="mulishMedium" style={{ opacity: 1 }}>
+				<Text size="xl" color="letterColor2" weight="mulishMedium" style={{ opacity: 1 }}>
 					{ratio}%
 				</Text>
 			</SCSentimentRatio>

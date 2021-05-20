@@ -4,11 +4,17 @@ const SCProfileEdit = styled.section`
 
     margin-left: 80px;
     margin: auto;
+    max-height: 100vh;
     
     #info-container{
         display: flex;
         justify-content: center;
-        margin-top: 20px;      
+        margin-top: 20px;
+        height: 85%;
+    }
+
+    #form{
+        width: 500px;
     }
 
     #recover-label{

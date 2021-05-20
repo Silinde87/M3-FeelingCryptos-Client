@@ -6,12 +6,12 @@ const SCSentimentRatio = styled.div`
     width: 200px;
     margin: 0px 20px;
     margin-top: 10px;
-    border: 2px solid rgb(196, 207, 214);
+    border: 4px solid rgb(196, 207, 214);
     display: flex;
     justify-content: start;
     align-items: center;
     flex-direction: column;
-    box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.75);
+    box-shadow: 7px 7px 1px 0px rgba(0,0,0,0.6);
     border-radius: 12px;
 
     .ratio-icon{

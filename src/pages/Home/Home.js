@@ -10,7 +10,7 @@ import Credits from "../../components/Credits/Credits";
 
 function Home(props) {
   const [crypto, setCrypto] = useState("Bitcoin");
-  const [ marketNames ] = useState(markets.map((market) => market.market.replace("/", "")))
+  const marketNames = markets.map((market) => market.market.replace("/", ""))
 
   return (
     <>
@@ -53,7 +53,6 @@ function Home(props) {
             />
             <TweetFeed crypto={crypto} />
             <Credits />
-
           </section>
         </SCHome>
       )}

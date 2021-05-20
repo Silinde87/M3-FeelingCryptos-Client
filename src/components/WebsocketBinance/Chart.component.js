@@ -5,7 +5,6 @@ import moment from "moment";
 import { withAuth } from "../../context/auth.context";
 import StarBorderRoundedIcon from "@material-ui/icons/StarBorderRounded";
 import StarRoundedIcon from "@material-ui/icons/StarRounded";
-import Spinner from "../Spinner/Spinner";
 
 function Chart(props){
   const [ toggle, setToggle ] = useState(false)

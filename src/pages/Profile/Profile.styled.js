@@ -12,7 +12,7 @@ const SCProfile = styled.section`
         margin-top: 50px;
     }
     #profile-container{
-        
+
     }
     .show{
         width: 200px;

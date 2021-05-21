@@ -40,12 +40,18 @@ function Chart(props) {
 	const [toggle, setToggle] = useState(false);
 	const [open, setOpen] = React.useState(false);
 	const [openForm, setOpenForm] = useState(false);
+	const [foreColor, setForeColor] = useState(props.theme === 'light' ? '#0D1B2A' : '#FFFFFF');
 
 	useEffect(() => {
 		if (props.user) {
 			props.user.favorites_cryptos.includes(props.market) ? setToggle(true) : setToggle(false);
 		}
 	}, [props.market]);
+
+	useEffect(() => {
+		if(props.theme === 'light') setForeColor('#0D1B2A')
+		else setForeColor('#FFFFFF')
+	},[props.theme])
 
 	const handleClick = () => {
 		if (props.user) {
@@ -124,6 +130,7 @@ function Chart(props) {
 					options={{
 						chart: {
 							height: 350,
+							foreColor: foreColor,
 							type: "candlestick",
 						},
 						title: {

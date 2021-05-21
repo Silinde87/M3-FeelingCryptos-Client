@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MarketsList from "../../components/MarketsList/MarketsList";
 import TweetFeed from "../../components/TweetFeed/TweetFeed";
 import WebsocketBinance from "../../components/WebsocketBinance/WebsocketBinance";
@@ -30,8 +30,9 @@ function Home(props) {
                     ? props.match.params.market
                     : "BTCUSDT"
                 }
+                theme={theme}
               />
-              <TweetFeed crypto={crypto} />
+              <TweetFeed crypto={crypto} theme={theme} />
             </section>
           </SCHome>
         ) : (
@@ -51,6 +52,7 @@ function Home(props) {
                   ? props.match.params.market
                   : "BTCUSDT"
               }
+              theme={theme}
             />
             <TweetFeed crypto={crypto} theme={theme}/>
             <Credits />

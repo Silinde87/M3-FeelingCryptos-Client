@@ -14,6 +14,7 @@ const themeDark = {
       sentimentShadow: "#002e47",
       formInput: "#ECEFF1",
       searchInputLetter: "#ECEFF1",
+      textChart: "#FFFFFF",
     },
     breakpoints: {
       mobileMax: '420px',

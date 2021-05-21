@@ -20,6 +20,7 @@ class Navbar extends Component {
 					</Link>
 				</div>
 				<DarkModeToggle
+					id="dark-mode-toggle"
 					onChange={toggleTheme}
 					checked={isDarkMode}
 					size={80}

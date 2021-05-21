@@ -13,6 +13,7 @@ const themeDark = {
       white: "white",
       sentimentShadow: "#002e47",
       formInput: "#ECEFF1",
+      searchInputLetter: "#ECEFF1",
     },
     breakpoints: {
       mobileMax: '420px',

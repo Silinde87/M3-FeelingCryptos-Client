@@ -13,6 +13,7 @@ const theme = {
       white: "white",
       sentimentShadow: "#d2effd",
       formInput: "#ECEFF1",
+      searchInputLetter: "#222",
     },
     breakpoints: {
       mobileMax: '420px',

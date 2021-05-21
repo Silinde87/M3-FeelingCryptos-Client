@@ -13,6 +13,7 @@ function WebsocketBinance(props) {
 
   const client = Websocket.getInstance();
 
+
   useEffect(() => {
     //This onopen function waits for you websocket connection to establish before sending the message.
     client.readyState

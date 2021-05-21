@@ -52,7 +52,9 @@ function Profile(props) {
 							props.match.params.market
 								? props.match.params.market
 								: props.user.favorites_cryptos[0]
+								
 						}
+						theme={theme}
 					/>
 					<Credits />
 				</section>

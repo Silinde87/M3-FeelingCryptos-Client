@@ -62,7 +62,7 @@ function WebsocketBinance(props) {
           value={progress}
         />
       ) : chart.length > 0 ? (
-        <Chart data={chart} market={market} setTime={setTime} time={time}/>
+        <Chart data={chart} market={market} setTime={setTime} time={time} theme={props.theme}/>
       ) : (
         <LinearProgressWithLabel
           style={{ width: 300, position: "fixed", top: "30%", left: "50%" }}

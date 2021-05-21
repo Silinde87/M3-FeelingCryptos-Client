@@ -26,7 +26,7 @@ function TweetFeed({ crypto, favorites_cryptos, theme }) {
 	};
 
 	function getTheme(){
-		if(theme==='light') return ""
+		if(!theme || theme === 'light') return ""
 		else return 'dark';
 	}
 

@@ -32,7 +32,7 @@ function App() {
 					<PrivateRoute exact path="/private/edit" component={Profile} />
 					<PrivateRoute exact path="/private/feed" component={(props) => <Profile {...props} theme={theme}/>} />
 					<PrivateRoute exact path="/private/:market" component={Profile} />
-					<Route exact path="/markets/:market" component={Home} />
+					<Route exact path="/markets/:market" render={(props) => <Home {...props} theme={theme}/>} />
 					<Route path="*" component={Error} />
 				</Switch>
 			</div>

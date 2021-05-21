@@ -8,7 +8,7 @@ import DarkModeToggle from "react-dark-mode-toggle";
 
 class Navbar extends Component {
 	render() {
-		const { user, logout, isLoggedIn, toggleTheme,isDarkMode } = this.props;
+		const { user, logout, isLoggedIn, toggleTheme, isDarkMode } = this.props;
 		return (
 			<SCNavbar className="navbar">
 				<div id="home-btn">
@@ -20,6 +20,7 @@ class Navbar extends Component {
 					</Link>
 				</div>
 				<DarkModeToggle
+					id="dark-mode-toggle"
 					onChange={toggleTheme}
 					checked={isDarkMode}
 					size={80}

@@ -11,6 +11,10 @@ class TwitterService {
     getRecentTweets(params){
         return this.twitter.post("/twitter/recentTweets", params);
     }
+
+    streamTweets(){
+        return this.twitter.get("/twitter/streamTweets");
+    }
 }
 
 const twitterService = new TwitterService();

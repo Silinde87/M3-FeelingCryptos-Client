@@ -35,6 +35,7 @@ const SCProfile = styled.section`
         position: fixed;
         top: 50%;
         left: 50%;
+    }
     #credits{
         width: 100%;
         position: fixed;
@@ -42,6 +43,8 @@ const SCProfile = styled.section`
         left: 0;
         margin: 0;
     }
+
+
 
 `;
 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const SCTweetFeed = styled.section`
 	max-width: 1100px;
-	width: 100%
+	width: 100%;
 
 	#twitter-container-header {
 		padding: 0px 50px 0px 50px;

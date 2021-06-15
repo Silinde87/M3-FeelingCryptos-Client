@@ -60,6 +60,9 @@ const SCMarketListFavorites = styled.div`
         height: 20px;
         margin-right: 10px;    
     }
+    @media (max-width: 768px) {
+        display:none;
+    }
 `;
 
 export default SCMarketListFavorites;

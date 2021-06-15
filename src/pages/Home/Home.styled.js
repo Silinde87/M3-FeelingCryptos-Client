@@ -15,6 +15,12 @@ const SCHome = styled.main`
             margin-left: 170px;
         }
     }
+    @media (max-width: 768px) {
+        #main-section{
+            width: 100vw;
+            margin-left: 0px;
+        }
+    }
 
 `;
 

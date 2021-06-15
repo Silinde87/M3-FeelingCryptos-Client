@@ -43,6 +43,22 @@ const SCChart = styled.div`
     .MuiInput-underline:hover{
         border-bottom: 0;
     }
-}`;
+    @media (max-width: 768px) {
+        #chart-header{
+            width: 75vw;
+        }
+        #chart{
+            width: 75vw;
+        }
+    }
+    @media (max-width: 375px) {
+        #chart-header{
+            width: 85vw;
+        }
+        #chart{
+            width: 85vw;
+        }
+    }
+`;
 
 export default SCChart;

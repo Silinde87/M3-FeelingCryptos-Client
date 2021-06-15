@@ -63,6 +63,10 @@ const SCMarketList = styled.nav`
         margin-right: 10px;
         
     }
+
+    @media (max-width: 768px) {
+        display:none;
+    }
 `;
 
 export default SCMarketList;

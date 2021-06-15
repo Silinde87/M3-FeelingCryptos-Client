@@ -33,6 +33,15 @@ const SCProfileEdit = styled.section`
             margin-left: 20px;
         }    
     }
+
+    @media (max-width: 768px) {
+        margin: 0;
+        margin-left: 110px;
+
+        #profile-pic{
+            height: 80px;
+        }  
+    }
 `;
 
 export default SCProfileEdit;
